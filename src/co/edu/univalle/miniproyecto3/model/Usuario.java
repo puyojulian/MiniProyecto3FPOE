@@ -9,17 +9,20 @@ package co.edu.univalle.miniproyecto3.model;
  * @author julia
  */
 public class Usuario {
+    
     private int id;
     private String nombre;
     private boolean estadoActivo;
+    private String rol;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String nombre, boolean estadoActivo) {
+    public Usuario(int id, String nombre, boolean estadoActivo, String rol) {
         this.id = id;
         this.nombre = nombre;
         this.estadoActivo = estadoActivo;
+        this.rol = rol;
     }
 
     public int getId() {
@@ -45,6 +48,12 @@ public class Usuario {
     public void setEstadoActivo(boolean estadoActivo) {
         this.estadoActivo = estadoActivo;
     }
-    
-    
+
+    public String isRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 }
