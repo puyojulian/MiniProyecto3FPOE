@@ -51,16 +51,16 @@ public class AgregarRecurso extends javax.swing.JFrame {
         botonAgregar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         botonAgregar.setText("AGREGAR");
 
-        labelTitulo.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        labelTitulo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         labelTitulo.setText("TITULO:");
 
-        labelAutor.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        labelAutor.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         labelAutor.setText("AUTOR(ES):");
 
-        labelGenero.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        labelGenero.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         labelGenero.setText("GENERO(S):");
 
-        labelIsbn.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        labelIsbn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         labelIsbn.setText("ISBN:");
 
         botonCancelar.setBackground(new java.awt.Color(255, 45, 45));
@@ -78,37 +78,35 @@ public class AgregarRecurso extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(191, 191, 191)
+                .addGap(0, 51, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(botonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addComponent(botonCancelar))
+                    .addComponent(textAutor2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textTitulo, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textAutor1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textAutor3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textGenero3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textGenero2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textGenero1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textIsbn, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap(45, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelGenero, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelAutor, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(179, 179, 179))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(197, 197, 197)
                 .addComponent(labelTitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(172, 172, 172)
-                .addComponent(labelAutor)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(208, 208, 208)
                 .addComponent(labelIsbn)
-                .addGap(207, 207, 207))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 51, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(labelGenero))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(botonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                            .addComponent(botonCancelar))
-                        .addComponent(textAutor2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(textTitulo, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(textAutor1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(textAutor3, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(textGenero3, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(textGenero2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(textGenero1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(textIsbn, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +115,7 @@ public class AgregarRecurso extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -129,15 +127,15 @@ public class AgregarRecurso extends javax.swing.JFrame {
                 .addComponent(textAutor1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textAutor3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textGenero3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textGenero2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textGenero1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelIsbn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
