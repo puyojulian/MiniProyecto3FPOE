@@ -10,6 +10,7 @@ import co.edu.univalle.miniproyecto3.repository.UsuarioDAOInterface;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import javax.swing.JList;
 
 /**
@@ -21,7 +22,7 @@ public class PruebaUsuariosCRUD extends javax.swing.JFrame {
     private Usuario usuario;
     private UsuarioDAO usuarioDAO;
     private Map mapaUsuarios;
-    private List<Map.Entry<String, Usuario>> lista;
+    private List<Map.Entry<Integer, Usuario>> lista;
     /**
      * Creates new form PruebaUsuariosCRUD
      * @param usuario
@@ -172,6 +173,22 @@ public class PruebaUsuariosCRUD extends javax.swing.JFrame {
         
         lista = new ArrayList<>(mapaUsuarios.entrySet());
         jLista .setListData(lista.toArray(new Map.Entry[0]));
+        
+        txtId.setText("");
+        txtNombre.setText("");
+        txtRol.setText("");
+        
+//        for (Map.Entry<Integer, Usuario> Lista : lista) {
+//            System.out.println("Lista: " + lista);
+//        }
+//        
+//        Set<Map.Entry<Integer, Usuario>> entrySet = mapaUsuarios.entrySet();
+//        
+//        for (Map.Entry<Integer, Usuario> entry : entrySet) {
+//        Integer key = entry.getKey();
+//        Usuario value = entry.getValue();
+//        System.out.println("Key: " + key + ", Value: " + value);
+//        }
 
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -180,7 +197,26 @@ public class PruebaUsuariosCRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIdActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        int Index = jLista.getSelectedIndex();
+        
+        Map.Entry<Integer, Usuario> Entry = lista.get(Index);
+        usuarioDAO.deleteUsuario((Entry.getKey()));
+        
+        lista.remove(Index);
+        jLista .setListData(lista.toArray(new Map.Entry[Index]));
+        
+//        for (Map.Entry<Integer, Usuario> Lista : lista) {
+//           System.out.println("Lista: " + lista);
+//        }
+//        
+//        Set<Map.Entry<Integer, Usuario>> entrySet = mapaUsuarios.entrySet();
+//        
+//        for (Map.Entry<Integer, Usuario> entry : entrySet) {
+//        Integer key = entry.getKey();
+//        Usuario value = entry.getValue();
+//        System.out.println("Key: " + key + ", Value: " + value);
+//        }
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
