@@ -6,11 +6,9 @@ package co.edu.univalle.miniproyecto3.vista;
 
 import co.edu.univalle.miniproyecto3.model.Usuario;
 import co.edu.univalle.miniproyecto3.repository.UsuarioDAO;
-import co.edu.univalle.miniproyecto3.repository.UsuarioDAOInterface;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import javax.swing.JList;
 
 /**
@@ -47,33 +45,25 @@ public class PruebaUsuariosCRUD extends javax.swing.JFrame {
     private void initComponents() {
 
         jContenido = new javax.swing.JPanel();
-        txtId = new javax.swing.JTextField();
-        btnAgregar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jLista = new javax.swing.JList<>();
-        btnEliminar = new javax.swing.JButton();
-        txtRol = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
         txtNombre = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        txtRol = new javax.swing.JTextField();
+        btnAgregar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
 
-        txtId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
-            }
-        });
-
-        btnAgregar.setText("Agregar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
-
-        jScrollPane1.setViewportView(jLista);
+        jContenido.setMaximumSize(new java.awt.Dimension(800, 600));
+        jContenido.setPreferredSize(new java.awt.Dimension(800, 600));
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -82,142 +72,182 @@ public class PruebaUsuariosCRUD extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("ID");
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 0, 12))); // NOI18N
+
+        jScrollPane1.setViewportView(jLista);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Botones"));
+
+        txtRol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRolActionPerformed(evt);
+            }
+        });
+
+        btnAgregar.setText("Agregar");
+        btnAgregar.setAutoscrolls(true);
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Nombre");
+        jLabel2.setAutoscrolls(true);
 
         jLabel3.setText("Rol");
+        jLabel3.setAutoscrolls(true);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel2)
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAgregar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jContenidoLayout = new javax.swing.GroupLayout(jContenido);
         jContenido.setLayout(jContenidoLayout);
         jContenidoLayout.setHorizontalGroup(
             jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jContenidoLayout.createSequentialGroup()
+                .addContainerGap(332, Short.MAX_VALUE)
                 .addGroup(jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jContenidoLayout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addGroup(jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnAgregar)
-                            .addGroup(jContenidoLayout.createSequentialGroup()
-                                .addGroup(jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jContenidoLayout.createSequentialGroup()
-                                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                                    .addGroup(jContenidoLayout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(42, 42, 42)))
-                                .addGroup(jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jContenidoLayout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(11, 11, 11)))))
-                        .addGroup(jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jContenidoLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtRol, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jContenidoLayout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(jLabel3))))
-                    .addGroup(jContenidoLayout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addComponent(btnEliminar))
-                    .addGroup(jContenidoLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 74, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jContenidoLayout.createSequentialGroup()
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addContainerGap()))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jContenidoLayout.createSequentialGroup()
+                        .addComponent(btnEliminar)
+                        .addGap(21, 21, 21))))
         );
         jContenidoLayout.setVerticalGroup(
             jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jContenidoLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(14, 14, 14)
-                .addComponent(btnAgregar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                .addContainerGap(38, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEliminar)
-                .addGap(16, 16, 16))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        int Id = Integer.parseInt(txtId.getText());
-        String Nombre = txtNombre.getText();
-        Boolean Estado = true;
-        String Rol = txtRol.getText();
-        
-        usuario = new Usuario(Id, Nombre, Estado, Rol);
-        usuarioDAO.addUsuario(usuario);
-        
-        lista = new ArrayList<>(mapaUsuarios.entrySet());
-        jLista .setListData(lista.toArray(new Map.Entry[0]));
-        
-        txtId.setText("");
-        txtNombre.setText("");
-        txtRol.setText("");
-        
-//        for (Map.Entry<Integer, Usuario> Lista : lista) {
-//            System.out.println("Lista: " + lista);
-//        }
-//        
-//        Set<Map.Entry<Integer, Usuario>> entrySet = mapaUsuarios.entrySet();
-//        
-//        for (Map.Entry<Integer, Usuario> entry : entrySet) {
-//        Integer key = entry.getKey();
-//        Usuario value = entry.getValue();
-//        System.out.println("Key: " + key + ", Value: " + value);
-//        }
-
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+    private void txtRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRolActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
+    }//GEN-LAST:event_txtRolActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         int Index = jLista.getSelectedIndex();
-        
+
         Map.Entry<Integer, Usuario> Entry = lista.get(Index);
         usuarioDAO.deleteUsuario((Entry.getKey()));
-        
+
         lista.remove(Index);
         jLista .setListData(lista.toArray(new Map.Entry[Index]));
-        
-//        for (Map.Entry<Integer, Usuario> Lista : lista) {
-//           System.out.println("Lista: " + lista);
-//        }
-//        
-//        Set<Map.Entry<Integer, Usuario>> entrySet = mapaUsuarios.entrySet();
-//        
-//        for (Map.Entry<Integer, Usuario> entry : entrySet) {
-//        Integer key = entry.getKey();
-//        Usuario value = entry.getValue();
-//        System.out.println("Key: " + key + ", Value: " + value);
-//        }
 
+        //        for (Map.Entry<Integer, Usuario> Lista : lista) {
+            //           System.out.println("Lista: " + lista);
+            //        }
+        //
+        //        Set<Map.Entry<Integer, Usuario>> entrySet = mapaUsuarios.entrySet();
+        //
+        //        for (Map.Entry<Integer, Usuario> entry : entrySet) {
+            //        Integer key = entry.getKey();
+            //        Usuario value = entry.getValue();
+            //        System.out.println("Key: " + key + ", Value: " + value);
+            //        }
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    // </editor-fold>                                          
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+
+        String Nombre = txtNombre.getText();
+        String Rol = txtRol.getText();
+
+        usuario = new Usuario(Nombre, Rol);
+        usuarioDAO.addUsuario(usuario);
+
+        lista = new ArrayList<>(mapaUsuarios.entrySet());
+        jLista .setListData(lista.toArray(new Map.Entry[0]));
+
+        txtNombre.setText("");
+        txtRol.setText("");
+
+        //        for (Map.Entry<Integer, Usuario> Lista : lista) {
+            //            System.out.println("Lista: " + lista);
+            //        }
+        //
+        //        Set<Map.Entry<Integer, Usuario>> entrySet = mapaUsuarios.entrySet();
+        //
+        //        for (Map.Entry<Integer, Usuario> entry : entrySet) {
+            //        Integer key = entry.getKey();
+            //        Usuario value = entry.getValue();
+            //        System.out.println("Key: " + key + ", Value: " + value);
+            //        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,7 +280,7 @@ public class PruebaUsuariosCRUD extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Usuario usuario = new Usuario(1, "Prueba J", false, "Estudiante");
+                Usuario usuario = new Usuario("Prueba J", "Estudiante");
                 new PruebaUsuariosCRUD(usuario).setVisible(true);
             }
         });
@@ -260,12 +290,12 @@ public class PruebaUsuariosCRUD extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel jContenido;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JList<Map.Entry<String, Usuario>> jLista;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtRol;
     // End of variables declaration//GEN-END:variables
