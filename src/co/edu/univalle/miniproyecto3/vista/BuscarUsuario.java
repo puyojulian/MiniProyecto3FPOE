@@ -35,8 +35,9 @@ public class BuscarUsuario extends javax.swing.JFrame {
         textTitulo = new javax.swing.JTextField();
         textResultado = new javax.swing.JTextField();
         textAutor = new javax.swing.JTextField();
-        botonBuscar1 = new javax.swing.JButton();
-        botonBuscar2 = new javax.swing.JButton();
+        botonBuscar = new javax.swing.JButton();
+        botonVolver = new javax.swing.JButton();
+        botonNuevo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,13 +65,17 @@ public class BuscarUsuario extends javax.swing.JFrame {
             }
         });
 
-        botonBuscar1.setBackground(new java.awt.Color(30, 253, 51));
-        botonBuscar1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        botonBuscar1.setText("BUSCAR");
+        botonBuscar.setBackground(new java.awt.Color(30, 253, 51));
+        botonBuscar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        botonBuscar.setText("BUSCAR");
 
-        botonBuscar2.setBackground(new java.awt.Color(242, 29, 253));
-        botonBuscar2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        botonBuscar2.setText("VOLVER");
+        botonVolver.setBackground(new java.awt.Color(242, 29, 253));
+        botonVolver.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        botonVolver.setText("VOLVER");
+
+        botonNuevo.setBackground(new java.awt.Color(255, 255, 51));
+        botonNuevo.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        botonNuevo.setText("NUEVO");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,28 +83,29 @@ public class BuscarUsuario extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(119, 119, 119)
-                .addComponent(botonBuscar2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 24, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelAutor)
-                    .addComponent(labelTitulo)
-                    .addComponent(textAutor)
-                    .addComponent(textResultado)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(textTitulo)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(labelResultado)))
-                .addContainerGap(26, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(115, 115, 115))
+                        .addComponent(botonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(labelAutor)
+                        .addComponent(labelTitulo)
+                        .addComponent(textAutor)
+                        .addComponent(textResultado)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(textTitulo)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(8, 8, 8)
+                            .addComponent(labelResultado))))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,18 +118,20 @@ public class BuscarUsuario extends javax.swing.JFrame {
                 .addComponent(labelAutor)
                 .addGap(12, 12, 12)
                 .addComponent(textAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botonBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(textResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addComponent(botonBuscar2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -183,10 +191,11 @@ public class BuscarUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonBuscar1;
-    private javax.swing.JButton botonBuscar2;
+    private javax.swing.JButton botonBuscar;
     private javax.swing.JButton botonEditar;
     private javax.swing.JButton botonEliminar;
+    private javax.swing.JButton botonNuevo;
+    private javax.swing.JButton botonVolver;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelAutor;
     private javax.swing.JLabel labelResultado;

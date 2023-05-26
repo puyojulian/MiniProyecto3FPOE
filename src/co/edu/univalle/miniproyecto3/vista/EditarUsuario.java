@@ -42,10 +42,10 @@ public class EditarUsuario extends javax.swing.JFrame {
         botonEditar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         botonEditar.setText("EDITAR");
 
-        labelNombre.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        labelNombre.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         labelNombre.setText("NOMBRE:");
 
-        labelTipoUsuario.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        labelTipoUsuario.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         labelTipoUsuario.setText("TIPO DE USUARIO:");
 
         botonCancelar.setBackground(new java.awt.Color(255, 45, 45));
@@ -67,12 +67,12 @@ public class EditarUsuario extends javax.swing.JFrame {
                     .addComponent(textNombre, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(141, 141, 141)
-                .addComponent(labelNombre)
+                .addGap(107, 107, 107)
+                .addComponent(labelTipoUsuario)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addComponent(labelTipoUsuario)
+                .addGap(154, 154, 154)
+                .addComponent(labelNombre)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -90,7 +90,7 @@ public class EditarUsuario extends javax.swing.JFrame {
                 .addComponent(labelTipoUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
