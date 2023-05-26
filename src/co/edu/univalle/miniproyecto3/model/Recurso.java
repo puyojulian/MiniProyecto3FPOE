@@ -18,10 +18,10 @@ public class Recurso {
     private ArrayList generosLiterarios;
     private ArrayList areasConocimiento;
     private boolean disponible;
-    private static int sequence = 0;
+    private static int consecutivo = 0;
 
     public Recurso(String nombre, String autor) {
-        this.codigoRecurso = sequence++;
+        this.codigoRecurso = consecutivo++;
         this.isbn = 0;
         this.nombre = "";
         autores = new ArrayList();
@@ -31,7 +31,7 @@ public class Recurso {
     }
 
     public Recurso(int isbn, String nombre, String autor, String generoLiterario, String areaConocimiento) {
-        this.codigoRecurso = sequence++;
+        this.codigoRecurso = consecutivo++;
         this.isbn = isbn;
         autores = new ArrayList();
         autores.add(autor);
@@ -57,10 +57,6 @@ public class Recurso {
     public void setAutores(ArrayList autor) {
         this.autores = autor;
     }
-    
-    public void setAutor(String autor) {
-        autores.add(autor);
-    }
 
     public ArrayList getGenerosLiterario() {
         return generosLiterarios;
@@ -69,10 +65,6 @@ public class Recurso {
     public void setGenerosLiterario(ArrayList generosLiterarios) {
         this.generosLiterarios = generosLiterarios;
     }
-    
-    public void setGeneroLiterario(String generoLiterario) {
-        generosLiterarios.add(generoLiterario);
-    }
 
     public ArrayList getAreasConocimiento() {
         return areasConocimiento;
@@ -80,10 +72,6 @@ public class Recurso {
 
     public void setAreasConocimiento(ArrayList areasConocimiento) {
         this.areasConocimiento = areasConocimiento;
-    }
-    
-    public void setAreaConocimiento(String areaConocimiento) {
-        areasConocimiento.add(areaConocimiento);
     }
 
     public int getIsbn() {

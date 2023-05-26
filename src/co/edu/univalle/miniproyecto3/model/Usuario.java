@@ -14,14 +14,15 @@ public class Usuario {
     private String nombre;
     private boolean estadoActivo;
     private String rol;
+    private static int consecutivo = 0;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String nombre, boolean estadoActivo, String rol) {
-        this.id = id;
+    public Usuario(String nombre, String rol) {
+        this.id = consecutivo++;
         this.nombre = nombre;
-        this.estadoActivo = estadoActivo;
+        this.estadoActivo = true;
         this.rol = rol;
     }
 
@@ -56,4 +57,13 @@ public class Usuario {
     public void setRol(String rol) {
         this.rol = rol;
     }
+
+    @Override
+    public String toString() {
+//        return " id=" + id + ", nombre=" + nombre + ", estadoActivo=" + estadoActivo + ", rol=" + rol;
+        return " id: " + id + ", nombre: " + nombre + ", estado activo: " + estadoActivo + ", rol: " + rol;
+    }
+    
+    
+    
 }

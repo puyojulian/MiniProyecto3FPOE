@@ -1,13 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package co.edu.univalle.miniproyecto3.repository;
 
-/**
- *
- * @author julia
- */
+import co.edu.univalle.miniproyecto3.model.Usuario;
+import java.util.Map;
+
 public interface UsuarioDAOInterface {
     
+    public Map<Integer, Usuario> getUsuarios();
+    
+    public Usuario getUsuario(int id);
+    
+    public boolean addUsuario(Usuario usuario);
+    
+    public boolean updateUsuario(int id, Usuario usuario);
+    
+    public boolean deleteUsuario(int id);
 }
