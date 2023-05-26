@@ -5,19 +5,34 @@
 package co.edu.univalle.miniproyecto3.vista;
 
 import co.edu.univalle.miniproyecto3.model.Usuario;
+import co.edu.univalle.miniproyecto3.repository.UsuarioDAO;
 import co.edu.univalle.miniproyecto3.repository.UsuarioDAOInterface;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import javax.swing.JList;
 
 /**
  *
  * @author Sebastián
  */
 public class PruebaUsuariosCRUD extends javax.swing.JFrame {
-
+    
+    private Usuario usuario;
+    private UsuarioDAO usuarioDAO;
+    private Map mapaUsuarios;
+    private List<Map.Entry<String, Usuario>> lista;
     /**
      * Creates new form PruebaUsuariosCRUD
+     * @param usuario
      */
-    public PruebaUsuariosCRUD() {
+    public PruebaUsuariosCRUD(Usuario usuario) {
+        usuarioDAO = new UsuarioDAO();
+        usuarioDAO.addUsuario(usuario);
+        mapaUsuarios = usuarioDAO.getUsuarios();
+        lista = new ArrayList<>(mapaUsuarios.entrySet());
+        jLista = new JList<>(lista.toArray(new Map.Entry[0]));
+        this.usuario = usuario;
         initComponents();
     }
 
@@ -38,8 +53,17 @@ public class PruebaUsuariosCRUD extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         txtRol = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
 
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -51,6 +75,17 @@ public class PruebaUsuariosCRUD extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jLista);
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("ID");
+
+        jLabel2.setText("Nombre");
+
+        jLabel3.setText("Rol");
 
         javax.swing.GroupLayout jContenidoLayout = new javax.swing.GroupLayout(jContenido);
         jContenido.setLayout(jContenidoLayout);
@@ -59,39 +94,57 @@ public class PruebaUsuariosCRUD extends javax.swing.JFrame {
             .addGroup(jContenidoLayout.createSequentialGroup()
                 .addGroup(jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jContenidoLayout.createSequentialGroup()
-                        .addGap(148, 148, 148)
+                        .addGap(77, 77, 77)
+                        .addGroup(jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAgregar)
+                            .addGroup(jContenidoLayout.createSequentialGroup()
+                                .addGroup(jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jContenidoLayout.createSequentialGroup()
+                                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                    .addGroup(jContenidoLayout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(42, 42, 42)))
+                                .addGroup(jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jContenidoLayout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(11, 11, 11)))))
+                        .addGroup(jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jContenidoLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtRol, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jContenidoLayout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(jLabel3))))
+                    .addGroup(jContenidoLayout.createSequentialGroup()
+                        .addGap(157, 157, 157)
                         .addComponent(btnEliminar))
                     .addGroup(jContenidoLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jContenidoLayout.createSequentialGroup()
-                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 77, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jContenidoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar))
-                .addGap(177, 177, 177))
+                        .addGap(68, 68, 68)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 74, Short.MAX_VALUE))
         );
         jContenidoLayout.setVerticalGroup(
             jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jContenidoLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addGroup(jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(14, 14, 14)
                 .addComponent(btnAgregar)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEliminar)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -114,9 +167,21 @@ public class PruebaUsuariosCRUD extends javax.swing.JFrame {
         Boolean Estado = true;
         String Rol = txtRol.getText();
         
-        Usuario usuario = new Usuario(Id, Nombre, Estado, Rol);
-        UsuarioDAOInterface.addUsuario(usuario);
+        usuario = new Usuario(Id, Nombre, Estado, Rol);
+        usuarioDAO.addUsuario(usuario);
+        
+        lista = new ArrayList<>(mapaUsuarios.entrySet());
+        jLista .setListData(lista.toArray(new Map.Entry[0]));
+
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,8 +212,10 @@ public class PruebaUsuariosCRUD extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new PruebaUsuariosCRUD().setVisible(true);
+                Usuario usuario = new Usuario(1, "Prueba J", false, "Estudiante");
+                new PruebaUsuariosCRUD(usuario).setVisible(true);
             }
         });
     }
@@ -157,7 +224,10 @@ public class PruebaUsuariosCRUD extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel jContenido;
-    private javax.swing.JList<String> jLista;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JList<Map.Entry<String, Usuario>> jLista;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
