@@ -4,10 +4,14 @@
  */
 package co.edu.univalle.miniproyecto3.vista;
 
-/**
- *
- * @author User
- */
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Map;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JRadioButton;
+
 public class MenuPrincipal extends javax.swing.JFrame {
 
     /**
@@ -26,105 +30,150 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        Libros = new javax.swing.JButton();
-        Usuarios = new javax.swing.JButton();
-        Salir = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jpContenido = new javax.swing.JPanel();
+        jpOpciones = new javax.swing.JPanel();
+        btnRecursos = new javax.swing.JRadioButton();
+        btnUsuarios = new javax.swing.JRadioButton();
+        btnPrestamos = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList = new javax.swing.JList<>();
+        txtBuscar = new javax.swing.JTextField();
+        btnAgregar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        btnBusqueda = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
-        setBackground(new java.awt.Color(12, 109, 224));
-        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setBackground(new java.awt.Color(153, 153, 153));
+        setBounds(new java.awt.Rectangle(0, 0, 600, 450));
         setForeground(java.awt.Color.gray);
+        setPreferredSize(new java.awt.Dimension(600, 450));
+        setResizable(false);
+        setSize(new java.awt.Dimension(600, 450));
 
-        jPanel1.setBackground(new java.awt.Color(165, 57, 252));
-        setLocation(500, 50);
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.white, java.awt.Color.white));
-        jPanel1.setForeground(new java.awt.Color(255, 41, 0));
+        jpContenido.setPreferredSize(new java.awt.Dimension(600, 425));
 
-        Libros.setBackground(new java.awt.Color(225, 236, 0));
-        Libros.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        Libros.setText("LIBROS");
-        Libros.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
-        Libros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LibrosActionPerformed(evt);
-            }
-        });
+        jpOpciones.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RECURSOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 153, 51))); // NOI18N
 
-        Usuarios.setBackground(new java.awt.Color(0, 161, 169));
-        Usuarios.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        Usuarios.setText("USUARIOS");
-        Usuarios.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
-        Usuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsuariosActionPerformed(evt);
-            }
-        });
+        buttonGroup1.add(btnRecursos);
+        btnRecursos.setText("LIBROS");
 
-        Salir.setBackground(new java.awt.Color(255, 0, 0));
-        Salir.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        Salir.setText("SALIR");
-        Salir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
-        Salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalirActionPerformed(evt);
-            }
-        });
+        buttonGroup1.add(btnUsuarios);
+        btnUsuarios.setText("USUARIOS");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Salir, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                    .addComponent(Usuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Libros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(60, 60, 60))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(Libros, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(Usuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+        buttonGroup1.add(btnPrestamos);
+        btnPrestamos.setText("PRESTAMOS");
+
+        javax.swing.GroupLayout jpOpcionesLayout = new javax.swing.GroupLayout(jpOpciones);
+        jpOpciones.setLayout(jpOpcionesLayout);
+        jpOpcionesLayout.setHorizontalGroup(
+            jpOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpOpcionesLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jpOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPrestamos)
+                    .addComponent(btnUsuarios)
+                    .addComponent(btnRecursos))
                 .addContainerGap(52, Short.MAX_VALUE))
+        );
+        jpOpcionesLayout.setVerticalGroup(
+            jpOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpOpcionesLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(btnRecursos)
+                .addGap(84, 84, 84)
+                .addComponent(btnUsuarios)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addComponent(btnPrestamos)
+                .addGap(73, 73, 73))
+        );
+
+        jScrollPane1.setViewportView(jList);
+
+        btnAgregar.setText("AGREGAR");
+
+        btnActualizar.setText("ACTUALIZAR");
+
+        btnEliminar.setText("ELIMINAR");
+
+        btnBuscar.setText("BUSCAR");
+
+        btnBusqueda.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        btnBusqueda.setText("BUSQUEDA AVANZADA");
+        btnBusqueda.setPreferredSize(new java.awt.Dimension(147, 23));
+
+        javax.swing.GroupLayout jpContenidoLayout = new javax.swing.GroupLayout(jpContenido);
+        jpContenido.setLayout(jpContenidoLayout);
+        jpContenidoLayout.setHorizontalGroup(
+            jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpContenidoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jpOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpContenidoLayout.createSequentialGroup()
+                        .addComponent(btnAgregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                        .addComponent(btnActualizar)
+                        .addGap(57, 57, 57)
+                        .addComponent(btnEliminar))
+                    .addComponent(jScrollPane1)
+                    .addGroup(jpContenidoLayout.createSequentialGroup()
+                        .addComponent(txtBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBusqueda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpContenidoLayout.createSequentialGroup()
+                                .addComponent(btnBuscar)
+                                .addGap(32, 32, 32)))))
+                .addContainerGap())
+        );
+        jpContenidoLayout.setVerticalGroup(
+            jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpContenidoLayout.createSequentialGroup()
+                .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jpContenidoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jpOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpContenidoLayout.createSequentialGroup()
+                        .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpContenidoLayout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(btnBuscar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpContenidoLayout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAgregar)
+                            .addComponent(btnActualizar)
+                            .addComponent(btnEliminar))))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpContenido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jpContenido, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void LibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LibrosActionPerformed
-        BuscarRecurso newframe = new BuscarRecurso();
-        newframe.setVisible(true);
-        this.dispose();//para que no se acumulen las ventanas
-    }//GEN-LAST:event_LibrosActionPerformed
-
-    private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
-        BuscarUsuario newframe = new BuscarUsuario();
-        newframe.setVisible(true);
-        this.dispose();//para que no se acumulen las ventanas
-    }//GEN-LAST:event_UsuariosActionPerformed
-
-    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_SalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,10 +210,88 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
     }
 
+    public JButton getBtnActualizar() {
+        return btnActualizar;
+    }
+
+    public JButton getBtnAgregar() {
+        return btnAgregar;
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public JButton getBtnBusqueda() {
+        return btnBusqueda;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public JRadioButton getBtnPrestamos() {
+        return btnPrestamos;
+    }
+
+    public JRadioButton getBtnRecursos() {
+        return btnRecursos;
+    }
+
+    public JRadioButton getBtnUsuarios() {
+        return btnUsuarios;
+    }
+
+    public void setjList(DefaultListModel List) {
+        jList.setModel(List);
+    }
+
+    public JList<String> getjList() {
+        return jList;
+    }
+    
+    public void addBtnRecursos(ActionListener listener){
+        btnRecursos.addActionListener(listener);
+    }
+    
+    public void addBtnUsuarios(ActionListener listener){
+        btnUsuarios.addActionListener(listener);
+    }
+    
+    public void addBtnBuscar(ActionListener listener){
+        btnBuscar.addActionListener(listener);
+    }
+    
+    public void addBtnBusqueda(ActionListener listener){
+        btnBusqueda.addActionListener(listener);
+    }
+    
+    public void addBtnAgregar(ActionListener listener){
+        btnAgregar.addActionListener(listener);
+    }
+    
+    public void addBtnActualizar(ActionListener listener){
+        btnActualizar.addActionListener(listener);
+    }
+    
+    public void addBtnEliminar(ActionListener listener){
+        btnEliminar.addActionListener(listener);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Libros;
-    private javax.swing.JButton Salir;
-    private javax.swing.JButton Usuarios;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnBusqueda;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JRadioButton btnPrestamos;
+    private javax.swing.JRadioButton btnRecursos;
+    private javax.swing.JRadioButton btnUsuarios;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JList<String> jList;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jpContenido;
+    private javax.swing.JPanel jpOpciones;
+    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
