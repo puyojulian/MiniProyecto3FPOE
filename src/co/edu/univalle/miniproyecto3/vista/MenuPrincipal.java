@@ -38,6 +38,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setForeground(java.awt.Color.gray);
 
         jPanel1.setBackground(new java.awt.Color(165, 57, 252));
+        setLocation(500, 50);
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.white, java.awt.Color.white));
         jPanel1.setForeground(new java.awt.Color(255, 41, 0));
 
@@ -55,11 +56,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Usuarios.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         Usuarios.setText("USUARIOS");
         Usuarios.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        Usuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UsuariosActionPerformed(evt);
+            }
+        });
 
         Salir.setBackground(new java.awt.Color(255, 0, 0));
         Salir.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         Salir.setText("SALIR");
         Salir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -100,8 +111,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LibrosActionPerformed
-        // TODO add your handling code here:
+        BuscarRecurso newframe = new BuscarRecurso();
+        newframe.setVisible(true);
+        this.dispose();//para que no se acumulen las ventanas
     }//GEN-LAST:event_LibrosActionPerformed
+
+    private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
+        BuscarUsuario newframe = new BuscarUsuario();
+        newframe.setVisible(true);
+        this.dispose();//para que no se acumulen las ventanas
+    }//GEN-LAST:event_UsuariosActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_SalirActionPerformed
 
     /**
      * @param args the command line arguments

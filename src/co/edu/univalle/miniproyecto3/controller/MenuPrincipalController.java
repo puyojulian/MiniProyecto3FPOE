@@ -10,7 +10,7 @@ public class MenuPrincipalController {
     
     private MenuPrincipal menuPrincipal;
     private Recurso recurso;
-    
+   /* 
     public MenuPrincipalController(MenuPrincipal menuPrincipal, Recurso recurso) {
         this.menuPrincipal = menuPrincipal;
         this.recurso = recurso;
@@ -34,5 +34,5 @@ public class MenuPrincipalController {
             }
         }
     }
-    
+    */
 }
