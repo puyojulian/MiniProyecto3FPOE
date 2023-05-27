@@ -51,6 +51,11 @@ public class AgregarUsuario extends javax.swing.JFrame {
         botonCancelar.setBackground(new java.awt.Color(255, 45, 45));
         botonCancelar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         botonCancelar.setText("CANCELAR");
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -108,6 +113,12 @@ public class AgregarUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+        BuscarUsuario newframe = new BuscarUsuario();
+        newframe.setVisible(true);
+        this.dispose();//para que no se acumulen las ventanas
+    }//GEN-LAST:event_botonCancelarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -51,6 +51,11 @@ public class BuscarRecurso extends javax.swing.JFrame {
         botonBuscar.setBackground(new java.awt.Color(30, 253, 51));
         botonBuscar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         botonBuscar.setText("BUSCAR");
+        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarActionPerformed(evt);
+            }
+        });
 
         labelTitulo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         labelTitulo.setText("TITULO:");
@@ -67,6 +72,11 @@ public class BuscarRecurso extends javax.swing.JFrame {
         botonEliminar.setBackground(new java.awt.Color(255, 45, 45));
         botonEliminar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         botonEliminar.setText("ELIMINAR");
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
 
         labelGenero1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         labelGenero1.setText("GENERO(S):");
@@ -74,18 +84,38 @@ public class BuscarRecurso extends javax.swing.JFrame {
         botonBuscar1.setBackground(new java.awt.Color(30, 253, 51));
         botonBuscar1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         botonBuscar1.setText("EDITAR");
+        botonBuscar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscar1ActionPerformed(evt);
+            }
+        });
 
         botonVolver.setBackground(new java.awt.Color(242, 29, 253));
         botonVolver.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         botonVolver.setText("VOLVER");
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverActionPerformed(evt);
+            }
+        });
 
         botonNuevo.setBackground(new java.awt.Color(255, 255, 51));
         botonNuevo.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         botonNuevo.setText("NUEVO");
+        botonNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonNuevoActionPerformed(evt);
+            }
+        });
 
         botonPrestamo.setBackground(new java.awt.Color(0, 255, 204));
         botonPrestamo.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         botonPrestamo.setText("PRESTAMO");
+        botonPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPrestamoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -174,6 +204,40 @@ public class BuscarRecurso extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoActionPerformed
+        AgregarRecurso newframe = new AgregarRecurso();
+        newframe.setVisible(true);
+        this.dispose();//para que no se acumulen las ventanas
+    }//GEN-LAST:event_botonNuevoActionPerformed
+
+    private void botonBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscar1ActionPerformed
+        EditarRecurso newframe = new EditarRecurso();
+        newframe.setVisible(true);
+        this.dispose();//para que no se acumulen las ventanas
+    }//GEN-LAST:event_botonBuscar1ActionPerformed
+
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        EliminarRecurso newframe = new EliminarRecurso();
+        newframe.setVisible(true);
+        this.dispose();//para que no se acumulen las ventanas
+    }//GEN-LAST:event_botonEliminarActionPerformed
+
+    private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonBuscarActionPerformed
+
+    private void botonPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPrestamoActionPerformed
+        AdministrarPrestamos newframe = new AdministrarPrestamos();
+        newframe.setVisible(true);
+        this.dispose();//para que no se acumulen las ventanas
+    }//GEN-LAST:event_botonPrestamoActionPerformed
+
+    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
+        MenuPrincipal newframe = new MenuPrincipal();
+        newframe.setVisible(true);
+        this.dispose();//para que no se acumulen las ventanas
+    }//GEN-LAST:event_botonVolverActionPerformed
 
     /**
      * @param args the command line arguments

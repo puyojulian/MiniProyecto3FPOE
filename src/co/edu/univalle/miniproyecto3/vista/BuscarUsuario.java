@@ -46,6 +46,11 @@ public class BuscarUsuario extends javax.swing.JFrame {
         botonEditar.setBackground(new java.awt.Color(30, 253, 51));
         botonEditar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         botonEditar.setText("EDITAR");
+        botonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEditarActionPerformed(evt);
+            }
+        });
 
         labelTitulo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         labelTitulo.setText("NOMBRE:");
@@ -72,10 +77,20 @@ public class BuscarUsuario extends javax.swing.JFrame {
         botonVolver.setBackground(new java.awt.Color(242, 29, 253));
         botonVolver.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         botonVolver.setText("VOLVER");
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverActionPerformed(evt);
+            }
+        });
 
         botonNuevo.setBackground(new java.awt.Color(255, 255, 51));
         botonNuevo.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         botonNuevo.setText("NUEVO");
+        botonNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonNuevoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -152,8 +167,28 @@ public class BuscarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        // TODO add your handling code here:
+        EliminarUsuario newframe = new EliminarUsuario();
+        newframe.setVisible(true);
+        this.dispose();//para que no se acumulen las ventanas
     }//GEN-LAST:event_botonEliminarActionPerformed
+
+    private void botonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoActionPerformed
+        AgregarUsuario newframe = new AgregarUsuario();
+        newframe.setVisible(true);
+        this.dispose();//para que no se acumulen las ventanas
+    }//GEN-LAST:event_botonNuevoActionPerformed
+
+    private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
+        EditarUsuario newframe = new EditarUsuario();
+        newframe.setVisible(true);
+        this.dispose();//para que no se acumulen las ventanas
+    }//GEN-LAST:event_botonEditarActionPerformed
+
+    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
+        MenuPrincipal newframe = new MenuPrincipal();
+        newframe.setVisible(true);
+        this.dispose();//para que no se acumulen las ventanas
+    }//GEN-LAST:event_botonVolverActionPerformed
 
     /**
      * @param args the command line arguments

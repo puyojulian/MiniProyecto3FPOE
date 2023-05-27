@@ -57,6 +57,11 @@ public class AdministrarPrestamos extends javax.swing.JFrame {
         botonVolver.setBackground(new java.awt.Color(242, 29, 253));
         botonVolver.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         botonVolver.setText("VOLVER");
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -124,6 +129,12 @@ public class AdministrarPrestamos extends javax.swing.JFrame {
     private void botonPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPrestamoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonPrestamoActionPerformed
+
+    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
+        BuscarRecurso newframe = new BuscarRecurso();
+        newframe.setVisible(true);
+        this.dispose();//para que no se acumulen las ventanas
+    }//GEN-LAST:event_botonVolverActionPerformed
 
     /**
      * @param args the command line arguments
