@@ -69,11 +69,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnUsuarios.setText("USUARIOS");
 
         btnRecursos.setText("RECURSOS");
-        btnRecursos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRecursosActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jpOpcionesLayout = new javax.swing.GroupLayout(jpOpciones);
         jpOpciones.setLayout(jpOpcionesLayout);
@@ -266,10 +261,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnRecursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecursosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRecursosActionPerformed
 
     /**
      * @param args the command line arguments
