@@ -1,14 +1,16 @@
 package co.edu.univalle.miniproyecto3.controller;
 
+import co.edu.univalle.miniproyecto3.model.Prestamo;
 import co.edu.univalle.miniproyecto3.model.Recurso;
 import co.edu.univalle.miniproyecto3.model.Usuario;
-import co.edu.univalle.miniproyecto3.repository.RecursoDAO;
+import co.edu.univalle.miniproyecto3.repository.PrestamoDAO;
 import co.edu.univalle.miniproyecto3.repository.UsuarioDAO;
 import co.edu.univalle.miniproyecto3.repository.RecursoDAO;
 import co.edu.univalle.miniproyecto3.vista.MenuPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -19,17 +21,24 @@ public class MenuPrincipalController {
     private MenuPrincipal menuPrincipal;
     private UsuarioDAO usuarioDAO;
     private RecursoDAO recursoDAO;
+    private PrestamoDAO prestamoDAO;
     private Map mapaUsuarios;
     private Map mapaRecursos;
+    private Map mapaPrestamos;
+    private javax.swing.JList<String> jLista;
     private List<Map.Entry<Integer, Usuario>> listaMapUsuarios;
     private List<Map.Entry<String, Recurso>> listaMapRecursos;
+    private List<Map.Entry<Integer, Prestamo>> listaMapPrestamos;
     private DefaultListModel<String> modeloLista;
     private int index;
     
     public MenuPrincipalController(MenuPrincipal menuPrincipal) {
         this.usuarioDAO = new UsuarioDAO();
         this.recursoDAO = new RecursoDAO();
+        this.prestamoDAO = new PrestamoDAO();
         this.menuPrincipal = menuPrincipal;
+        this.jLista = menuPrincipal.getJList();
+
         
         HandlerActions listener = new HandlerActions();
         
@@ -49,6 +58,8 @@ public class MenuPrincipalController {
         recursosActuales();
         mapaUsuarios = usuarioDAO.getUsuarios();
         mapaRecursos = recursoDAO.getRecursos();
+        mapaPrestamos = prestamoDAO.getPrestamo();
+        prestamosActuales();
     }
 
     private void usuariosActuales(){
@@ -68,6 +79,26 @@ public class MenuPrincipalController {
         recursoDAO.addRecurso(new Recurso("9780064404990", "Bridge to Terabithia", "Katherine Paterson", "Children's Fiction", "Fantasy"));
         recursoDAO.addRecurso(new Recurso("9780060935467", "Freakonomics: A Rogue Economist Explores the Hidden Side of Everything", "Steven D. Levitt and Stephen J. Dubner", "Non-Fiction", "Economics"));
     }
+    
+    private void prestamosActuales() {
+    Collection<Usuario> usuarios = mapaUsuarios.values();
+    Set<Map.Entry<String, Recurso>> entrySetMapaR = mapaRecursos.entrySet();
+    
+    int count = 1;
+    
+    for (Map.Entry<String, Recurso> entryR : entrySetMapaR) {
+        Recurso valueR = entryR.getValue();
+        
+        if (count > usuarios.size()) {
+            break;
+        }
+        
+        Usuario valueU = usuarios.toArray(new Usuario[0])[count - 1];
+        prestamoDAO.addPrestamo(new Prestamo(valueU, valueR));
+        
+        count++;
+    }
+}
         
     class HandlerActions implements ActionListener{
         @Override
@@ -125,7 +156,6 @@ public class MenuPrincipalController {
                     modeloLista.clear();
                     menuPrincipal.getJList().setModel(modeloLista);
                 }
-                
             }
             else if(e.getSource() == menuPrincipal.getBtnPrestamos()) {
                 menuPrincipal.getBtnRecursos().setSelected(false);
@@ -133,6 +163,26 @@ public class MenuPrincipalController {
                 menuPrincipal.getBtnRecursos().setEnabled(true);
                 menuPrincipal.getBtnUsuarios().setEnabled(true);
                 menuPrincipal.getBtnPrestamos().setEnabled(false);
+                
+                if(mapaPrestamos.size()>0) {
+                    Set<Map.Entry<Integer, Prestamo>> entrySetMapa = mapaPrestamos.entrySet();
+
+                    modeloLista = new DefaultListModel<>();
+
+                    listaMapPrestamos = new ArrayList<>(mapaPrestamos.entrySet());
+
+                    for (Map.Entry<Integer, Prestamo> entry : entrySetMapa){
+                        Integer key = entry.getKey();
+                        Prestamo value = entry.getValue();
+                        String item = key + ", Prestamo: " + value;
+                        modeloLista.addElement(item);
+                    }
+                    jLista.setModel(modeloLista);
+                }
+                else {
+                    modeloLista.clear();
+                    jLista.setModel(modeloLista);
+                }
             }
             else if (e.getSource() == menuPrincipal.getBtnEliminar()) {
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
@@ -160,14 +210,14 @@ public class MenuPrincipalController {
                     }
                 }
                 else if(menuPrincipal.getBtnPrestamos().isSelected()) {
-//                index = menuPrincipal.getJListIndex();
-//                Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
-//                
-//                usuarioDAO.deleteUsuario((entry.getKey()));
-//                listaMapUsuarios.remove(index);
-//                modeloLista.remove(index); 
-//
-//                menuPrincipal.getJList().setModel(modeloLista);
+                    index = menuPrincipal.getJListIndex();
+                    Map.Entry<Integer, Prestamo> entry = listaMapPrestamos.get(index);
+
+                    prestamoDAO.deletePrestamo((entry.getKey()));
+                    listaMapPrestamos.remove(index);
+                    modeloLista.remove(index); 
+
+                    menuPrincipal.getJList().setModel(modeloLista);
                 }
             }
             else if (e.getSource() == menuPrincipal.getBtnBusqueda()) {
@@ -176,6 +226,17 @@ public class MenuPrincipalController {
                 }
                 else {
                     menuPrincipal.getJpBusquedaAvanzada().setVisible(true);
+                    
+                    index = menuPrincipal.getJListIndex();
+                    if(index != -1) {
+                        Map.Entry<Integer, Prestamo> entry = listaMapPrestamos.get(index);
+
+                        prestamoDAO.deletePrestamo((entry.getKey()));
+                        listaMapPrestamos.remove(index);
+                        modeloLista.remove(index); 
+
+                        jLista.setModel(modeloLista);
+                    }
                 }
             }
         }
