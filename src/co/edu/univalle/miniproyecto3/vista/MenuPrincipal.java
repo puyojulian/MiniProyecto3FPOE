@@ -45,6 +45,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnBusqueda = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jpBusquedaAvanzada = new javax.swing.JPanel();
         btnPopConfirmar = new javax.swing.JButton();
         txtBusqueda1 = new javax.swing.JTextField();
@@ -55,12 +56,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(153, 153, 153));
-        setBounds(new java.awt.Rectangle(0, 0, 600, 450));
+        setBounds(new java.awt.Rectangle(0, 0, 800, 600));
         setForeground(java.awt.Color.gray);
-        setResizable(false);
-        setSize(new java.awt.Dimension(600, 450));
+        setSize(new java.awt.Dimension(800, 600));
 
-        jpContenido.setPreferredSize(new java.awt.Dimension(600, 425));
+        jpContenido.setPreferredSize(new java.awt.Dimension(800, 600));
 
         jpOpciones.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RECURSOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 153, 51))); // NOI18N
 
@@ -94,9 +94,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(btnRecursos)
                 .addGap(82, 82, 82)
                 .addComponent(btnUsuarios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
                 .addComponent(btnPrestamos)
-                .addGap(44, 44, 44))
+                .addGap(38, 38, 38))
         );
 
         jList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -107,6 +107,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         btnActualizar.setText("ACTUALIZAR");
         btnActualizar.setFocusable(false);
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("ELIMINAR");
         btnEliminar.setFocusable(false);
@@ -117,36 +122,55 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         btnBuscar.setText("BUSCAR");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
-        btnBusqueda.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        btnBusqueda.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         btnBusqueda.setText("BUSQUEDA AVANZADA");
         btnBusqueda.setPreferredSize(new java.awt.Dimension(147, 23));
+        btnBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBusquedaActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("DETALLES");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpContenidoLayout = new javax.swing.GroupLayout(jpContenido);
         jpContenido.setLayout(jpContenidoLayout);
         jpContenidoLayout.setHorizontalGroup(
             jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpContenidoLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jpOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpContenidoLayout.createSequentialGroup()
-                        .addComponent(btnAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                        .addComponent(btnActualizar)
-                        .addGap(57, 57, 57)
-                        .addComponent(btnEliminar))
-                    .addComponent(jScrollPane1)
-                    .addGroup(jpContenidoLayout.createSequentialGroup()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpContenidoLayout.createSequentialGroup()
                         .addComponent(txtBuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBusqueda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpContenidoLayout.createSequentialGroup()
-                                .addComponent(btnBuscar)
-                                .addGap(32, 32, 32)))))
-                .addContainerGap())
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12))
+                    .addGroup(jpContenidoLayout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAgregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnActualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEliminar)
+                        .addGap(10, 10, 10)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpContenidoLayout.setVerticalGroup(
             jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,25 +182,28 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(jpContenidoLayout.createSequentialGroup()
                         .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpContenidoLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
+                                .addContainerGap(13, Short.MAX_VALUE)
                                 .addComponent(btnBuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpContenidoLayout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpContenidoLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16)
                         .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
                             .addComponent(btnAgregar)
                             .addComponent(btnActualizar)
                             .addComponent(btnEliminar))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        jpBusquedaAvanzada.setMinimumSize(new java.awt.Dimension(200, 200));
-        jpBusquedaAvanzada.setPreferredSize(new java.awt.Dimension(200, 200));
+        jpOpciones.getAccessibleContext().setAccessibleName("OPCIONES");
+
+        jpBusquedaAvanzada.setMinimumSize(new java.awt.Dimension(300, 300));
+        jpBusquedaAvanzada.setPreferredSize(new java.awt.Dimension(300, 300));
         jpBusquedaAvanzada.setVisible(false);
 
         btnPopConfirmar.setText("Confirmar");
@@ -208,17 +235,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jpBusquedaAvanzadaLayout.setHorizontalGroup(
             jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpBusquedaAvanzadaLayout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
+                .addContainerGap(83, Short.MAX_VALUE)
                 .addGroup(jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtBusqueda1, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
                     .addComponent(txtBusqueda2, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBusquedaAvanzadaLayout.createSequentialGroup()
-                .addGap(0, 53, Short.MAX_VALUE)
+                .addGap(0, 103, Short.MAX_VALUE)
                 .addGroup(jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRadioBusqueda2)
                     .addComponent(btnRadioBusqueda1))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBusquedaAvanzadaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnPopConfirmar)
@@ -227,17 +254,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jpBusquedaAvanzadaLayout.setVerticalGroup(
             jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBusquedaAvanzadaLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(56, Short.MAX_VALUE)
                 .addComponent(btnRadioBusqueda1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRadioBusqueda2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(txtBusqueda2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtBusqueda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnPopConfirmar)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         jLayeredPane1.setLayer(jpContenido, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -248,26 +275,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jpContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jpContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 250, Short.MAX_VALUE)
                     .addComponent(jpBusquedaAvanzada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 250, Short.MAX_VALUE)))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jpContenido, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jpContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 150, Short.MAX_VALUE)
                     .addComponent(jpBusquedaAvanzada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 150, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -283,19 +306,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnRecursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecursosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRecursosActionPerformed
-
-    private void btnEliminarActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed1
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarActionPerformed1
 
     private void btnPopConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPopConfirmarActionPerformed
         // TODO add your handling code here:
@@ -308,6 +323,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void txtBusqueda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusqueda2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBusqueda2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnEliminarActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed1
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed1
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnRecursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecursosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRecursosActionPerformed
+
+    private void btnBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusquedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBusquedaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -474,6 +513,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton btnRadioBusqueda2;
     private javax.swing.JToggleButton btnRecursos;
     private javax.swing.JToggleButton btnUsuarios;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JList<String> jList;
     private javax.swing.JScrollPane jScrollPane1;
