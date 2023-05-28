@@ -2,6 +2,7 @@ package co.edu.univalle.miniproyecto3.controller;
 
 import co.edu.univalle.miniproyecto3.model.Recurso;
 import co.edu.univalle.miniproyecto3.model.Usuario;
+import co.edu.univalle.miniproyecto3.repository.RecursoDAO;
 import co.edu.univalle.miniproyecto3.repository.UsuarioDAO;
 import co.edu.univalle.miniproyecto3.repository.RecursoDAO;
 import co.edu.univalle.miniproyecto3.vista.MenuPrincipal;
@@ -13,13 +14,10 @@ import java.util.Map;
 import java.util.Set;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 public class MenuPrincipalController {
     
     private MenuPrincipal menuPrincipal;
-    private Usuario usuario;
     private UsuarioDAO usuarioDAO;
     private RecursoDAO recursoDAO;
     private Map mapaUsuarios;
@@ -36,7 +34,6 @@ public class MenuPrincipalController {
         this.jList = menuPrincipal.getjList();
         
         HandlerActions listener = new HandlerActions();
-        ListSelectionHandler listListener = new ListSelectionHandler();
         
         menuPrincipal.addBtnRecursos(listener);
         menuPrincipal.addBtnUsuarios(listener);
@@ -45,12 +42,10 @@ public class MenuPrincipalController {
         menuPrincipal.addBtnAgregar(listener);
         menuPrincipal.addBtnActualizar(listener);
         menuPrincipal.addBtnEliminar(listener);
-        menuPrincipal.addSelectionListener(listListener);
         
         usuariosActuales();
         mapaUsuarios = usuarioDAO.getUsuarios();
         mapaRecursos = recursoDAO.getRecursos();
-//        lista = new ArrayList<>(mapaUsuarios.entrySet());
     }
 
     private void usuariosActuales(){
@@ -78,10 +73,7 @@ public class MenuPrincipalController {
             if ((menuPrincipal.getBtnUsuarios()).isSelected()) {
                 
                 Set<Map.Entry<Integer, Usuario>> entrySet = mapaUsuarios.entrySet();
-//                
-//                lista = new ArrayList<>(mapaUsuarios.entrySet());
-//                Map.Entry<Integer, Usuario>[] array = lista.toArray(new Map.Entry[0]);
-//                menuPrincipal.setjList(array);
+
                 lista = new DefaultListModel<>();
                 listaMap = new ArrayList<>(mapaUsuarios.entrySet());
 

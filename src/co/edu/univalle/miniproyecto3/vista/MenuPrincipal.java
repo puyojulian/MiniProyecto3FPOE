@@ -333,7 +333,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     public void setjList(DefaultListModel List) {
         jList.setModel(List);
-        System.out.println(List.getSize());
     }
 
     public JList<String> getjList() {
