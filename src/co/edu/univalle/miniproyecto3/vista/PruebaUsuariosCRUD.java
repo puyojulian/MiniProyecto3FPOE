@@ -370,7 +370,7 @@ public class PruebaUsuariosCRUD extends javax.swing.JFrame {
                     Integer key = entry.getKey();
                     Usuario value = entry.getValue();
                     System.out.println("Key: " + key + ", Value: " + value);
-                    }
+                }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

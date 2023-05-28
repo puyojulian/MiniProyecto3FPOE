@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.event.ListSelectionListener;
 
 public class MenuPrincipal extends javax.swing.JFrame {
 
@@ -374,6 +375,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     public void addBtnEliminar(ActionListener listener){
         btnEliminar.addActionListener(listener);
+    }
+    
+    public void addSelectionListener(ListSelectionListener listener) {
+        jList.addListSelectionListener(listener);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

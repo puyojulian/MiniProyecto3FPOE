@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Recurso {
     private int codigoRecurso;
-    private int isbn;
+    private String isbn;
     private String nombre;
     private ArrayList autores;
     private ArrayList generosLiterarios;
@@ -20,17 +20,17 @@ public class Recurso {
     private boolean disponible;
     private static int consecutivo = 0;
 
-    public Recurso(String nombre, String autor) {
-        this.codigoRecurso = consecutivo++;
-        this.isbn = 0;
-        this.nombre = "";
-        autores = new ArrayList();
-        autores.add(autor);
-        generosLiterarios = new ArrayList();
-        areasConocimiento = new ArrayList();
-    }
+//    public Recurso(String nombre, String autor) {
+//        this.codigoRecurso = consecutivo++;
+//        this.isbn = 0;
+//        this.nombre = "";
+//        autores = new ArrayList();
+//        autores.add(autor);
+//        generosLiterarios = new ArrayList();
+//        areasConocimiento = new ArrayList();
+//    }
 
-    public Recurso(int isbn, String nombre, String autor, String generoLiterario, String areaConocimiento) {
+    public Recurso(String isbn, String nombre, String autor, String generoLiterario, String areaConocimiento) {
         this.codigoRecurso = consecutivo++;
         this.isbn = isbn;
         autores = new ArrayList();
@@ -74,11 +74,11 @@ public class Recurso {
         this.areasConocimiento = areasConocimiento;
     }
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 

@@ -3,6 +3,7 @@ package co.edu.univalle.miniproyecto3.controller;
 import co.edu.univalle.miniproyecto3.model.Recurso;
 import co.edu.univalle.miniproyecto3.model.Usuario;
 import co.edu.univalle.miniproyecto3.repository.UsuarioDAO;
+import co.edu.univalle.miniproyecto3.repository.RecursoDAO;
 import co.edu.univalle.miniproyecto3.vista.MenuPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,13 +13,17 @@ import java.util.Map;
 import java.util.Set;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class MenuPrincipalController {
     
     private MenuPrincipal menuPrincipal;
     private Usuario usuario;
     private UsuarioDAO usuarioDAO;
+    private RecursoDAO recursoDAO;
     private Map mapaUsuarios;
+    private Map mapaRecursos;
     private List<Map.Entry<Integer, Usuario>> listaMap;
     private DefaultListModel<String> lista;
     private JList<String> jList;
@@ -26,9 +31,12 @@ public class MenuPrincipalController {
     
     public MenuPrincipalController(MenuPrincipal menuPrincipal) {
         this.usuarioDAO = new UsuarioDAO();
+        this.recursoDAO = new RecursoDAO();
         this.menuPrincipal = menuPrincipal;
+        this.jList = menuPrincipal.getjList();
         
         HandlerActions listener = new HandlerActions();
+        ListSelectionHandler listListener = new ListSelectionHandler();
         
         menuPrincipal.addBtnRecursos(listener);
         menuPrincipal.addBtnUsuarios(listener);
@@ -37,9 +45,11 @@ public class MenuPrincipalController {
         menuPrincipal.addBtnAgregar(listener);
         menuPrincipal.addBtnActualizar(listener);
         menuPrincipal.addBtnEliminar(listener);
+        menuPrincipal.addSelectionListener(listListener);
         
         usuariosActuales();
         mapaUsuarios = usuarioDAO.getUsuarios();
+        mapaRecursos = recursoDAO.getRecursos();
 //        lista = new ArrayList<>(mapaUsuarios.entrySet());
     }
 
@@ -47,6 +57,19 @@ public class MenuPrincipalController {
         usuarioDAO.addUsuario(new Usuario("Sebastian", "Estudiante"));
         usuarioDAO.addUsuario(new Usuario("Carlos", "Estudiante"));
         usuarioDAO.addUsuario(new Usuario("Julian", "Docente"));
+    }
+    
+    private void recursosActuales(){
+        recursoDAO.addRecurso(new Recurso("9780141182561", "To Kill a Mockingbird", "Harper Lee", "Fiction", "Literature"));
+        recursoDAO.addRecurso(new Recurso("9780061120084", "1984", "George Orwell", "Fiction", "Science Fiction"));
+        recursoDAO.addRecurso(new Recurso("9780141439518", "Pride and Prejudice", "Jane Austen", "Fiction", "Classic Literature"));
+        recursoDAO.addRecurso(new Recurso("9780060256654", "Where the Wild Things Are", "Maurice Sendak", "Children's Fiction", "Picture Books"));
+        recursoDAO.addRecurso(new Recurso("9780743273565", "The Great Gatsby", "F. Scott Fitzgerald", "Fiction", "Classic Literature"));
+        recursoDAO.addRecurso(new Recurso("9780307474278", "The Hunger Games", "Suzanne Collins", "Fiction", "Young Adult"));
+        recursoDAO.addRecurso(new Recurso("9780143105954", "The Catcher in the Rye", "J.D. Salinger", "Fiction", "Literature"));
+        recursoDAO.addRecurso(new Recurso("9780064404990", "Bridge to Terabithia", "Katherine Paterson", "Children's Fiction", "Fantasy"));
+        recursoDAO.addRecurso(new Recurso("9780060935467", "Freakonomics: A Rogue Economist Explores the Hidden Side of Everything", "Steven D. Levitt and Stephen J. Dubner", "Non-Fiction", "Economics"));
+        mapaRecursos = recursoDAO.getRecursos();
     }
         
     class HandlerActions implements ActionListener{
@@ -74,8 +97,8 @@ public class MenuPrincipalController {
             }
             if (e.getSource() == menuPrincipal.getBtnEliminar()) {
                 index = menuPrincipal.getjListIndex();
-                Map.Entry<Integer, Usuario> Entry = listaMap.get(index);
-                usuarioDAO.deleteUsuario((Entry.getKey()));
+                Map.Entry<Integer, Usuario> entry = listaMap.get(index);
+                usuarioDAO.deleteUsuario((entry.getKey()));
 
                 listaMap.remove(index);
                 lista.remove(index); 
