@@ -50,6 +50,11 @@ public class EditarRecurso extends javax.swing.JFrame {
         botonEditar.setBackground(new java.awt.Color(30, 253, 51));
         botonEditar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         botonEditar.setText("EDITAR");
+        botonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEditarActionPerformed(evt);
+            }
+        });
 
         labelTitulo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         labelTitulo.setText("TITULO:");
@@ -170,10 +175,12 @@ public class EditarRecurso extends javax.swing.JFrame {
     }//GEN-LAST:event_textGenero2ActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        BuscarRecurso newframe = new BuscarRecurso();
-        newframe.setVisible(true);
-        this.dispose();//para que no se acumulen las ventanas
+        // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelarActionPerformed
+
+    private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonEditarActionPerformed
 
     /**
      * @param args the command line arguments

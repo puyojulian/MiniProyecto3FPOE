@@ -36,10 +36,6 @@ public class AdministrarPrestamos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(91, 91, 251));
-
-        botonPrestamo.setBackground(new java.awt.Color(30, 253, 51));
-        botonPrestamo.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         botonPrestamo.setText("PRESTAMO");
         botonPrestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,15 +43,16 @@ public class AdministrarPrestamos extends javax.swing.JFrame {
             }
         });
 
-        labelResultado.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         labelResultado.setText("RESULTADO DE BUSQUEDA");
 
-        botonEliminar.setBackground(new java.awt.Color(255, 45, 45));
-        botonEliminar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         botonEliminar.setText("DEVOLUCION");
 
-        botonVolver.setBackground(new java.awt.Color(242, 29, 253));
-        botonVolver.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        textResultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textResultadoActionPerformed(evt);
+            }
+        });
+
         botonVolver.setText("VOLVER");
         botonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,16 +71,14 @@ public class AdministrarPrestamos extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(0, 13, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(botonPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(labelResultado)
+                        .addComponent(textResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(12, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelResultado)
-                .addGap(44, 44, 44))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,10 +126,12 @@ public class AdministrarPrestamos extends javax.swing.JFrame {
     }//GEN-LAST:event_botonPrestamoActionPerformed
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
-        BuscarRecurso newframe = new BuscarRecurso();
-        newframe.setVisible(true);
-        this.dispose();//para que no se acumulen las ventanas
+        // TODO add your handling code here:
     }//GEN-LAST:event_botonVolverActionPerformed
+
+    private void textResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textResultadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textResultadoActionPerformed
 
     /**
      * @param args the command line arguments

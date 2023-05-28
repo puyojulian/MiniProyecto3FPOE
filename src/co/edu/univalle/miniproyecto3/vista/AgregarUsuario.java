@@ -115,9 +115,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        BuscarUsuario newframe = new BuscarUsuario();
-        newframe.setVisible(true);
-        this.dispose();//para que no se acumulen las ventanas
+        // TODO add your handling code here:
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     /**
