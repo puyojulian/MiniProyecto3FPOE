@@ -107,42 +107,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         btnActualizar.setText("ACTUALIZAR");
         btnActualizar.setFocusable(false);
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
-            }
-        });
 
         btnEliminar.setText("ELIMINAR");
         btnEliminar.setFocusable(false);
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed1(evt);
-            }
-        });
 
         btnBuscar.setText("BUSCAR");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
 
         btnBusqueda.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         btnBusqueda.setText("BUSQUEDA AVANZADA");
         btnBusqueda.setPreferredSize(new java.awt.Dimension(147, 23));
-        btnBusqueda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBusquedaActionPerformed(evt);
-            }
-        });
 
         btnDetalles.setText("DETALLES");
-        btnDetalles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDetallesActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jpContenidoLayout = new javax.swing.GroupLayout(jpContenido);
         jpContenido.setLayout(jpContenidoLayout);
@@ -203,28 +178,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jpBusquedaAvanzada.setVisible(false);
 
         btnPopConfirmar.setText("Confirmar");
-        btnPopConfirmar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPopConfirmarActionPerformed(evt);
-            }
-        });
-
-        txtBusqueda2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBusqueda2ActionPerformed(evt);
-            }
-        });
 
         btnGroupPop.add(btnRadioBusqueda1);
         btnRadioBusqueda1.setText("jRadioButton1");
 
         btnGroupPop.add(btnRadioBusqueda2);
         btnRadioBusqueda2.setText("jRadioButton2");
-        btnRadioBusqueda2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRadioBusqueda2ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jpBusquedaAvanzadaLayout = new javax.swing.GroupLayout(jpBusquedaAvanzada);
         jpBusquedaAvanzada.setLayout(jpBusquedaAvanzadaLayout);
@@ -308,41 +267,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPopConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPopConfirmarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPopConfirmarActionPerformed
-
-    private void btnRadioBusqueda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRadioBusqueda2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRadioBusqueda2ActionPerformed
-
-    private void txtBusqueda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusqueda2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBusqueda2ActionPerformed
-
-    private void btnDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetallesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDetallesActionPerformed
-
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
-    private void btnEliminarActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed1
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarActionPerformed1
-
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnActualizarActionPerformed
-
     private void btnRecursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecursosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRecursosActionPerformed
-
-    private void btnBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusquedaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBusquedaActionPerformed
 
     /**
      * @param args the command line arguments

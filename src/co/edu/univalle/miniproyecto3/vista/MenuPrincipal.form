@@ -257,26 +257,17 @@
                 <Property name="text" type="java.lang.String" value="ACTUALIZAR"/>
                 <Property name="focusable" type="boolean" value="false"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnEliminar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ELIMINAR"/>
                 <Property name="focusable" type="boolean" value="false"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed1"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnBuscar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="BUSCAR"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnBusqueda">
               <Properties>
@@ -288,17 +279,11 @@
                   <Dimension value="[147, 23]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBusquedaActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnDetalles">
               <Properties>
                 <Property name="text" type="java.lang.String" value="DETALLES"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDetallesActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -365,16 +350,10 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Confirmar"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPopConfirmarActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtBusqueda1">
             </Component>
             <Component class="javax.swing.JTextField" name="txtBusqueda2">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBusqueda2ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JRadioButton" name="btnRadioBusqueda1">
               <Properties>
@@ -391,9 +370,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="jRadioButton2"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRadioBusqueda2ActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
