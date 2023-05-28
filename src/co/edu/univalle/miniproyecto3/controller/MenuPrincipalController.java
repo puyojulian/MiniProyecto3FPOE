@@ -20,7 +20,7 @@ public class MenuPrincipalController {
     private Usuario usuario;
     private UsuarioDAO usuarioDAO;
     private Map mapaUsuarios;
-//    private List<Map.Entry<Integer, Usuario>> lista;
+    private List<Map.Entry<Integer, Usuario>> listaMap;
     private DefaultListModel<String> lista;
     private JList<String> jList;
     
@@ -39,8 +39,6 @@ public class MenuPrincipalController {
         usuariosActuales();
         mapaUsuarios = usuarioDAO.getUsuarios();
 //        lista = new ArrayList<>(mapaUsuarios.entrySet());
-        lista = new DefaultListModel<>();
-        
     }
 
     private void usuariosActuales(){
@@ -59,6 +57,9 @@ public class MenuPrincipalController {
 //                lista = new ArrayList<>(mapaUsuarios.entrySet());
 //                Map.Entry<Integer, Usuario>[] array = lista.toArray(new Map.Entry[0]);
 //                menuPrincipal.setjList(array);
+                lista = new DefaultListModel<>();
+                listaMap = new ArrayList<>(mapaUsuarios.entrySet());
+
                 for (Map.Entry<Integer, Usuario> entry : entrySet){
                     Integer key = entry.getKey();
                     Usuario value = entry.getValue();
@@ -67,16 +68,32 @@ public class MenuPrincipalController {
                     
                     menuPrincipal.setjList(lista);
                 }
-            }
-            if (menuPrincipal.getBtnUsuarios().isSelected() && menuPrincipal.getBtnEliminar().isSelected()) {
+                
+                if (e.getSource() == menuPrincipal.getBtnEliminar()) {
                 jList = menuPrincipal.getjList();
                 int index = jList.getSelectedIndex();
-                
-//                Map.Entry<Integer, Usuario> Entry = lista.get(index);
-//                usuarioDAO.deleteUsuario((Entry.getKey()));
 
-                lista.remove(index);
-//                jList.setModel(lista);
+//                Map.Entry<Integer, Usuario> Entry = listaMap.get(index);
+//                usuarioDAO.deleteUsuario((Entry.getKey()));
+//
+//                listaMap.remove(index);
+//                lista.remove(index); 
+//                menuPrincipal.setjList(lista);
+                
+                System.out.println(index);
+                
+                for (Map.Entry<Integer, Usuario> Lista : listaMap) {
+                       System.out.println("Lista: " + listaMap);
+                    }
+        
+                Set<Map.Entry<Integer, Usuario>> Set = mapaUsuarios.entrySet();
+        
+                for (Map.Entry<Integer, Usuario> entry : Set) {
+                    Integer key = entry.getKey();
+                    Usuario value = entry.getValue();
+                    System.out.println("Key: " + key + ", Value: " + value);
+                    }                
+                }
             }
         }
     }
