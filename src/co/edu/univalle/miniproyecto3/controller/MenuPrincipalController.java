@@ -2,6 +2,7 @@ package co.edu.univalle.miniproyecto3.controller;
 
 import co.edu.univalle.miniproyecto3.model.Recurso;
 import co.edu.univalle.miniproyecto3.model.Usuario;
+import co.edu.univalle.miniproyecto3.repository.RecursoDAO;
 import co.edu.univalle.miniproyecto3.repository.UsuarioDAO;
 import co.edu.univalle.miniproyecto3.vista.MenuPrincipal;
 import java.awt.event.ActionEvent;
@@ -16,7 +17,6 @@ import javax.swing.JList;
 public class MenuPrincipalController {
     
     private MenuPrincipal menuPrincipal;
-    private Usuario usuario;
     private UsuarioDAO usuarioDAO;
     private Map mapaUsuarios;
     private List<Map.Entry<Integer, Usuario>> listaMap;
@@ -40,7 +40,6 @@ public class MenuPrincipalController {
         
         usuariosActuales();
         mapaUsuarios = usuarioDAO.getUsuarios();
-//        lista = new ArrayList<>(mapaUsuarios.entrySet());
     }
 
     private void usuariosActuales(){
@@ -55,10 +54,7 @@ public class MenuPrincipalController {
             if ((menuPrincipal.getBtnUsuarios()).isSelected()) {
                 
                 Set<Map.Entry<Integer, Usuario>> entrySet = mapaUsuarios.entrySet();
-//                
-//                lista = new ArrayList<>(mapaUsuarios.entrySet());
-//                Map.Entry<Integer, Usuario>[] array = lista.toArray(new Map.Entry[0]);
-//                menuPrincipal.setjList(array);
+
                 lista = new DefaultListModel<>();
                 listaMap = new ArrayList<>(mapaUsuarios.entrySet());
 
