@@ -47,6 +47,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         btnBusqueda = new javax.swing.JButton();
         jpBusquedaAvanzada = new javax.swing.JPanel();
+        txtBuscar1 = new javax.swing.JTextField();
+        btnAgregar1 = new javax.swing.JButton();
+        btnActualizar1 = new javax.swing.JButton();
+        btnEliminar1 = new javax.swing.JButton();
+        btnBuscar1 = new javax.swing.JButton();
+        btnBusqueda1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -93,6 +99,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(73, 73, 73))
         );
 
+        jList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jList.setFocusable(false);
         jScrollPane1.setViewportView(jList);
 
         btnAgregar.setText("AGREGAR");
@@ -100,11 +108,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnActualizar.setText("ACTUALIZAR");
 
         btnEliminar.setText("ELIMINAR");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
 
         btnBuscar.setText("BUSCAR");
 
@@ -180,8 +183,31 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGap(0, 200, Short.MAX_VALUE)
         );
 
+        btnAgregar1.setText("AGREGAR");
+
+        btnActualizar1.setText("ACTUALIZAR");
+
+        btnEliminar1.setText("ELIMINAR");
+        btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnBuscar1.setText("BUSCAR");
+
+        btnBusqueda1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        btnBusqueda1.setText("BUSQUEDA AVANZADA");
+        btnBusqueda1.setPreferredSize(new java.awt.Dimension(147, 23));
+
         jLayeredPane1.setLayer(jpContenido, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jpBusquedaAvanzada, javax.swing.JLayeredPane.PALETTE_LAYER);
+        jLayeredPane1.setLayer(txtBuscar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(btnAgregar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(btnActualizar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(btnEliminar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(btnBuscar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(btnBusqueda1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -307,6 +333,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public JList<String> getjList() {
         return jList;
     }
+    
+    public int getjListIndex() {
+        return jList.getSelectedIndex();
+    }
 
     public JPanel getJpBusquedaAvanzada() {
         return jpBusquedaAvanzada;
@@ -342,10 +372,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnActualizar1;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAgregar1;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnBuscar1;
     private javax.swing.JButton btnBusqueda;
+    private javax.swing.JButton btnBusqueda1;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnEliminar1;
     private javax.swing.JRadioButton btnPrestamos;
     private javax.swing.JRadioButton btnRecursos;
     private javax.swing.JRadioButton btnUsuarios;
@@ -357,5 +392,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jpContenido;
     private javax.swing.JPanel jpOpciones;
     private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtBuscar1;
     // End of variables declaration//GEN-END:variables
 }

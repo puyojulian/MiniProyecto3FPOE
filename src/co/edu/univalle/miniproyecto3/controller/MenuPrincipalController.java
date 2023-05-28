@@ -70,8 +70,7 @@ public class MenuPrincipalController {
                 }
                 
                 if (e.getSource() == menuPrincipal.getBtnEliminar()) {
-                jList = menuPrincipal.getjList();
-                int index = jList.getSelectedIndex();
+                int index = menuPrincipal.getjListIndex();
 
 //                Map.Entry<Integer, Usuario> Entry = listaMap.get(index);
 //                usuarioDAO.deleteUsuario((Entry.getKey()));
@@ -82,17 +81,17 @@ public class MenuPrincipalController {
                 
                 System.out.println(index);
                 
-                for (Map.Entry<Integer, Usuario> Lista : listaMap) {
-                       System.out.println("Lista: " + listaMap);
-                    }
-        
-                Set<Map.Entry<Integer, Usuario>> Set = mapaUsuarios.entrySet();
-        
-                for (Map.Entry<Integer, Usuario> entry : Set) {
-                    Integer key = entry.getKey();
-                    Usuario value = entry.getValue();
-                    System.out.println("Key: " + key + ", Value: " + value);
-                    }                
+//                for (Map.Entry<Integer, Usuario> Lista : listaMap) {
+//                       System.out.println("Lista: " + listaMap);
+//                    }
+//        
+//                Set<Map.Entry<Integer, Usuario>> Set = mapaUsuarios.entrySet();
+//        
+//                for (Map.Entry<Integer, Usuario> entry : Set) {
+//                    Integer key = entry.getKey();
+//                    Usuario value = entry.getValue();
+//                    System.out.println("Key: " + key + ", Value: " + value);
+//                    }                
                 }
             }
         }

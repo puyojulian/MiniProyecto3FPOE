@@ -10,6 +10,7 @@ import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
 
@@ -359,17 +360,17 @@ public class PruebaUsuariosCRUD extends javax.swing.JFrame {
         txtNombre.setText("");
         txtRol.setText("");
 
-        //        for (Map.Entry<Integer, Usuario> Lista : lista) {
-            //            System.out.println("Lista: " + lista);
-            //        }
-        //
-        //        Set<Map.Entry<Integer, Usuario>> entrySet = mapaUsuarios.entrySet();
-        //
-        //        for (Map.Entry<Integer, Usuario> entry : entrySet) {
-            //        Integer key = entry.getKey();
-            //        Usuario value = entry.getValue();
-            //        System.out.println("Key: " + key + ", Value: " + value);
-            //        }
+                for (Map.Entry<Integer, Usuario> Lista : lista) {
+                        System.out.println("Lista: " + lista);
+                    }
+        
+                Set<Map.Entry<Integer, Usuario>> entrySet = mapaUsuarios.entrySet();
+        
+                for (Map.Entry<Integer, Usuario> entry : entrySet) {
+                    Integer key = entry.getKey();
+                    Usuario value = entry.getValue();
+                    System.out.println("Key: " + key + ", Value: " + value);
+                    }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
