@@ -6,6 +6,11 @@ import co.edu.univalle.miniproyecto3.model.Usuario;
 import co.edu.univalle.miniproyecto3.repository.PrestamoDAO;
 import co.edu.univalle.miniproyecto3.repository.UsuarioDAO;
 import co.edu.univalle.miniproyecto3.repository.RecursoDAO;
+import co.edu.univalle.miniproyecto3.vista.AdministrarPrestamos;
+import co.edu.univalle.miniproyecto3.vista.AgregarRecurso;
+import co.edu.univalle.miniproyecto3.vista.AgregarUsuario;
+import co.edu.univalle.miniproyecto3.vista.EditarRecurso;
+import co.edu.univalle.miniproyecto3.vista.EditarUsuario;
 import co.edu.univalle.miniproyecto3.vista.MenuPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +24,11 @@ import javax.swing.DefaultListModel;
 public class MenuPrincipalController {
     
     private MenuPrincipal menuPrincipal;
+    private AgregarRecurso agregarRecurso;
+    private AgregarUsuario agregarUsuario;
+    private EditarUsuario editarUsuario;
+    private EditarRecurso editarRecurso;
+    private AdministrarPrestamos administrarPrestamos;
     private UsuarioDAO usuarioDAO;
     private RecursoDAO recursoDAO;
     private PrestamoDAO prestamoDAO;
@@ -38,6 +48,12 @@ public class MenuPrincipalController {
         this.prestamoDAO = new PrestamoDAO();
         this.menuPrincipal = menuPrincipal;
         this.jLista = menuPrincipal.getJList();
+        
+        agregarRecurso = new AgregarRecurso();
+        agregarUsuario = new AgregarUsuario();
+        editarUsuario = new EditarUsuario();
+        editarRecurso = new EditarRecurso();
+        administrarPrestamos = new AdministrarPrestamos();
 
         
         HandlerActions listener = new HandlerActions();
@@ -247,6 +263,39 @@ public class MenuPrincipalController {
 
                         jLista.setModel(modeloLista);
                     }
+                }
+            }
+            else if (e.getSource() == menuPrincipal.getBtnAgregar()) {
+                if (menuPrincipal.getBtnUsuarios().isSelected()) {
+                    agregarUsuario.setVisible(true);
+                }
+                else if(menuPrincipal.getBtnRecursos().isSelected()) {
+                    agregarRecurso.setVisible(true);
+                }
+                else if(menuPrincipal.getBtnPrestamos().isSelected()) {
+                    administrarPrestamos.setVisible(true);
+                }
+            }
+            else if (e.getSource() == menuPrincipal.getBtnActualizar()) {
+                if (menuPrincipal.getBtnUsuarios().isSelected()) {
+                    editarUsuario.setVisible(true);
+                }
+                else if(menuPrincipal.getBtnRecursos().isSelected()) {
+                    editarRecurso.setVisible(true);
+                }
+                else if(menuPrincipal.getBtnPrestamos().isSelected()) {
+                    administrarPrestamos.setVisible(true);
+                }
+            }
+            else if (e.getSource() == menuPrincipal.getBtnDetalles()) {
+                if (menuPrincipal.getBtnUsuarios().isSelected()) {
+                    
+                }
+                else if(menuPrincipal.getBtnRecursos().isSelected()) {
+
+                }
+                else if(menuPrincipal.getBtnPrestamos().isSelected()) {
+
                 }
             }
         }
