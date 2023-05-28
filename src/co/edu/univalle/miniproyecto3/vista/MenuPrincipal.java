@@ -5,8 +5,6 @@
 package co.edu.univalle.miniproyecto3.vista;
 
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Map;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
@@ -106,8 +104,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnAgregar.setText("AGREGAR");
 
         btnActualizar.setText("ACTUALIZAR");
+        btnActualizar.setFocusable(false);
 
         btnEliminar.setText("ELIMINAR");
+        btnEliminar.setFocusable(false);
 
         btnBuscar.setText("BUSCAR");
 
@@ -326,8 +326,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         return btnUsuarios;
     }
 
+    public void clearSelection() {
+       buttonGroup1.clearSelection();
+    }
+
     public void setjList(DefaultListModel List) {
         jList.setModel(List);
+        System.out.println(List.getSize());
     }
 
     public JList<String> getjList() {
@@ -335,7 +340,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
     
     public int getjListIndex() {
-        return jList.getSelectedIndex();
+        int index = jList.getSelectedIndex();
+        return index;
     }
 
     public JPanel getJpBusquedaAvanzada() {
