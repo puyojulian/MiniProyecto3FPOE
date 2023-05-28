@@ -28,7 +28,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        btnGroupPop = new javax.swing.ButtonGroup();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jpContenido = new javax.swing.JPanel();
         jpOpciones = new javax.swing.JPanel();
@@ -44,12 +44,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         btnBusqueda = new javax.swing.JButton();
         jpBusquedaAvanzada = new javax.swing.JPanel();
-        txtBuscar1 = new javax.swing.JTextField();
-        btnAgregar1 = new javax.swing.JButton();
-        btnActualizar1 = new javax.swing.JButton();
-        btnEliminar1 = new javax.swing.JButton();
-        btnBuscar1 = new javax.swing.JButton();
-        btnBusqueda1 = new javax.swing.JButton();
+        btnPopConfirmar = new javax.swing.JButton();
+        txtBusqueda1 = new javax.swing.JTextField();
+        txtBusqueda2 = new javax.swing.JTextField();
+        btnRadioBusqueda1 = new javax.swing.JRadioButton();
+        btnRadioBusqueda2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -178,42 +177,70 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jpBusquedaAvanzada.setPreferredSize(new java.awt.Dimension(200, 200));
         jpBusquedaAvanzada.setVisible(false);
 
+        btnPopConfirmar.setText("Confirmar");
+        btnPopConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPopConfirmarActionPerformed(evt);
+            }
+        });
+
+        txtBusqueda2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBusqueda2ActionPerformed(evt);
+            }
+        });
+
+        btnGroupPop.add(btnRadioBusqueda1);
+        btnRadioBusqueda1.setText("jRadioButton1");
+
+        btnGroupPop.add(btnRadioBusqueda2);
+        btnRadioBusqueda2.setText("jRadioButton2");
+        btnRadioBusqueda2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRadioBusqueda2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpBusquedaAvanzadaLayout = new javax.swing.GroupLayout(jpBusquedaAvanzada);
         jpBusquedaAvanzada.setLayout(jpBusquedaAvanzadaLayout);
         jpBusquedaAvanzadaLayout.setHorizontalGroup(
             jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
+            .addGroup(jpBusquedaAvanzadaLayout.createSequentialGroup()
+                .addGroup(jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpBusquedaAvanzadaLayout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(btnPopConfirmar))
+                    .addGroup(jpBusquedaAvanzadaLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtBusqueda1, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                            .addComponent(txtBusqueda2, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))))
+                .addContainerGap(32, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBusquedaAvanzadaLayout.createSequentialGroup()
+                .addGap(0, 53, Short.MAX_VALUE)
+                .addGroup(jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRadioBusqueda2)
+                    .addComponent(btnRadioBusqueda1))
+                .addGap(49, 49, 49))
         );
         jpBusquedaAvanzadaLayout.setVerticalGroup(
             jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBusquedaAvanzadaLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(btnRadioBusqueda1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRadioBusqueda2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(txtBusqueda2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtBusqueda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnPopConfirmar)
+                .addGap(18, 18, 18))
         );
-
-        btnAgregar1.setText("AGREGAR");
-
-        btnActualizar1.setText("ACTUALIZAR");
-
-        btnEliminar1.setText("ELIMINAR");
-        btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-
-        btnBuscar1.setText("BUSCAR");
-
-        btnBusqueda1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        btnBusqueda1.setText("BUSQUEDA AVANZADA");
-        btnBusqueda1.setPreferredSize(new java.awt.Dimension(147, 23));
 
         jLayeredPane1.setLayer(jpContenido, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jpBusquedaAvanzada, javax.swing.JLayeredPane.PALETTE_LAYER);
-        jLayeredPane1.setLayer(txtBuscar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(btnAgregar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(btnActualizar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(btnEliminar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(btnBuscar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(btnBusqueda1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -261,10 +288,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
     private void btnRecursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecursosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRecursosActionPerformed
@@ -272,6 +295,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void btnEliminarActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed1
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed1
+
+    private void btnPopConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPopConfirmarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPopConfirmarActionPerformed
+
+    private void btnRadioBusqueda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRadioBusqueda2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRadioBusqueda2ActionPerformed
+
+    private void txtBusqueda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusqueda2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBusqueda2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,11 +375,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         return btnUsuarios;
     }
 
-    public JList<String> getjList() {
+    public JList<String> getJList() {
         return jList;
     }
     
-    public int getjListIndex() {
+    public int getJListIndex() {
         int index = jList.getSelectedIndex();
         return index;
     }
@@ -384,22 +419,34 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public void addBtnEliminar(ActionListener listener){
         btnEliminar.addActionListener(listener);
     }
+    
+    public void addBtnRadioBusqueda1(ActionListener listener){
+        btnRadioBusqueda1.addActionListener(listener);
+    }
+    
+    public void addBtnRadioBusqueda2(ActionListener listener){
+        btnRadioBusqueda2.addActionListener(listener);
+    }
+    
+    public void addBtnPopConfirmar(ActionListener listener){
+        btnPopConfirmar.addActionListener(listener);
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnActualizar1;
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnAgregar1;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnBuscar1;
     private javax.swing.JButton btnBusqueda;
-    private javax.swing.JButton btnBusqueda1;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnEliminar1;
+    private javax.swing.ButtonGroup btnGroupPop;
+    private javax.swing.JButton btnPopConfirmar;
     private javax.swing.JToggleButton btnPrestamos;
+    private javax.swing.JRadioButton btnRadioBusqueda1;
+    private javax.swing.JRadioButton btnRadioBusqueda2;
     private javax.swing.JToggleButton btnRecursos;
     private javax.swing.JToggleButton btnUsuarios;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JList<String> jList;
     private javax.swing.JScrollPane jScrollPane1;
@@ -407,6 +454,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jpContenido;
     private javax.swing.JPanel jpOpciones;
     private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextField txtBuscar1;
+    private javax.swing.JTextField txtBusqueda1;
+    private javax.swing.JTextField txtBusqueda2;
     // End of variables declaration//GEN-END:variables
 }

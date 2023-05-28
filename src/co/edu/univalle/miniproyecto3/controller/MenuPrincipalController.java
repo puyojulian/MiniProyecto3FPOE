@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
 
 public class MenuPrincipalController {
     
@@ -25,14 +24,12 @@ public class MenuPrincipalController {
     private List<Map.Entry<Integer, Usuario>> listaMapUsuarios;
     private List<Map.Entry<String, Recurso>> listaMapRecursos;
     private DefaultListModel<String> modeloLista;
-    private JList<String> jLista;
     private int index;
     
     public MenuPrincipalController(MenuPrincipal menuPrincipal) {
         this.usuarioDAO = new UsuarioDAO();
         this.recursoDAO = new RecursoDAO();
         this.menuPrincipal = menuPrincipal;
-        this.jLista = menuPrincipal.getjList();
         
         HandlerActions listener = new HandlerActions();
         
@@ -44,6 +41,9 @@ public class MenuPrincipalController {
         menuPrincipal.addBtnAgregar(listener);
         menuPrincipal.addBtnActualizar(listener);
         menuPrincipal.addBtnEliminar(listener);
+        menuPrincipal.addBtnRadioBusqueda1(listener);
+        menuPrincipal.addBtnRadioBusqueda2(listener);
+        menuPrincipal.addBtnPopConfirmar(listener);
         
         usuariosActuales();
         recursosActuales();
@@ -92,11 +92,11 @@ public class MenuPrincipalController {
                         String item = key + ", Usuario: " + value;
                         modeloLista.addElement(item);
                     }
-                    jLista.setModel(modeloLista);
+                    menuPrincipal.getJList().setModel(modeloLista);
                 }
                 else {
                     modeloLista.clear();
-                    jLista.setModel(modeloLista);
+                    menuPrincipal.getJList().setModel(modeloLista);
                 }
             }
             else if(e.getSource() == menuPrincipal.getBtnRecursos()) {
@@ -119,11 +119,11 @@ public class MenuPrincipalController {
                         String item = key + ", Recurso: " + value;
                         modeloLista.addElement(item);
                     }
-                    jLista.setModel(modeloLista);
+                    menuPrincipal.getJList().setModel(modeloLista);
                 }
                 else {
                     modeloLista.clear();
-                    jLista.setModel(modeloLista);
+                    menuPrincipal.getJList().setModel(modeloLista);
                 }
                 
             }
@@ -134,9 +134,9 @@ public class MenuPrincipalController {
                 menuPrincipal.getBtnUsuarios().setEnabled(true);
                 menuPrincipal.getBtnPrestamos().setEnabled(false);
             }
-            if (e.getSource() == menuPrincipal.getBtnEliminar()) {
+            else if (e.getSource() == menuPrincipal.getBtnEliminar()) {
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
-                    index = menuPrincipal.getjListIndex();
+                    index = menuPrincipal.getJListIndex();
                     if(index != -1) {
                         Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
 
@@ -144,11 +144,11 @@ public class MenuPrincipalController {
                         listaMapUsuarios.remove(index);
                         modeloLista.remove(index); 
 
-                        jLista.setModel(modeloLista);
+                        menuPrincipal.getJList().setModel(modeloLista);
                     }    
                 }
                 else if(menuPrincipal.getBtnRecursos().isSelected()) {
-                    index = menuPrincipal.getjListIndex();
+                    index = menuPrincipal.getJListIndex();
                     if(index != -1) {
                         Map.Entry<String, Recurso> entry = listaMapRecursos.get(index);
 
@@ -156,18 +156,26 @@ public class MenuPrincipalController {
                         listaMapRecursos.remove(index);
                         modeloLista.remove(index); 
 
-                        jLista.setModel(modeloLista);
+                        menuPrincipal.getJList().setModel(modeloLista);
                     }
                 }
                 else if(menuPrincipal.getBtnPrestamos().isSelected()) {
-//                index = menuPrincipal.getjListIndex();
+//                index = menuPrincipal.getJListIndex();
 //                Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
 //                
 //                usuarioDAO.deleteUsuario((entry.getKey()));
 //                listaMapUsuarios.remove(index);
 //                modeloLista.remove(index); 
 //
-//                jLista.setModel(modeloLista);
+//                menuPrincipal.getJList().setModel(modeloLista);
+                }
+            }
+            else if (e.getSource() == menuPrincipal.getBtnBusqueda()) {
+                if(menuPrincipal.getJpBusquedaAvanzada().isVisible()) {
+                    menuPrincipal.getJpBusquedaAvanzada().setVisible(false);
+                }
+                else {
+                    menuPrincipal.getJpBusquedaAvanzada().setVisible(true);
                 }
             }
         }
