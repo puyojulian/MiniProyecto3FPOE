@@ -110,7 +110,10 @@ public class MenuPrincipalController {
                 menuPrincipal.getBtnPrestamos().setEnabled(true);
                 menuPrincipal.getBtnUsuarios().setEnabled(false);
                 
-                if(mapaUsuarios.size()>0) {
+                menuPrincipal.getBtnRadioBusqueda1().setText("Nombre y Código");
+                menuPrincipal.getBtnRadioBusqueda2().setText("Nombre y Rol");
+                
+                if(mapaUsuarios.size() > 0) {
                     Set<Map.Entry<Integer, Usuario>> entrySetMapa = mapaUsuarios.entrySet();
 
                     modeloLista = new DefaultListModel<>();
@@ -137,7 +140,10 @@ public class MenuPrincipalController {
                 menuPrincipal.getBtnPrestamos().setEnabled(true);
                 menuPrincipal.getBtnRecursos().setEnabled(false);
                 
-                if(mapaRecursos.size()>0) {
+                menuPrincipal.getBtnRadioBusqueda1().setText("Título y Autor");
+                menuPrincipal.getBtnRadioBusqueda2().setText("Título y Género");
+                
+                if(mapaRecursos.size() > 0) {
                     Set<Map.Entry<String, Recurso>> entrySetMapa = mapaRecursos.entrySet();
 
                     modeloLista = new DefaultListModel<>();
@@ -183,6 +189,10 @@ public class MenuPrincipalController {
                     modeloLista.clear();
                     jLista.setModel(modeloLista);
                 }
+                
+                menuPrincipal.getBtnRadioBusqueda1().setText("Nombre y Fecha");
+                menuPrincipal.getBtnRadioBusqueda2().setText("Título y Autor");
+
             }
             else if (e.getSource() == menuPrincipal.getBtnEliminar()) {
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {

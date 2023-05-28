@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
 public class MenuPrincipal extends javax.swing.JFrame {
@@ -206,27 +208,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jpBusquedaAvanzadaLayout.setHorizontalGroup(
             jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpBusquedaAvanzadaLayout.createSequentialGroup()
-                .addGroup(jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpBusquedaAvanzadaLayout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(btnPopConfirmar))
-                    .addGroup(jpBusquedaAvanzadaLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtBusqueda1, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                            .addComponent(txtBusqueda2, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))))
+                .addContainerGap(33, Short.MAX_VALUE)
+                .addGroup(jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtBusqueda1, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                    .addComponent(txtBusqueda2, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
                 .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBusquedaAvanzadaLayout.createSequentialGroup()
                 .addGap(0, 53, Short.MAX_VALUE)
                 .addGroup(jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRadioBusqueda2)
                     .addComponent(btnRadioBusqueda1))
-                .addGap(49, 49, 49))
+                .addContainerGap(49, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBusquedaAvanzadaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnPopConfirmar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpBusquedaAvanzadaLayout.setVerticalGroup(
             jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBusquedaAvanzadaLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addComponent(btnRadioBusqueda1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRadioBusqueda2)
@@ -236,7 +237,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(txtBusqueda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnPopConfirmar)
-                .addGap(18, 18, 18))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jLayeredPane1.setLayer(jpContenido, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -387,6 +388,32 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public JPanel getJpBusquedaAvanzada() {
         return jpBusquedaAvanzada;
     }
+
+    public JButton getBtnPopConfirmar() {
+        return btnPopConfirmar;
+    }
+
+    public JRadioButton getBtnRadioBusqueda1() {
+        return btnRadioBusqueda1;
+    }
+
+    public JRadioButton getBtnRadioBusqueda2() {
+        return btnRadioBusqueda2;
+    }
+
+    public JTextField getTxtBuscar() {
+        return txtBuscar;
+    }
+
+    public JTextField getTxtBusqueda1() {
+        return txtBusqueda1;
+    }
+
+    public JTextField getTxtBusqueda2() {
+        return txtBusqueda2;
+    }
+    
+    
         
     public void addBtnRecursos(ActionListener listener){
         btnRecursos.addActionListener(listener);
