@@ -124,7 +124,7 @@ public class MenuPrincipalController {
                 menuPrincipal.getBtnPrestamos().setEnabled(false);
             }
             if (e.getSource() == menuPrincipal.getBtnEliminar()) {
-                if (e.getSource() == menuPrincipal.getBtnUsuarios()) {
+                if (menuPrincipal.getBtnUsuarios().isSelected()) {
                     index = menuPrincipal.getjListIndex();
                     Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
 
@@ -134,7 +134,7 @@ public class MenuPrincipalController {
 
                     jLista.setModel(modeloLista);
                 }
-                else if(e.getSource() == menuPrincipal.getBtnRecursos()) {
+                else if(menuPrincipal.getBtnRecursos().isSelected()) {
                     index = menuPrincipal.getjListIndex();
                     Map.Entry<String, Recurso> entry = listaMapRecursos.get(index);
 
@@ -144,7 +144,7 @@ public class MenuPrincipalController {
 
                     jLista.setModel(modeloLista);
                 }
-                else if(e.getSource() == menuPrincipal.getBtnPrestamos()) {
+                else if(menuPrincipal.getBtnPrestamos().isSelected()) {
 //                index = menuPrincipal.getjListIndex();
 //                Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
 //                
