@@ -5,12 +5,10 @@
 package co.edu.univalle.miniproyecto3.vista;
 
 import java.awt.event.ActionListener;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.event.ListSelectionListener;
+import javax.swing.JToggleButton;
 
 public class MenuPrincipal extends javax.swing.JFrame {
 
@@ -34,9 +32,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jpContenido = new javax.swing.JPanel();
         jpOpciones = new javax.swing.JPanel();
-        btnRecursos = new javax.swing.JRadioButton();
-        btnUsuarios = new javax.swing.JRadioButton();
-        btnPrestamos = new javax.swing.JRadioButton();
+        btnPrestamos = new javax.swing.JToggleButton();
+        btnUsuarios = new javax.swing.JToggleButton();
+        btnRecursos = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList = new javax.swing.JList<>();
         txtBuscar = new javax.swing.JTextField();
@@ -65,14 +63,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jpOpciones.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RECURSOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 153, 51))); // NOI18N
 
-        buttonGroup1.add(btnRecursos);
-        btnRecursos.setText("LIBROS");
+        btnPrestamos.setText("PRESTAMOS");
 
-        buttonGroup1.add(btnUsuarios);
         btnUsuarios.setText("USUARIOS");
 
-        buttonGroup1.add(btnPrestamos);
-        btnPrestamos.setText("PRESTAMOS");
+        btnRecursos.setText("RECURSOS");
+        btnRecursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecursosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpOpcionesLayout = new javax.swing.GroupLayout(jpOpciones);
         jpOpciones.setLayout(jpOpcionesLayout);
@@ -80,22 +80,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jpOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpOpcionesLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(jpOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPrestamos)
-                    .addComponent(btnUsuarios)
-                    .addComponent(btnRecursos))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGroup(jpOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnPrestamos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRecursos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jpOpcionesLayout.setVerticalGroup(
             jpOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpOpcionesLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(87, 87, 87)
                 .addComponent(btnRecursos)
-                .addGap(84, 84, 84)
+                .addGap(82, 82, 82)
                 .addComponent(btnUsuarios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(btnPrestamos)
-                .addGap(73, 73, 73))
+                .addGap(44, 44, 44))
         );
 
         jList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -109,6 +109,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         btnEliminar.setText("ELIMINAR");
         btnEliminar.setFocusable(false);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed1(evt);
+            }
+        });
 
         btnBuscar.setText("BUSCAR");
 
@@ -127,7 +132,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpContenidoLayout.createSequentialGroup()
                         .addComponent(btnAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                         .addComponent(btnActualizar)
                         .addGap(57, 57, 57)
                         .addComponent(btnEliminar))
@@ -260,6 +265,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    private void btnRecursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecursosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRecursosActionPerformed
+
+    private void btnEliminarActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed1
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed1
+
     /**
      * @param args the command line arguments
      */
@@ -315,24 +328,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         return btnEliminar;
     }
 
-    public JRadioButton getBtnPrestamos() {
+    public JToggleButton getBtnPrestamos() {
         return btnPrestamos;
     }
 
-    public JRadioButton getBtnRecursos() {
+    public JToggleButton getBtnRecursos() {
         return btnRecursos;
     }
 
-    public JRadioButton getBtnUsuarios() {
+    public JToggleButton getBtnUsuarios() {
         return btnUsuarios;
-    }
-
-    public void clearSelection() {
-       buttonGroup1.clearSelection();
-    }
-
-    public void setjList(DefaultListModel List) {
-        jList.setModel(List);
     }
 
     public JList<String> getjList() {
@@ -356,6 +361,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnUsuarios.addActionListener(listener);
     }
     
+    public void addBtnPrestamos(ActionListener listener){
+        btnPrestamos.addActionListener(listener);
+    }
+    
     public void addBtnBuscar(ActionListener listener){
         btnBuscar.addActionListener(listener);
     }
@@ -375,10 +384,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public void addBtnEliminar(ActionListener listener){
         btnEliminar.addActionListener(listener);
     }
-    
-    public void addSelectionListener(ListSelectionListener listener) {
-        jList.addListSelectionListener(listener);
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
@@ -391,9 +396,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnBusqueda1;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnEliminar1;
-    private javax.swing.JRadioButton btnPrestamos;
-    private javax.swing.JRadioButton btnRecursos;
-    private javax.swing.JRadioButton btnUsuarios;
+    private javax.swing.JToggleButton btnPrestamos;
+    private javax.swing.JToggleButton btnRecursos;
+    private javax.swing.JToggleButton btnUsuarios;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JList<String> jList;

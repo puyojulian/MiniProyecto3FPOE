@@ -22,21 +22,23 @@ public class MenuPrincipalController {
     private RecursoDAO recursoDAO;
     private Map mapaUsuarios;
     private Map mapaRecursos;
-    private List<Map.Entry<Integer, Usuario>> listaMap;
-    private DefaultListModel<String> lista;
-    private JList<String> jList;
+    private List<Map.Entry<Integer, Usuario>> listaMapUsuarios;
+    private List<Map.Entry<String, Recurso>> listaMapRecursos;
+    private DefaultListModel<String> modeloLista;
+    private JList<String> jLista;
     private int index;
     
     public MenuPrincipalController(MenuPrincipal menuPrincipal) {
         this.usuarioDAO = new UsuarioDAO();
         this.recursoDAO = new RecursoDAO();
         this.menuPrincipal = menuPrincipal;
-        this.jList = menuPrincipal.getjList();
+        this.jLista = menuPrincipal.getjList();
         
         HandlerActions listener = new HandlerActions();
         
         menuPrincipal.addBtnRecursos(listener);
         menuPrincipal.addBtnUsuarios(listener);
+        menuPrincipal.addBtnPrestamos(listener);
         menuPrincipal.addBtnBuscar(listener);
         menuPrincipal.addBtnBusqueda(listener);
         menuPrincipal.addBtnAgregar(listener);
@@ -44,6 +46,7 @@ public class MenuPrincipalController {
         menuPrincipal.addBtnEliminar(listener);
         
         usuariosActuales();
+        recursosActuales();
         mapaUsuarios = usuarioDAO.getUsuarios();
         mapaRecursos = recursoDAO.getRecursos();
     }
@@ -64,37 +67,93 @@ public class MenuPrincipalController {
         recursoDAO.addRecurso(new Recurso("9780143105954", "The Catcher in the Rye", "J.D. Salinger", "Fiction", "Literature"));
         recursoDAO.addRecurso(new Recurso("9780064404990", "Bridge to Terabithia", "Katherine Paterson", "Children's Fiction", "Fantasy"));
         recursoDAO.addRecurso(new Recurso("9780060935467", "Freakonomics: A Rogue Economist Explores the Hidden Side of Everything", "Steven D. Levitt and Stephen J. Dubner", "Non-Fiction", "Economics"));
-        mapaRecursos = recursoDAO.getRecursos();
     }
         
     class HandlerActions implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            if ((menuPrincipal.getBtnUsuarios()).isSelected()) {
+            if (e.getSource() == menuPrincipal.getBtnUsuarios()) {
+                menuPrincipal.getBtnRecursos().setSelected(false);
+                menuPrincipal.getBtnPrestamos().setSelected(false);
+                menuPrincipal.getBtnRecursos().setEnabled(true);
+                menuPrincipal.getBtnPrestamos().setEnabled(true);
+                menuPrincipal.getBtnUsuarios().setEnabled(false);
                 
-                Set<Map.Entry<Integer, Usuario>> entrySet = mapaUsuarios.entrySet();
+                Set<Map.Entry<Integer, Usuario>> entrySetMapa = mapaUsuarios.entrySet();
+                
+                modeloLista = new DefaultListModel<>();
+                
+                listaMapUsuarios = new ArrayList<>(mapaUsuarios.entrySet());
 
-                lista = new DefaultListModel<>();
-                listaMap = new ArrayList<>(mapaUsuarios.entrySet());
-
-                for (Map.Entry<Integer, Usuario> entry : entrySet){
+                for (Map.Entry<Integer, Usuario> entry : entrySetMapa){
                     Integer key = entry.getKey();
                     Usuario value = entry.getValue();
                     String item = key + ", Usuario: " + value;
-                    lista.addElement(item);
+                    modeloLista.addElement(item);
                     
-                    menuPrincipal.setjList(lista);
-                    menuPrincipal.clearSelection();
+                    jLista.setModel(modeloLista);
                 }
             }
-            if (e.getSource() == menuPrincipal.getBtnEliminar()) {
-                index = menuPrincipal.getjListIndex();
-                Map.Entry<Integer, Usuario> entry = listaMap.get(index);
-                usuarioDAO.deleteUsuario((entry.getKey()));
+            else if(e.getSource() == menuPrincipal.getBtnRecursos()) {
+                menuPrincipal.getBtnUsuarios().setSelected(false);
+                menuPrincipal.getBtnPrestamos().setSelected(false);
+                menuPrincipal.getBtnUsuarios().setEnabled(true);
+                menuPrincipal.getBtnPrestamos().setEnabled(true);
+                menuPrincipal.getBtnRecursos().setEnabled(false);
+                
+                Set<Map.Entry<String, Recurso>> entrySetMapa = mapaRecursos.entrySet();
+                
+                modeloLista = new DefaultListModel<>();
+                
+                listaMapRecursos = new ArrayList<>(mapaRecursos.entrySet());
 
-                listaMap.remove(index);
-                lista.remove(index); 
-                menuPrincipal.setjList(lista);             
+                for (Map.Entry<String, Recurso> entry : entrySetMapa){
+                    String key = entry.getKey();
+                    Recurso value = entry.getValue();
+                    String item = key + ", Recurso: " + value;
+                    modeloLista.addElement(item);
+                    
+                    jLista.setModel(modeloLista);
+                }
+            }
+            else if(e.getSource() == menuPrincipal.getBtnPrestamos()) {
+                menuPrincipal.getBtnRecursos().setSelected(false);
+                menuPrincipal.getBtnUsuarios().setSelected(false);
+                menuPrincipal.getBtnRecursos().setEnabled(true);
+                menuPrincipal.getBtnUsuarios().setEnabled(true);
+                menuPrincipal.getBtnPrestamos().setEnabled(false);
+            }
+            if (e.getSource() == menuPrincipal.getBtnEliminar()) {
+                if (e.getSource() == menuPrincipal.getBtnUsuarios()) {
+                    index = menuPrincipal.getjListIndex();
+                    Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
+
+                    usuarioDAO.deleteUsuario((entry.getKey()));
+                    listaMapUsuarios.remove(index);
+                    modeloLista.remove(index); 
+
+                    jLista.setModel(modeloLista);
+                }
+                else if(e.getSource() == menuPrincipal.getBtnRecursos()) {
+                    index = menuPrincipal.getjListIndex();
+                    Map.Entry<String, Recurso> entry = listaMapRecursos.get(index);
+
+                    recursoDAO.deleteRecurso((entry.getKey()));
+                    listaMapRecursos.remove(index);
+                    modeloLista.remove(index); 
+
+                    jLista.setModel(modeloLista);
+                }
+                else if(e.getSource() == menuPrincipal.getBtnPrestamos()) {
+//                index = menuPrincipal.getjListIndex();
+//                Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
+//                
+//                usuarioDAO.deleteUsuario((entry.getKey()));
+//                listaMapUsuarios.remove(index);
+//                modeloLista.remove(index); 
+//
+//                jLista.setModel(modeloLista);
+                }
             }
         }
     }
