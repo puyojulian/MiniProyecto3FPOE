@@ -61,7 +61,8 @@ public class Usuario {
     @Override
     public String toString() {
 //        return " id=" + id + ", nombre=" + nombre + ", estadoActivo=" + estadoActivo + ", rol=" + rol;
-        return " id: " + id + ", nombre: " + nombre + ", estado activo: " + estadoActivo + ", rol: " + rol;
+//        return " id: " + id + ", nombre: " + nombre + ", estado activo: " + estadoActivo + ", rol: " + rol;
+        return id + ", " + nombre + ", " + estadoActivo + ", " + rol;
     }
     
     

@@ -14,9 +14,9 @@ public class Recurso {
     private int codigoRecurso;
     private String isbn;
     private String nombre;
-    private ArrayList autores;
-    private ArrayList generosLiterarios;
-    private ArrayList areasConocimiento;
+    private ArrayList<String> autores;
+    private ArrayList<String> generosLiterarios;
+    private ArrayList<String> areasConocimiento;
     private boolean disponible;
     private static int consecutivo = 0;
 
@@ -101,6 +101,8 @@ public class Recurso {
     
     @Override
     public String toString() {
-        return " Cod: " + codigoRecurso + " ISBN: " + isbn + " Nombre: " + nombre + " Autor: " + autores.get(0) + " Género: " + generosLiterarios.get(0) + " Área: " + areasConocimiento.get(0);
+//        return " Cod: " + codigoRecurso + " ISBN: " + isbn + " Nombre: " + nombre + " Autor: " + autores.get(0) + " Género: " + generosLiterarios.get(0) + " Área: " + areasConocimiento.get(0);
+        return codigoRecurso + ", " + isbn + ", " + nombre + ", " + autores.get(0) + ", " + generosLiterarios.get(0) + ", " + areasConocimiento.get(0);
+
     }
 }

@@ -9,13 +9,16 @@ package co.edu.univalle.miniproyecto3.model;
  * @author Sebastián
  */
 public class Prestamo {
+    private int id;
     private Usuario usuario;
     private Recurso recurso;
+    private static int consecutivo = 0;
     
     
     public Prestamo(Usuario usuario, Recurso recurso) {
         this.recurso = recurso;
         this.usuario = usuario;
+        this.id = consecutivo++;
     }
 
     public Usuario getUsuario() {
@@ -28,6 +31,7 @@ public class Prestamo {
     
     @Override
     public String toString() {
-        return " Usuario: " + usuario + " Recurso: " + recurso;
+//        return " Usuario: " + usuario + " Recurso: " + recurso;
+        return id + ", " + usuario + ", " + recurso;
     }
 }

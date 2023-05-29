@@ -19,6 +19,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.StringTokenizer;
 import javax.swing.DefaultListModel;
 
 public class MenuPrincipalController {
@@ -39,7 +40,10 @@ public class MenuPrincipalController {
     private List<Map.Entry<Integer, Usuario>> listaMapUsuarios;
     private List<Map.Entry<String, Recurso>> listaMapRecursos;
     private List<Map.Entry<Integer, Prestamo>> listaMapPrestamos;
+    private String strBusqueda1;
+    private String strBusqueda2;
     private DefaultListModel<String> modeloLista;
+    private DefaultListModel<String> modeloListaResultado;
     private int index;
     
     public MenuPrincipalController(MenuPrincipal menuPrincipal) {
@@ -48,6 +52,8 @@ public class MenuPrincipalController {
         this.prestamoDAO = new PrestamoDAO();
         this.menuPrincipal = menuPrincipal;
         this.jLista = menuPrincipal.getJList();
+        this.modeloLista = new DefaultListModel<>();
+        this.modeloListaResultado = new DefaultListModel<>();
         
         agregarRecurso = new AgregarRecurso();
         agregarUsuario = new AgregarUsuario();
@@ -132,14 +138,15 @@ public class MenuPrincipalController {
                 if(mapaUsuarios.size() > 0) {
                     Set<Map.Entry<Integer, Usuario>> entrySetMapa = mapaUsuarios.entrySet();
 
-                    modeloLista = new DefaultListModel<>();
+                    modeloLista.clear();
 
                     listaMapUsuarios = new ArrayList<>(mapaUsuarios.entrySet());
 
                     for (Map.Entry<Integer, Usuario> entry : entrySetMapa){
                         Integer key = entry.getKey();
                         Usuario value = entry.getValue();
-                        String item = key + ", Usuario: " + value;
+//                        String item = key + ", Usuario: " + value;
+                        String item = "" + value;
                         modeloLista.addElement(item);
                     }
                     menuPrincipal.getJList().setModel(modeloLista);
@@ -162,14 +169,15 @@ public class MenuPrincipalController {
                 if(mapaRecursos.size() > 0) {
                     Set<Map.Entry<String, Recurso>> entrySetMapa = mapaRecursos.entrySet();
 
-                    modeloLista = new DefaultListModel<>();
+                    modeloLista.clear();
 
                     listaMapRecursos = new ArrayList<>(mapaRecursos.entrySet());
 
                     for (Map.Entry<String, Recurso> entry : entrySetMapa){
                         String key = entry.getKey();
                         Recurso value = entry.getValue();
-                        String item = key + ", Recurso: " + value;
+//                        String item = key + ", Recurso: " + value;
+                        String item = "" + value;   
                         modeloLista.addElement(item);
                     }
                     menuPrincipal.getJList().setModel(modeloLista);
@@ -186,17 +194,18 @@ public class MenuPrincipalController {
                 menuPrincipal.getBtnUsuarios().setEnabled(true);
                 menuPrincipal.getBtnPrestamos().setEnabled(false);
                 
-                if(mapaPrestamos.size()>0) {
+                if(mapaPrestamos.size() > 0) {
                     Set<Map.Entry<Integer, Prestamo>> entrySetMapa = mapaPrestamos.entrySet();
 
-                    modeloLista = new DefaultListModel<>();
+                    modeloLista.clear();
 
                     listaMapPrestamos = new ArrayList<>(mapaPrestamos.entrySet());
 
                     for (Map.Entry<Integer, Prestamo> entry : entrySetMapa){
                         Integer key = entry.getKey();
                         Prestamo value = entry.getValue();
-                        String item = key + ", Prestamo: " + value;
+//                        String item = key + ", Prestamo: " + value;
+                        String item = "" + value;
                         modeloLista.addElement(item);
                     }
                     jLista.setModel(modeloLista);
@@ -252,17 +261,6 @@ public class MenuPrincipalController {
                 }
                 else {
                     menuPrincipal.getJpBusquedaAvanzada().setVisible(true);
-                    
-                    index = menuPrincipal.getJListIndex();
-                    if(index != -1) {
-                        Map.Entry<Integer, Prestamo> entry = listaMapPrestamos.get(index);
-
-                        prestamoDAO.deletePrestamo((entry.getKey()));
-                        listaMapPrestamos.remove(index);
-                        modeloLista.remove(index); 
-
-                        jLista.setModel(modeloLista);
-                    }
                 }
             }
             else if (e.getSource() == menuPrincipal.getBtnAgregar()) {
@@ -298,6 +296,129 @@ public class MenuPrincipalController {
 
                 }
             }
-        }
+            else if(e.getSource() == menuPrincipal.getBtnBuscar()) {
+                modeloListaResultado.clear();
+                strBusqueda1 = menuPrincipal.getTxtBuscar().getText();
+                if(!"".equals(strBusqueda1)) {
+                    for (int i = 0; i < modeloLista.size(); i++) {
+                        String filaLista = modeloLista.getElementAt(i);
+                        StringTokenizer listaTemporal =  new StringTokenizer(filaLista,", ");
+                        while (listaTemporal.hasMoreTokens()) {
+                            String token = listaTemporal.nextToken();
+                            if(strBusqueda1.equalsIgnoreCase(token)) {
+                                modeloListaResultado.addElement(filaLista);
+                                break;
+                            }
+                            else {
+                                StringTokenizer elementoTemporal = new StringTokenizer(token," ");
+                                while (elementoTemporal.hasMoreTokens()) {
+                                    if(strBusqueda1.equalsIgnoreCase(elementoTemporal.nextToken())) {
+                                        modeloListaResultado.addElement(filaLista);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    menuPrincipal.getJList().setModel(modeloListaResultado);
+                }
+                else {
+                    menuPrincipal.getJList().setModel(modeloLista);
+                }
+                
+//                if (menuPrincipal.getBtnUsuarios().isSelected()) {
+//                    if(!"".equals(strBusqueda1)) {
+//                        for (int i = 0; i < modeloLista.size(); i++) {
+//                            String element = modeloLista.getElementAt(i);
+//                            StringTokenizer listaTemporal =  new StringTokenizer(element,", ");
+//                            while (listaTemporal.hasMoreTokens()) {
+//                                if(strBusqueda1.equalsIgnoreCase(listaTemporal.nextToken())) {
+//                                    modeloListaResultado.addElement(modeloLista.getElementAt(i));
+//                                    break;
+//                                }
+//                                else {
+//                                    StringTokenizer elementoTemporal = new StringTokenizer(listaTemporal.nextToken()," ");
+//                                    while (elementoTemporal.hasMoreTokens()) {
+//                                        if(strBusqueda1.equalsIgnoreCase(elementoTemporal.nextToken())) {
+//                                            modeloListaResultado.addElement(modeloLista.getElementAt(i));
+//                                            break;
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
+//                        menuPrincipal.getJList().setModel(modeloListaResultado);
+//                    }
+//                    else {
+//                        menuPrincipal.getJList().setModel(modeloLista);
+//                    }
+//                }
+//                else if(menuPrincipal.getBtnRecursos().isSelected()) {
+//                    if(!"".equals(strBusqueda1)) {
+//                        for (int i = 0; i < modeloLista.size(); i++) {
+//                            String element = modeloLista.getElementAt(i);
+//                            StringTokenizer listaTemporal =  new StringTokenizer(element,", ");
+//                            while (listaTemporal.hasMoreTokens()) {
+//                                if(strBusqueda1.equalsIgnoreCase(listaTemporal.nextToken())) {
+//                                    modeloListaResultado.addElement(modeloLista.getElementAt(i));
+//                                    break;
+//                                }
+//                                else {
+//                                    StringTokenizer elementoTemporal = new StringTokenizer(listaTemporal.nextToken()," ");
+//                                    while (elementoTemporal.hasMoreTokens()) {
+//                                        if(strBusqueda1.equalsIgnoreCase(elementoTemporal.nextToken())) {
+//                                            modeloListaResultado.addElement(modeloLista.getElementAt(i));
+//                                            break;
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
+//                        menuPrincipal.getJList().setModel(modeloListaResultado);
+//                    }
+//                    else {
+//                        menuPrincipal.getJList().setModel(modeloLista);
+//                    }
+//                }
+//                else if(menuPrincipal.getBtnPrestamos().isSelected()) {
+//                    if(!"".equals(strBusqueda1)) {
+//                        for (int i = 0; i < modeloLista.size(); i++) {
+//                            String element = modeloLista.getElementAt(i);
+//                            StringTokenizer listaTemporal =  new StringTokenizer(element,", ");
+//                            while (listaTemporal.hasMoreTokens()) {
+//                                if(strBusqueda1.equalsIgnoreCase(listaTemporal.nextToken())) {
+//                                    modeloListaResultado.addElement(modeloLista.getElementAt(i));
+//                                    break;
+//                                }
+//                                else {
+//                                    StringTokenizer elementoTemporal = new StringTokenizer(listaTemporal.nextToken()," ");
+//                                    while (elementoTemporal.hasMoreTokens()) {
+//                                        if(strBusqueda1.equalsIgnoreCase(elementoTemporal.nextToken())) {
+//                                            modeloListaResultado.addElement(modeloLista.getElementAt(i));
+//                                            break;
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
+//                        menuPrincipal.getJList().setModel(modeloListaResultado);
+//                    }
+//                    else {
+//                        menuPrincipal.getJList().setModel(modeloLista);
+//                    }
+//                }
+//            }
+//            else if(e.getSource() == menuPrincipal.getBtnPopConfirmar()) {
+//                if (menuPrincipal.getBtnUsuarios().isSelected()) {
+//                    
+//                }
+//                else if(menuPrincipal.getBtnRecursos().isSelected()) {
+//
+//                }
+//                else if(menuPrincipal.getBtnPrestamos().isSelected()) {
+//
+//                }
+            }
+        }  
     }
 }
