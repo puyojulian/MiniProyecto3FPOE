@@ -325,100 +325,40 @@ public class MenuPrincipalController {
                 else {
                     menuPrincipal.getJList().setModel(modeloLista);
                 }
-                
-//                if (menuPrincipal.getBtnUsuarios().isSelected()) {
-//                    if(!"".equals(strBusqueda1)) {
-//                        for (int i = 0; i < modeloLista.size(); i++) {
-//                            String element = modeloLista.getElementAt(i);
-//                            StringTokenizer listaTemporal =  new StringTokenizer(element,", ");
-//                            while (listaTemporal.hasMoreTokens()) {
-//                                if(strBusqueda1.equalsIgnoreCase(listaTemporal.nextToken())) {
-//                                    modeloListaResultado.addElement(modeloLista.getElementAt(i));
-//                                    break;
-//                                }
-//                                else {
-//                                    StringTokenizer elementoTemporal = new StringTokenizer(listaTemporal.nextToken()," ");
-//                                    while (elementoTemporal.hasMoreTokens()) {
-//                                        if(strBusqueda1.equalsIgnoreCase(elementoTemporal.nextToken())) {
-//                                            modeloListaResultado.addElement(modeloLista.getElementAt(i));
-//                                            break;
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                        }
-//                        menuPrincipal.getJList().setModel(modeloListaResultado);
-//                    }
-//                    else {
-//                        menuPrincipal.getJList().setModel(modeloLista);
-//                    }
-//                }
-//                else if(menuPrincipal.getBtnRecursos().isSelected()) {
-//                    if(!"".equals(strBusqueda1)) {
-//                        for (int i = 0; i < modeloLista.size(); i++) {
-//                            String element = modeloLista.getElementAt(i);
-//                            StringTokenizer listaTemporal =  new StringTokenizer(element,", ");
-//                            while (listaTemporal.hasMoreTokens()) {
-//                                if(strBusqueda1.equalsIgnoreCase(listaTemporal.nextToken())) {
-//                                    modeloListaResultado.addElement(modeloLista.getElementAt(i));
-//                                    break;
-//                                }
-//                                else {
-//                                    StringTokenizer elementoTemporal = new StringTokenizer(listaTemporal.nextToken()," ");
-//                                    while (elementoTemporal.hasMoreTokens()) {
-//                                        if(strBusqueda1.equalsIgnoreCase(elementoTemporal.nextToken())) {
-//                                            modeloListaResultado.addElement(modeloLista.getElementAt(i));
-//                                            break;
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                        }
-//                        menuPrincipal.getJList().setModel(modeloListaResultado);
-//                    }
-//                    else {
-//                        menuPrincipal.getJList().setModel(modeloLista);
-//                    }
-//                }
-//                else if(menuPrincipal.getBtnPrestamos().isSelected()) {
-//                    if(!"".equals(strBusqueda1)) {
-//                        for (int i = 0; i < modeloLista.size(); i++) {
-//                            String element = modeloLista.getElementAt(i);
-//                            StringTokenizer listaTemporal =  new StringTokenizer(element,", ");
-//                            while (listaTemporal.hasMoreTokens()) {
-//                                if(strBusqueda1.equalsIgnoreCase(listaTemporal.nextToken())) {
-//                                    modeloListaResultado.addElement(modeloLista.getElementAt(i));
-//                                    break;
-//                                }
-//                                else {
-//                                    StringTokenizer elementoTemporal = new StringTokenizer(listaTemporal.nextToken()," ");
-//                                    while (elementoTemporal.hasMoreTokens()) {
-//                                        if(strBusqueda1.equalsIgnoreCase(elementoTemporal.nextToken())) {
-//                                            modeloListaResultado.addElement(modeloLista.getElementAt(i));
-//                                            break;
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                        }
-//                        menuPrincipal.getJList().setModel(modeloListaResultado);
-//                    }
-//                    else {
-//                        menuPrincipal.getJList().setModel(modeloLista);
-//                    }
-//                }
-//            }
-//            else if(e.getSource() == menuPrincipal.getBtnPopConfirmar()) {
-//                if (menuPrincipal.getBtnUsuarios().isSelected()) {
-//                    
-//                }
-//                else if(menuPrincipal.getBtnRecursos().isSelected()) {
-//
-//                }
-//                else if(menuPrincipal.getBtnPrestamos().isSelected()) {
-//
-//                }
             }
+            else if(e.getSource() == menuPrincipal.getBtnPopConfirmar()) {
+                modeloListaResultado.clear();
+                strBusqueda1 = menuPrincipal.getTxtBusqueda1().getText();
+                strBusqueda2 = menuPrincipal.getTxtBusqueda2().getText();
+                if(!"".equals(strBusqueda1)) {
+                    for (int i = 0; i < modeloLista.size(); i++) {
+                        String filaLista = modeloLista.getElementAt(i);
+                        StringTokenizer listaTemporal =  new StringTokenizer(filaLista,", ");
+                        while (listaTemporal.hasMoreTokens()) {
+                            String token = listaTemporal.nextToken();
+                            if(strBusqueda1.equalsIgnoreCase(token) || strBusqueda2.equalsIgnoreCase(token)) {
+                                modeloListaResultado.addElement(filaLista);
+                                break;
+                            }
+                            else {
+                                StringTokenizer elementoTemporal = new StringTokenizer(token," ");
+                                while (elementoTemporal.hasMoreTokens()) {
+                                    String subToken = elementoTemporal.nextToken();
+                                    if(strBusqueda1.equalsIgnoreCase(subToken) || strBusqueda2.equalsIgnoreCase(subToken)) {
+                                        modeloListaResultado.addElement(filaLista);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    menuPrincipal.getJList().setModel(modeloListaResultado);
+                }
+                else {
+                    menuPrincipal.getJList().setModel(modeloLista);
+                }
+                menuPrincipal.getJpBusquedaAvanzada().setVisible(false);
+            }    
         }  
     }
 }
