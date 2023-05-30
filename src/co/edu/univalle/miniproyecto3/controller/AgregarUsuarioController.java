@@ -19,4 +19,8 @@ public class AgregarUsuarioController {
         this.agregarUsuario = agregarUsuario;
         this.usuarioDAO = usuarioDAO;
     }
+    
+    public void crearUsuario() {
+        
+    }
 }
