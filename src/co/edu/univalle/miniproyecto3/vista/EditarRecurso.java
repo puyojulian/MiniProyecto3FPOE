@@ -28,57 +28,57 @@ public class EditarRecurso extends javax.swing.JFrame {
 
         jTextField4 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        botonCancelar = new javax.swing.JButton();
-        botonEditar = new javax.swing.JButton();
-        textTipoUsuario1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        btnCancelar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        txtValorLista = new javax.swing.JTextField();
+        btnModificar = new javax.swing.JButton();
+        btnRadioArea = new javax.swing.JRadioButton();
+        btnRadioGenero = new javax.swing.JRadioButton();
+        btnRadioAutor = new javax.swing.JRadioButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        textTipoUsuario = new javax.swing.JTextField();
-        textNombre = new javax.swing.JTextField();
-        labelNombre = new javax.swing.JLabel();
-        labelTipoUsuario = new javax.swing.JLabel();
+        txtISBN = new javax.swing.JTextField();
+        txtTitulo = new javax.swing.JTextField();
+        lblTitulo = new javax.swing.JLabel();
+        lblISBN = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        botonCancelar.setText("CANCELAR");
-        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setText("CANCELAR");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCancelarActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
-        botonEditar.setText("EDITAR");
-        botonEditar.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setText("EDITAR");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEditarActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Modificar");
+        btnModificar.setText("Modificar");
 
-        jRadioButton2.setText("Área/s");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnRadioArea.setText("Área/s");
+        btnRadioArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                btnRadioAreaActionPerformed(evt);
             }
         });
 
-        jRadioButton3.setText("Género/s");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnRadioGenero.setText("Género/s");
+        btnRadioGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                btnRadioGeneroActionPerformed(evt);
             }
         });
 
-        jRadioButton1.setText("Autor/es");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRadioAutor.setText("Autor/es");
+        btnRadioAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                btnRadioAutorActionPerformed(evt);
             }
         });
 
@@ -91,15 +91,15 @@ public class EditarRecurso extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jScrollPane1);
 
-        textNombre.addActionListener(new java.awt.event.ActionListener() {
+        txtTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textNombreActionPerformed(evt);
+                txtTituloActionPerformed(evt);
             }
         });
 
-        labelNombre.setText("TÍTULO:");
+        lblTitulo.setText("TÍTULO:");
 
-        labelTipoUsuario.setText("ISBN:");
+        lblISBN.setText("ISBN:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -110,33 +110,33 @@ public class EditarRecurso extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelNombre)
-                            .addComponent(labelTipoUsuario))
+                            .addComponent(lblTitulo)
+                            .addComponent(lblISBN))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(textTipoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                            .addComponent(textNombre))
+                            .addComponent(txtISBN, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                            .addComponent(txtTitulo))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton1)
-                                    .addComponent(jRadioButton2)
-                                    .addComponent(jRadioButton3))
+                                    .addComponent(btnRadioAutor)
+                                    .addComponent(btnRadioArea)
+                                    .addComponent(btnRadioGenero))
                                 .addGap(46, 46, 46)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(28, 28, 28)
-                                    .addComponent(textTipoUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtValorLista, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addGap(28, 28, 28)
-                                    .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(37, 37, 37)
-                                    .addComponent(botonCancelar))))
+                                    .addComponent(btnCancelar))))
                         .addGap(45, 45, 45))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -144,29 +144,29 @@ public class EditarRecurso extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelNombre))
+                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTitulo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelTipoUsuario)
-                    .addComponent(textTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblISBN)
+                    .addComponent(txtISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
+                        .addComponent(btnRadioAutor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton3)
+                        .addComponent(btnRadioGenero)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton2))
+                        .addComponent(btnRadioArea))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textTipoUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(txtValorLista, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonCancelar)
-                    .addComponent(botonEditar))
+                    .addComponent(btnCancelar)
+                    .addComponent(btnEditar))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
@@ -186,29 +186,29 @@ public class EditarRecurso extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botonCancelarActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botonEditarActionPerformed
+    }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void btnRadioAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRadioAreaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_btnRadioAreaActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+    private void btnRadioGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRadioGeneroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    }//GEN-LAST:event_btnRadioGeneroActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void btnRadioAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRadioAutorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_btnRadioAutorActionPerformed
 
-    private void textNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNombreActionPerformed
+    private void txtTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTituloActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textNombreActionPerformed
+    }//GEN-LAST:event_txtTituloActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,21 +249,21 @@ public class EditarRecurso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonCancelar;
-    private javax.swing.JButton botonEditar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JRadioButton btnRadioArea;
+    private javax.swing.JRadioButton btnRadioAutor;
+    private javax.swing.JRadioButton btnRadioGenero;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JLabel labelNombre;
-    private javax.swing.JLabel labelTipoUsuario;
-    private javax.swing.JTextField textNombre;
-    private javax.swing.JTextField textTipoUsuario;
-    private javax.swing.JTextField textTipoUsuario1;
+    private javax.swing.JLabel lblISBN;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTextField txtISBN;
+    private javax.swing.JTextField txtTitulo;
+    private javax.swing.JTextField txtValorLista;
     // End of variables declaration//GEN-END:variables
 }
