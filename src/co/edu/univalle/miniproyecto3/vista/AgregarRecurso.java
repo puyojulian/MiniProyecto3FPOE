@@ -4,6 +4,9 @@
  */
 package co.edu.univalle.miniproyecto3.vista;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author User
@@ -26,7 +29,6 @@ public class AgregarRecurso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField4 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         botonAgregar = new javax.swing.JButton();
         labelTitulo = new javax.swing.JLabel();
@@ -207,11 +209,52 @@ public class AgregarRecurso extends javax.swing.JFrame {
         });
     }
 
+    public JButton getBotonAgregar() {
+        return botonAgregar;
+    }
+
+    public JButton getBotonCancelar() {
+        return botonCancelar;
+    }
+
+    public JTextField getTextAutor1() {
+        return textAutor1;
+    }
+
+    public JTextField getTextAutor2() {
+        return textAutor2;
+    }
+
+    public JTextField getTextAutor3() {
+        return textAutor3;
+    }
+
+    public JTextField getTextGenero1() {
+        return textGenero1;
+    }
+
+    public JTextField getTextGenero2() {
+        return textGenero2;
+    }
+
+    public JTextField getTextGenero3() {
+        return textGenero3;
+    }
+
+    public JTextField getTextIsbn() {
+        return textIsbn;
+    }
+
+    public JTextField getTextTitulo() {
+        return textTitulo;
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel labelAutor;
     private javax.swing.JLabel labelGenero;
     private javax.swing.JLabel labelIsbn;
