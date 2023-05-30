@@ -13,7 +13,9 @@ public class Prestamo {
     private Usuario usuario;
     private Recurso recurso;
     private static int consecutivo = 0;
-    
+
+    public Prestamo() {
+    }
     
     public Prestamo(Usuario usuario, Recurso recurso) {
         this.recurso = recurso;

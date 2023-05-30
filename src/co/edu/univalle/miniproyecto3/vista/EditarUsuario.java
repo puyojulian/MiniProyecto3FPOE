@@ -39,7 +39,7 @@ public class EditarUsuario extends javax.swing.JFrame {
         txtCodigo = new javax.swing.JTextField();
         lblCodigo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblNombre.setText("NOMBRE:");
 

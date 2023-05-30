@@ -30,6 +30,9 @@ public class Recurso {
 //        areasConocimiento = new ArrayList();
 //    }
 
+    public Recurso() {
+    }
+
     public Recurso(String isbn, String nombre, String autor, String generoLiterario, String areaConocimiento) {
         this.codigoRecurso = consecutivo++;
         this.isbn = isbn;
@@ -102,7 +105,7 @@ public class Recurso {
     @Override
     public String toString() {
 //        return " Cod: " + codigoRecurso + " ISBN: " + isbn + " Nombre: " + nombre + " Autor: " + autores.get(0) + " Género: " + generosLiterarios.get(0) + " Área: " + areasConocimiento.get(0);
-        return codigoRecurso + ", " + isbn + ", " + nombre + ", " + autores.get(0) + ", " + generosLiterarios.get(0) + ", " + areasConocimiento.get(0);
+        return codigoRecurso + ", " + isbn + ", " + nombre + ", " + autores.get(0) + ", " + generosLiterarios.get(0) + ", " + areasConocimiento.get(0) + ", " + disponible;
 
     }
 }

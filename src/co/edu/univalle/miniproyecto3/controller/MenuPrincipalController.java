@@ -116,7 +116,11 @@ public class MenuPrincipalController {
         }
         
         Usuario valueU = usuarios.toArray(new Usuario[0])[count - 1];
-        prestamoDAO.addPrestamo(new Prestamo(valueU, valueR));
+        if (valueR.isDisponible() == true){
+            valueR.setDisponible(false);
+            prestamoDAO.addPrestamo(new Prestamo(valueU, valueR));
+            System.out.println("Nombre: " + valueR.getNombre() + " Disponible: " + valueR.isDisponible());
+        }
         
         count++;
     }
@@ -247,12 +251,30 @@ public class MenuPrincipalController {
                 else if(menuPrincipal.getBtnPrestamos().isSelected()) {
                     index = menuPrincipal.getJListIndex();
                     Map.Entry<Integer, Prestamo> entry = listaMapPrestamos.get(index);
-
+                    
+                    Prestamo prestamoTemp;
+                    prestamoTemp = new Prestamo();
+                    
+                    Recurso recursoTemp;
+                    recursoTemp = new Recurso();
+                    System.out.println(index);
+                    prestamoTemp = prestamoDAO.getPrestamo(index+1);
+                    
+                    System.out.println(prestamoTemp);
+                    
+                    recursoTemp = prestamoTemp.getRecurso();
+                    
+                    System.out.println(recursoTemp);
+                    
+                    recursoTemp.setDisponible(true);
+                    
                     prestamoDAO.deletePrestamo((entry.getKey()));
                     listaMapPrestamos.remove(index);
                     modeloLista.remove(index); 
 
                     menuPrincipal.getJList().setModel(modeloLista);
+                    
+                    System.out.println("Nombre: " + recursoTemp.getNombre() + " Disponible: " + recursoTemp.isDisponible());
                 }
             }
             else if (e.getSource() == menuPrincipal.getBtnBusqueda()) {
