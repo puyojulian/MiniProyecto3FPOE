@@ -5,6 +5,7 @@
 package co.edu.univalle.miniproyecto3.repository;
 
 import co.edu.univalle.miniproyecto3.model.Prestamo;
+import co.edu.univalle.miniproyecto3.model.Recurso;
 import java.util.HashMap;
 import java.util.Map;
 /**
@@ -39,6 +40,18 @@ public class PrestamoDAO implements PrestamoDAOInterface {
 
     @Override
     public boolean deletePrestamo(Integer llave) {
+        
+        Prestamo prestamo;
+        prestamo = new Prestamo();
+                    
+        Recurso recurso;
+        recurso = new Recurso();
+        
+        prestamo = mapaPrestamos.get(llave);
+        recurso = prestamo.getRecurso();
+        
+        recurso.setDisponible(true);
+        
         mapaPrestamos.remove(llave);
         return true;
     }

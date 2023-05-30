@@ -33,7 +33,6 @@ public class Prestamo {
     
     @Override
     public String toString() {
-//        return " Usuario: " + usuario + " Recurso: " + recurso;
-        return id + ", " + usuario + ", " + recurso;
+        return id + ", " + usuario.toString() + ", " + recurso.toString();
     }
 }
