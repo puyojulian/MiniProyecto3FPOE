@@ -296,16 +296,18 @@ public class MenuPrincipalController {
 
                 }
             }
-            else if(e.getSource() == menuPrincipal.getBtnBuscar()) {
+            else if(e.getSource() == menuPrincipal.getBtnBuscar()) { //BUSQUEDA PRINCIPAL
                 modeloListaResultado.clear();
                 strBusqueda1 = menuPrincipal.getTxtBuscar().getText();
                 if(!"".equals(strBusqueda1)) {
+                    String strBusqueda1Clean = strBusqueda1.replaceAll("\\s", "");
                     for (int i = 0; i < modeloLista.size(); i++) {
                         String filaLista = modeloLista.getElementAt(i);
-                        StringTokenizer listaTemporal =  new StringTokenizer(filaLista,", ");
+                        StringTokenizer listaTemporal =  new StringTokenizer(filaLista,",");
                         while (listaTemporal.hasMoreTokens()) {
                             String token = listaTemporal.nextToken();
-                            if(strBusqueda1.equalsIgnoreCase(token)) {
+                            String tokenClean = token.replaceAll("\\s", "");
+                            if(strBusqueda1Clean.equalsIgnoreCase(tokenClean)) {
                                 modeloListaResultado.addElement(filaLista);
                                 break;
                             }
@@ -331,12 +333,15 @@ public class MenuPrincipalController {
                 strBusqueda1 = menuPrincipal.getTxtBusqueda1().getText();
                 strBusqueda2 = menuPrincipal.getTxtBusqueda2().getText();
                 if(!"".equals(strBusqueda1)) {
+                    String strBusqueda1Clean = strBusqueda1.replaceAll("\\s", "");
+                    String strBusqueda2Clean = strBusqueda2.replaceAll("\\s", "");
                     for (int i = 0; i < modeloLista.size(); i++) {
                         String filaLista = modeloLista.getElementAt(i);
-                        StringTokenizer listaTemporal =  new StringTokenizer(filaLista,", ");
+                        StringTokenizer listaTemporal =  new StringTokenizer(filaLista,",");
                         while (listaTemporal.hasMoreTokens()) {
                             String token = listaTemporal.nextToken();
-                            if(strBusqueda1.equalsIgnoreCase(token) || strBusqueda2.equalsIgnoreCase(token)) {
+                            String tokenClean = token.replaceAll("\\s", "");
+                            if(strBusqueda1Clean.equalsIgnoreCase(tokenClean) || strBusqueda2Clean.equalsIgnoreCase(tokenClean)) {
                                 modeloListaResultado.addElement(filaLista);
                                 break;
                             }
