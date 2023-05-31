@@ -4,8 +4,11 @@
  */
 package co.edu.univalle.miniproyecto3.vista;
 
+import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -30,29 +33,23 @@ public class AgregarRecurso extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        botonAgregar = new javax.swing.JButton();
         labelTitulo = new javax.swing.JLabel();
         labelAutor = new javax.swing.JLabel();
         labelGenero = new javax.swing.JLabel();
         labelIsbn = new javax.swing.JLabel();
-        botonCancelar = new javax.swing.JButton();
         textTitulo = new javax.swing.JTextField();
-        textGenero1 = new javax.swing.JTextField();
         textIsbn = new javax.swing.JTextField();
-        textAutor1 = new javax.swing.JTextField();
-        textAutor3 = new javax.swing.JTextField();
         textAutor2 = new javax.swing.JTextField();
-        textGenero3 = new javax.swing.JTextField();
+        textAutor1 = new javax.swing.JTextField();
+        textGenero1 = new javax.swing.JTextField();
         textGenero2 = new javax.swing.JTextField();
+        textArea2 = new javax.swing.JTextField();
+        textArea1 = new javax.swing.JTextField();
+        labelArea = new javax.swing.JLabel();
+        btnAgregar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        botonAgregar.setText("AGREGAR");
-        botonAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAgregarActionPerformed(evt);
-            }
-        });
 
         labelTitulo.setText("TITULO:");
 
@@ -62,63 +59,69 @@ public class AgregarRecurso extends javax.swing.JFrame {
 
         labelIsbn.setText("ISBN:");
 
-        botonCancelar.setText("CANCELAR");
-        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+        textArea2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCancelarActionPerformed(evt);
+                textArea2ActionPerformed(evt);
             }
         });
 
-        textGenero2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textGenero2ActionPerformed(evt);
-            }
-        });
+        labelArea.setText("ÁREA(S) DE CONOCIMIENTO:");
+
+        btnAgregar.setText("AGREGAR");
+
+        btnCancelar.setText("CANCELAR");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 29, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(botonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonCancelar))
-                    .addComponent(textAutor2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-                    .addComponent(textTitulo, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textAutor1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textAutor3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textGenero3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textGenero2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textGenero1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textIsbn, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                        .addComponent(btnCancelar)
+                        .addGap(50, 50, 50))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelArea))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelAutor))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelTitulo))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(textAutor1)
+                                    .addComponent(textTitulo)
+                                    .addComponent(textAutor2)
+                                    .addComponent(textIsbn)
+                                    .addComponent(textGenero1)
+                                    .addComponent(textArea1)
+                                    .addComponent(textGenero2)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                                        .addComponent(labelGenero)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE))
+                                    .addComponent(textArea2))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(labelTitulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addComponent(labelAutor)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addComponent(labelGenero)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(161, 161, 161)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelIsbn)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonAgregar)
-                    .addComponent(botonCancelar))
+                .addGap(36, 36, 36)
+                .addComponent(labelIsbn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -126,53 +129,49 @@ public class AgregarRecurso extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelAutor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textAutor2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textAutor1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textAutor3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textAutor2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textGenero3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textGenero2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textGenero1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelIsbn)
+                .addComponent(textGenero2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(labelArea, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addComponent(textArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnCancelar))
+                .addGap(30, 30, 30))
         );
+
+        textAutor2.setEnabled(false);
+        textGenero2.setEnabled(false);
+        textArea2.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
+    private void textArea2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textArea2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botonAgregarActionPerformed
-
-    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonCancelarActionPerformed
-
-    private void textGenero2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textGenero2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textGenero2ActionPerformed
+    }//GEN-LAST:event_textArea2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,11 +209,11 @@ public class AgregarRecurso extends javax.swing.JFrame {
     }
 
     public JButton getBotonAgregar() {
-        return botonAgregar;
+        return btnAgregar;
     }
 
     public JButton getBotonCancelar() {
-        return botonCancelar;
+        return btnCancelar;
     }
 
     public JTextField getTextAutor1() {
@@ -225,8 +224,12 @@ public class AgregarRecurso extends javax.swing.JFrame {
         return textAutor2;
     }
 
-    public JTextField getTextAutor3() {
-        return textAutor3;
+    public JTextField getTextArea1() {
+        return textArea1;
+    }
+    
+    public JTextField getTextArea2() {
+        return textArea2;
     }
 
     public JTextField getTextGenero1() {
@@ -237,10 +240,6 @@ public class AgregarRecurso extends javax.swing.JFrame {
         return textGenero2;
     }
 
-    public JTextField getTextGenero3() {
-        return textGenero3;
-    }
-
     public JTextField getTextIsbn() {
         return textIsbn;
     }
@@ -249,22 +248,58 @@ public class AgregarRecurso extends javax.swing.JFrame {
         return textTitulo;
     }
     
+    public void addBtnAgregar(ActionListener listener) {
+        btnAgregar.addActionListener(listener);
+    }
+    
+    public void addBtnCancelar(ActionListener listener) {
+        btnCancelar.addActionListener(listener);
+    }
+    
+//    public void addTextAutor(FocusListener listener) {
+//        textAutor1.addFocusListener(listener);
+//    }
+//    
+//    public void addTextGenero(FocusListener listener) {
+//        textGenero1.addFocusListener(listener);
+//    }
+//    
+//    public void addTextArea(FocusListener listener) {
+//        textArea1.addFocusListener(listener);
+//    }
+    
+    public void addTextAutor(DocumentListener listener) {
+        textAutor1.getDocument().putProperty("owner",textAutor1);
+        textAutor1.getDocument().addDocumentListener(listener);
+    }
+    
+    public void addTextGenero(DocumentListener listener) {
+        textGenero1.getDocument().putProperty("owner",textGenero1);
+        textGenero1.getDocument().addDocumentListener(listener);
+    }
+    
+    public void addTextArea(DocumentListener listener) {
+        textArea1.getDocument().putProperty("owner",textArea1);
+        textArea1.getDocument().addDocumentListener(listener);
+    }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonAgregar;
-    private javax.swing.JButton botonCancelar;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelArea;
     private javax.swing.JLabel labelAutor;
     private javax.swing.JLabel labelGenero;
     private javax.swing.JLabel labelIsbn;
     private javax.swing.JLabel labelTitulo;
+    private javax.swing.JTextField textArea1;
+    private javax.swing.JTextField textArea2;
     private javax.swing.JTextField textAutor1;
     private javax.swing.JTextField textAutor2;
-    private javax.swing.JTextField textAutor3;
     private javax.swing.JTextField textGenero1;
     private javax.swing.JTextField textGenero2;
-    private javax.swing.JTextField textGenero3;
     private javax.swing.JTextField textIsbn;
     private javax.swing.JTextField textTitulo;
     // End of variables declaration//GEN-END:variables

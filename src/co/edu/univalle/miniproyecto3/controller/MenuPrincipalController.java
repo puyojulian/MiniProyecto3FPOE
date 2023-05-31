@@ -32,6 +32,7 @@ public class MenuPrincipalController {
     private EditarUsuario editarUsuario;
     private EditarRecurso editarRecurso;
     private AdministrarPrestamos administrarPrestamos;
+    private AgregarRecursoController agregarRecursoController;
     private AgregarUsuarioController agregarUsuarioController;
     private EditarUsuarioController editarUsuarioController;
     private UsuarioDAO usuarioDAO;
@@ -62,6 +63,8 @@ public class MenuPrincipalController {
         HandlerActions listener = new HandlerActions();
         
         agregarRecurso = new AgregarRecurso();
+        agregarRecurso.addBtnAgregar(listener);
+        agregarRecursoController = new AgregarRecursoController(agregarRecurso, recursoDAO);
         agregarUsuario = new AgregarUsuario();
         agregarUsuario.addBtnAgregar(listener);
         agregarUsuarioController = new AgregarUsuarioController(agregarUsuario, usuarioDAO);
@@ -85,6 +88,7 @@ public class MenuPrincipalController {
         menuPrincipal.addBtnRadioBusqueda1(listener);
         menuPrincipal.addBtnRadioBusqueda2(listener);
         menuPrincipal.addBtnPopConfirmar(listener);
+        
         
         usuariosActuales();
         recursosActuales();
@@ -479,6 +483,15 @@ public class MenuPrincipalController {
                     Thread.sleep(200);
                     mapaUsuarios = usuarioDAO.getUsuarios();
                     actualizarJListaUsuarios();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            else if(e.getSource() == agregarRecurso.getBotonAgregar()) {
+                try {
+                    Thread.sleep(200);
+                    mapaRecursos = recursoDAO.getRecursos();
+                    actualizarJListaRecursos();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
                 }

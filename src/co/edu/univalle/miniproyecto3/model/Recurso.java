@@ -102,6 +102,18 @@ public class Recurso {
         this.disponible = disponible;
     }
     
+    public void addAutor(String autor) {
+        autores.add(autor);
+    }
+    
+    public void addGenero(String genero) {
+        generosLiterarios.add(genero);
+    }
+    
+    public void addArea(String area) {
+        areasConocimiento.add(area);
+    }
+    
     @Override
     public String toString() {
 //        return " Cod: " + codigoRecurso + " ISBN: " + isbn + " Nombre: " + nombre + " Autor: " + autores.get(0) + " Género: " + generosLiterarios.get(0) + " Área: " + areasConocimiento.get(0);
