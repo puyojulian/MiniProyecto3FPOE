@@ -64,7 +64,9 @@ public class MenuPrincipalController {
         agregarRecurso = new AgregarRecurso();
         agregarUsuario = new AgregarUsuario();
         agregarUsuario.addBtnAgregar(listener);
+        agregarUsuarioController = new AgregarUsuarioController(agregarUsuario, usuarioDAO);
         editarUsuario = new EditarUsuario();
+        editarUsuario.addBtnEditar(listener);
         editarUsuarioController = new EditarUsuarioController(editarUsuario, usuarioDAO);
         editarRecurso = new EditarRecurso();
         administrarPrestamos = new AdministrarPrestamos();
@@ -91,7 +93,7 @@ public class MenuPrincipalController {
         mapaPrestamos = prestamoDAO.getPrestamo();
         prestamosActuales();
         
-        agregarUsuarioController = new AgregarUsuarioController(agregarUsuario, usuarioDAO, menuPrincipal, mapaUsuarios, listaMapUsuarios, modeloLista);
+//        agregarUsuarioController = new AgregarUsuarioController(agregarUsuario, usuarioDAO, menuPrincipal, mapaUsuarios, listaMapUsuarios, modeloLista);
     }
 
     private void usuariosActuales(){
@@ -464,6 +466,15 @@ public class MenuPrincipalController {
                 menuPrincipal.getJpBusquedaAvanzada().setVisible(false);
             }    
             else if(e.getSource() == agregarUsuario.getBtnAgregar()) {
+                try {
+                    Thread.sleep(200);
+                    mapaUsuarios = usuarioDAO.getUsuarios();
+                    actualizarJListaUsuarios();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            else if(e.getSource() == editarUsuario.getBtnEditar()) {
                 try {
                     Thread.sleep(200);
                     mapaUsuarios = usuarioDAO.getUsuarios();

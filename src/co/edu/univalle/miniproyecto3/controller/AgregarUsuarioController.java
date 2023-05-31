@@ -29,7 +29,9 @@ public class AgregarUsuarioController {
     private List<Map.Entry<Integer, Usuario>> listaMapUsuarios;
     private DefaultListModel<String> modeloLista;
     
-    public AgregarUsuarioController(AgregarUsuario agregarUsuario, UsuarioDAO usuarioDAO, MenuPrincipal menuPrincipal, Map mapaUsuarios, List<Map.Entry<Integer, Usuario>> listaMapUsuarios, DefaultListModel modeloLista) {
+//    public AgregarUsuarioController(AgregarUsuario agregarUsuario, UsuarioDAO usuarioDAO, MenuPrincipal menuPrincipal, Map mapaUsuarios, List<Map.Entry<Integer, Usuario>> listaMapUsuarios, DefaultListModel modeloLista) {
+    public AgregarUsuarioController(AgregarUsuario agregarUsuario, UsuarioDAO usuarioDAO) {
+
         listaMapUsuarios = new ArrayList<>();
 //        this.modeloLista = modeloLista;
 //        this.listaMapUsuarios = listaMapUsuarios;
