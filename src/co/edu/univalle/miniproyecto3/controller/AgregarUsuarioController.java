@@ -91,6 +91,7 @@ public class AgregarUsuarioController {
                 if (strNombre.isEmpty() || strRol.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Todos los campos deben ser completados", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
+                    
                     crearUsuario(strNombre, strRol);
                     
                     strNombre = "";

@@ -20,6 +20,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 
 public class MenuPrincipalController {
@@ -30,6 +32,8 @@ public class MenuPrincipalController {
     private EditarUsuario editarUsuario;
     private EditarRecurso editarRecurso;
     private AdministrarPrestamos administrarPrestamos;
+    private AgregarUsuarioController agregarUsuarioController;
+    private EditarUsuarioController editarUsuarioController;
     private UsuarioDAO usuarioDAO;
     private RecursoDAO recursoDAO;
     private PrestamoDAO prestamoDAO;
@@ -45,7 +49,6 @@ public class MenuPrincipalController {
     private DefaultListModel<String> modeloLista;
     private DefaultListModel<String> modeloListaResultado;
     private int index;
-    private AgregarUsuarioController agregarUsuarioController;
     
     public MenuPrincipalController(MenuPrincipal menuPrincipal) {
         this.usuarioDAO = new UsuarioDAO();
@@ -56,14 +59,18 @@ public class MenuPrincipalController {
         this.modeloLista = new DefaultListModel<>();
         this.modeloListaResultado = new DefaultListModel<>();
         
+        HandlerActions listener = new HandlerActions();
+        
         agregarRecurso = new AgregarRecurso();
         agregarUsuario = new AgregarUsuario();
+        agregarUsuario.addBtnAgregar(listener);
         editarUsuario = new EditarUsuario();
+        editarUsuarioController = new EditarUsuarioController(editarUsuario, usuarioDAO);
         editarRecurso = new EditarRecurso();
         administrarPrestamos = new AdministrarPrestamos();
 
         
-        HandlerActions listener = new HandlerActions();
+        
         
         menuPrincipal.addBtnRecursos(listener);
         menuPrincipal.addBtnUsuarios(listener);
@@ -149,7 +156,7 @@ public class MenuPrincipalController {
                     listaMapUsuarios = new ArrayList<>(mapaUsuarios.entrySet());
 
                     for (Map.Entry<Integer, Usuario> entry : entrySetMapa){
-                        Integer key = entry.getKey();
+//                        Integer key = entry.getKey();
                         Usuario value = entry.getValue();
 //                        String item = key + ", Usuario: " + value;
                         String item = "" + value;
@@ -180,7 +187,7 @@ public class MenuPrincipalController {
                     listaMapRecursos = new ArrayList<>(mapaRecursos.entrySet());
 
                     for (Map.Entry<String, Recurso> entry : entrySetMapa){
-                        String key = entry.getKey();
+//                        String key = entry.getKey();
                         Recurso value = entry.getValue();
 //                        String item = key + ", Recurso: " + value;
                         String item = "" + value;   
@@ -208,7 +215,7 @@ public class MenuPrincipalController {
                     listaMapPrestamos = new ArrayList<>(mapaPrestamos.entrySet());
 
                     for (Map.Entry<Integer, Prestamo> entry : entrySetMapa){
-                        Integer key = entry.getKey();
+//                        Integer key = entry.getKey();
                         Prestamo value = entry.getValue();
 //                        String item = key + ", Prestamo: " + value;
                         String item = "" + value;
@@ -225,7 +232,7 @@ public class MenuPrincipalController {
                 menuPrincipal.getBtnRadioBusqueda2().setText("Título y Autor");
 
             }
-            else if (e.getSource() == menuPrincipal.getBtnEliminar()) {
+            else if (e.getSource() == menuPrincipal.getBtnEliminar()) { // ELIMINAR
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
                     index = menuPrincipal.getJListIndex();
                     mapaUsuarios = agregarUsuarioController.getMapaUsuarios();
@@ -276,7 +283,7 @@ public class MenuPrincipalController {
                     menuPrincipal.getJpBusquedaAvanzada().setVisible(true);
                 }
             }
-            else if (e.getSource() == menuPrincipal.getBtnAgregar()) {
+            else if (e.getSource() == menuPrincipal.getBtnAgregar()) { // AGREGAR
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
                     agregarUsuario.setVisible(true);
                 }
@@ -287,9 +294,14 @@ public class MenuPrincipalController {
                     administrarPrestamos.setVisible(true);
                 }
             }
-            else if (e.getSource() == menuPrincipal.getBtnActualizar()) {
+            else if (e.getSource() == menuPrincipal.getBtnActualizar()) { // ACTUALIZAR
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
-                    editarUsuario.setVisible(true);
+                    index = menuPrincipal.getJListIndex();
+                    if(index != -1) {
+                        Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
+                        editarUsuario.setVisible(true);
+                        editarUsuarioController.abrirVista(entry.getKey());
+                    } 
                 }
                 else if(menuPrincipal.getBtnRecursos().isSelected()) {
                     editarRecurso.setVisible(true);
@@ -298,7 +310,7 @@ public class MenuPrincipalController {
                     administrarPrestamos.setVisible(true);
                 }
             }
-            else if (e.getSource() == menuPrincipal.getBtnDetalles()) {
+            else if (e.getSource() == menuPrincipal.getBtnDetalles()) { // DETALLES 
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
                     
                 }
@@ -377,6 +389,31 @@ public class MenuPrincipalController {
                 }
                 menuPrincipal.getJpBusquedaAvanzada().setVisible(false);
             }    
+            else if(e.getSource() == agregarUsuario.getBtnAgregar()) {
+                try {
+                    Thread.sleep(200);
+                    mapaUsuarios = usuarioDAO.getUsuarios();
+                    if(mapaUsuarios.size() > 0) {
+                        Set<Map.Entry<Integer, Usuario>> entrySetMapa = mapaUsuarios.entrySet();
+                        modeloLista.clear();
+                        
+                        listaMapUsuarios = new ArrayList<>(mapaUsuarios.entrySet());
+                        
+                        for (Map.Entry<Integer, Usuario> entry : entrySetMapa){
+                            Usuario value = entry.getValue();
+                            String item = "" + value;
+                            modeloLista.addElement(item);
+                        }
+                        menuPrincipal.getJList().setModel(modeloLista);
+                    }
+                    else {
+                        modeloLista.clear();
+                        menuPrincipal.getJList().setModel(modeloLista);
+                    }
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }  
     }
 }

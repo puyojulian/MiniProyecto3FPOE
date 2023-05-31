@@ -50,7 +50,7 @@ public class Usuario {
         this.estadoActivo = estadoActivo;
     }
 
-    public String isRol() {
+    public String getRol() {
         return rol;
     }
 
