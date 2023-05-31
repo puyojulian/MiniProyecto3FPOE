@@ -4,6 +4,10 @@
  */
 package co.edu.univalle.miniproyecto3.vista;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
 /**
  *
  * @author User
@@ -156,6 +160,30 @@ public class EditarUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public JButton getBtnEditar() {
+        return btnEditar;
+    }
+
+    public JComboBox<String> getjCombo() {
+        return jCombo;
+    }
+
+    public JTextField getTxtCodigo() {
+        return txtCodigo;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public JTextField getTxtTipo() {
+        return txtTipo;
+    }
+    
     /**
      * @param args the command line arguments
      */

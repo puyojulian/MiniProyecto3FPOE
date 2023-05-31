@@ -30,6 +30,8 @@ public class MenuPrincipalController {
     private EditarUsuario editarUsuario;
     private EditarRecurso editarRecurso;
     private AdministrarPrestamos administrarPrestamos;
+    private AgregarUsuarioController agregarUsuarioController;
+    private EditarUsuarioController editarUsuarioController;
     private UsuarioDAO usuarioDAO;
     private RecursoDAO recursoDAO;
     private PrestamoDAO prestamoDAO;
@@ -57,7 +59,9 @@ public class MenuPrincipalController {
         
         agregarRecurso = new AgregarRecurso();
         agregarUsuario = new AgregarUsuario();
+        agregarUsuarioController = new AgregarUsuarioController(agregarUsuario, usuarioDAO);
         editarUsuario = new EditarUsuario();
+        editarUsuarioController = new EditarUsuarioController(editarUsuario, usuarioDAO);
         editarRecurso = new EditarRecurso();
         administrarPrestamos = new AdministrarPrestamos();
 
@@ -244,7 +248,7 @@ public class MenuPrincipalController {
                 menuPrincipal.getBtnRadioBusqueda2().setText("Título y Autor");
 
             }
-            else if (e.getSource() == menuPrincipal.getBtnEliminar()) {
+            else if (e.getSource() == menuPrincipal.getBtnEliminar()) { // ELIMINAR
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
                     index = menuPrincipal.getJListIndex();
                     if(index != -1) {
@@ -288,10 +292,10 @@ public class MenuPrincipalController {
                     menuPrincipal.getJpBusquedaAvanzada().setVisible(true);
                 }
             }
-            else if (e.getSource() == menuPrincipal.getBtnAgregar()) {
+            else if (e.getSource() == menuPrincipal.getBtnAgregar()) { // AGREGAR
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
                     agregarUsuario.setVisible(true);
-                    AgregarUsuarioController agregarUsuarioController = new AgregarUsuarioController(agregarUsuario, usuarioDAO);
+                    
                 }
                 else if(menuPrincipal.getBtnRecursos().isSelected()) {
                     agregarRecurso.setVisible(true);
@@ -300,9 +304,14 @@ public class MenuPrincipalController {
                     administrarPrestamos.setVisible(true);
                 }
             }
-            else if (e.getSource() == menuPrincipal.getBtnActualizar()) {
+            else if (e.getSource() == menuPrincipal.getBtnActualizar()) { // ACTUALIZAR
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
-                    editarUsuario.setVisible(true);
+                    index = menuPrincipal.getJListIndex();
+                    if(index != -1) {
+                        Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
+                        editarUsuario.setVisible(true);
+                        editarUsuarioController.abrirVista(entry.getKey());
+                    } 
                 }
                 else if(menuPrincipal.getBtnRecursos().isSelected()) {
                     editarRecurso.setVisible(true);
@@ -311,7 +320,7 @@ public class MenuPrincipalController {
                     administrarPrestamos.setVisible(true);
                 }
             }
-            else if (e.getSource() == menuPrincipal.getBtnDetalles()) {
+            else if (e.getSource() == menuPrincipal.getBtnDetalles()) { // DETALLES 
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
                     
                 }
