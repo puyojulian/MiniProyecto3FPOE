@@ -32,7 +32,8 @@ public class AgregarUsuarioController {
     }
     
     public void crearUsuario(String nombre, String rol) {
-        usuarioDAO.addUsuario(new Usuario(nombre, rol));
+        Usuario usuario = new Usuario(nombre, rol);
+        usuarioDAO.addUsuario(usuario);
     }
     
     class HandlerActions implements ActionListener{
@@ -46,10 +47,10 @@ public class AgregarUsuarioController {
                 if (strNombre.isEmpty() || strRol.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Todos los campos deben ser completados", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    System.out.println("Agregado");
+//                    System.out.println("Agregado");
                     crearUsuario(strNombre, strRol);
                     
-//                    menuPrincipalController.Actualizar(1);
+//                    menuPrincipalController.Actualizar(crearUsuario(strNombre, strRol));
                 }
             }
             if (e.getSource() == agregarUsuario.getBtnVolver()){
