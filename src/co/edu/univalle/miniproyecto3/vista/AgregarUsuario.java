@@ -175,6 +175,14 @@ public class AgregarUsuario extends javax.swing.JFrame {
     public JTextField getTxtTipoUsuario() {
         return txtTipoUsuario;
     }
+
+    public void setTxtNombre(String txtNombre) {
+        this.txtNombre.setText(txtNombre);
+    }
+
+    public void setTxtTipoUsuario(String txtTipoUsuario) {
+        this.txtTipoUsuario.setText(txtTipoUsuario);
+    }
     
     public void addBtnAgregar(ActionListener listener){
         btnAgregar.addActionListener(listener);

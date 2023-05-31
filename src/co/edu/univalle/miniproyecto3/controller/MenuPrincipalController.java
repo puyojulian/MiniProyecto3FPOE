@@ -45,6 +45,7 @@ public class MenuPrincipalController {
     private DefaultListModel<String> modeloLista;
     private DefaultListModel<String> modeloListaResultado;
     private int index;
+    private AgregarUsuarioController agregarUsuarioController;
     
     public MenuPrincipalController(MenuPrincipal menuPrincipal) {
         this.usuarioDAO = new UsuarioDAO();
@@ -82,6 +83,8 @@ public class MenuPrincipalController {
         mapaRecursos = recursoDAO.getRecursos();
         mapaPrestamos = prestamoDAO.getPrestamo();
         prestamosActuales();
+        
+        agregarUsuarioController = new AgregarUsuarioController(agregarUsuario, usuarioDAO, menuPrincipal, mapaUsuarios, listaMapUsuarios, modeloLista);
     }
 
     private void usuariosActuales(){
@@ -103,46 +106,25 @@ public class MenuPrincipalController {
     }
     
     private void prestamosActuales() {
-    Collection<Usuario> usuarios = mapaUsuarios.values();
-    Set<Map.Entry<String, Recurso>> entrySetMapaR = mapaRecursos.entrySet();
-    
-    int count = 1;
-    
-    for (Map.Entry<String, Recurso> entryR : entrySetMapaR) {
-        Recurso valueR = entryR.getValue();
-        
-        if (count > usuarios.size()) {
-            break;
-        }
-        
-        Usuario valueU = usuarios.toArray(new Usuario[0])[count - 1];
-        if (valueR.isDisponible() == true){
-            valueR.setDisponible(false);
-            prestamoDAO.addPrestamo(new Prestamo(valueU, valueR));
-        }
-        
-        count++;
-    }
-}
-    
-    public void Actualizar(int modo) {
-        if (modo == 1) {
-            if(mapaUsuarios.size() > 0) {
-                    Set<Map.Entry<Integer, Usuario>> entrySetMapa = mapaUsuarios.entrySet();
+        Collection<Usuario> usuarios = mapaUsuarios.values();
+        Set<Map.Entry<String, Recurso>> entrySetMapaR = mapaRecursos.entrySet();
 
-                    modeloLista.clear();
+        int count = 1;
 
-                    listaMapUsuarios = new ArrayList<>(mapaUsuarios.entrySet());
+        for (Map.Entry<String, Recurso> entryR : entrySetMapaR) {
+            Recurso valueR = entryR.getValue();
 
-                    for (Map.Entry<Integer, Usuario> entry : entrySetMapa){
-                        Integer key = entry.getKey();
-                        Usuario value = entry.getValue();
-//                        String item = key + ", Usuario: " + value;
-                        String item = "" + value;
-                        modeloLista.addElement(item);
-                    }
-                    menuPrincipal.getJList().setModel(modeloLista);
-                }
+            if (count > usuarios.size()) {
+                break;
+            }
+
+            Usuario valueU = usuarios.toArray(new Usuario[0])[count - 1];
+            if (valueR.isDisponible() == true){
+                valueR.setDisponible(false);
+                prestamoDAO.addPrestamo(new Prestamo(valueU, valueR));
+            }
+
+            count++;
         }
     }
         
@@ -246,6 +228,13 @@ public class MenuPrincipalController {
             else if (e.getSource() == menuPrincipal.getBtnEliminar()) {
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
                     index = menuPrincipal.getJListIndex();
+                    mapaUsuarios = agregarUsuarioController.getMapaUsuarios();
+                    listaMapUsuarios = agregarUsuarioController.getListaMapUsuarios();
+                    modeloLista = agregarUsuarioController.getModeloLista();
+                    
+                    System.out.println(listaMapUsuarios.size());
+                    System.out.println(modeloLista.size());
+                    
                     if(index != -1) {
                         Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
 
@@ -290,7 +279,6 @@ public class MenuPrincipalController {
             else if (e.getSource() == menuPrincipal.getBtnAgregar()) {
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
                     agregarUsuario.setVisible(true);
-                    AgregarUsuarioController agreagarUsuarioController = new AgregarUsuarioController(agregarUsuario, usuarioDAO);
                 }
                 else if(menuPrincipal.getBtnRecursos().isSelected()) {
                     agregarRecurso.setVisible(true);
