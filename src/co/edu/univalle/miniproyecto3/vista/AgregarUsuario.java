@@ -4,6 +4,7 @@
  */
 package co.edu.univalle.miniproyecto3.vista;
 
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -33,11 +34,13 @@ public class AgregarUsuario extends javax.swing.JFrame {
         btnAgregar = new javax.swing.JButton();
         lblNombre = new javax.swing.JLabel();
         lblTipoUsuario = new javax.swing.JLabel();
-        btnCancelar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
         txtTipoUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnAgregar.setText("AGREGAR");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -50,10 +53,10 @@ public class AgregarUsuario extends javax.swing.JFrame {
 
         lblTipoUsuario.setText("TIPO DE USUARIO:");
 
-        btnCancelar.setText("CANCELAR");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setText("VOLVER");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
 
@@ -65,7 +68,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75)
-                .addComponent(btnCancelar)
+                .addComponent(btnVolver)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 19, Short.MAX_VALUE)
@@ -88,7 +91,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
-                    .addComponent(btnCancelar))
+                    .addComponent(btnVolver))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -118,9 +121,9 @@ public class AgregarUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,8 +164,8 @@ public class AgregarUsuario extends javax.swing.JFrame {
         return btnAgregar;
     }
 
-    public JButton getBtnCancelar() {
-        return btnCancelar;
+    public JButton getBtnVolver() {
+        return btnVolver;
     }
 
     public JTextField getTxtNombre() {
@@ -173,11 +176,19 @@ public class AgregarUsuario extends javax.swing.JFrame {
         return txtTipoUsuario;
     }
     
+    public void addBtnAgregar(ActionListener listener){
+        btnAgregar.addActionListener(listener);
+    }
+    
+    public void addBtnVolver(ActionListener listener){
+        btnVolver.addActionListener(listener);
+    }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTipoUsuario;

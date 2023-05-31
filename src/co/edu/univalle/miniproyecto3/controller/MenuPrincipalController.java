@@ -124,6 +124,27 @@ public class MenuPrincipalController {
         count++;
     }
 }
+    
+    public void Actualizar(int modo) {
+        if (modo == 1) {
+            if(mapaUsuarios.size() > 0) {
+                    Set<Map.Entry<Integer, Usuario>> entrySetMapa = mapaUsuarios.entrySet();
+
+                    modeloLista.clear();
+
+                    listaMapUsuarios = new ArrayList<>(mapaUsuarios.entrySet());
+
+                    for (Map.Entry<Integer, Usuario> entry : entrySetMapa){
+                        Integer key = entry.getKey();
+                        Usuario value = entry.getValue();
+//                        String item = key + ", Usuario: " + value;
+                        String item = "" + value;
+                        modeloLista.addElement(item);
+                    }
+                    menuPrincipal.getJList().setModel(modeloLista);
+                }
+        }
+    }
         
     class HandlerActions implements ActionListener{
         @Override
@@ -269,6 +290,7 @@ public class MenuPrincipalController {
             else if (e.getSource() == menuPrincipal.getBtnAgregar()) {
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
                     agregarUsuario.setVisible(true);
+                    AgregarUsuarioController agreagarUsuarioController = new AgregarUsuarioController(agregarUsuario, usuarioDAO);
                 }
                 else if(menuPrincipal.getBtnRecursos().isSelected()) {
                     agregarRecurso.setVisible(true);
