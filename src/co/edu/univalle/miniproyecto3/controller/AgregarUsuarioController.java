@@ -32,8 +32,7 @@ public class AgregarUsuarioController {
     }
     
     public void crearUsuario(String nombre, String rol) {
-        Usuario usuario = new Usuario(nombre, rol);
-        usuarioDAO.addUsuario(usuario);
+        usuarioDAO.addUsuario(new Usuario(nombre, rol));
     }
     
     class HandlerActions implements ActionListener{
@@ -49,7 +48,6 @@ public class AgregarUsuarioController {
                 } else {
 //                    System.out.println("Agregado");
                     crearUsuario(strNombre, strRol);
-                    
 //                    menuPrincipalController.Actualizar(crearUsuario(strNombre, strRol));
                 }
             }

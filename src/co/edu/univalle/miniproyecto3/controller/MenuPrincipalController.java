@@ -20,6 +20,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 
 public class MenuPrincipalController {
@@ -57,8 +59,11 @@ public class MenuPrincipalController {
         this.modeloLista = new DefaultListModel<>();
         this.modeloListaResultado = new DefaultListModel<>();
         
+        HandlerActions listener = new HandlerActions();
+        
         agregarRecurso = new AgregarRecurso();
         agregarUsuario = new AgregarUsuario();
+        agregarUsuario.addBtnAgregar(listener);
         agregarUsuarioController = new AgregarUsuarioController(agregarUsuario, usuarioDAO);
         editarUsuario = new EditarUsuario();
         editarUsuarioController = new EditarUsuarioController(editarUsuario, usuarioDAO);
@@ -66,7 +71,7 @@ public class MenuPrincipalController {
         administrarPrestamos = new AdministrarPrestamos();
 
         
-        HandlerActions listener = new HandlerActions();
+        
         
         menuPrincipal.addBtnRecursos(listener);
         menuPrincipal.addBtnUsuarios(listener);
@@ -79,7 +84,6 @@ public class MenuPrincipalController {
         menuPrincipal.addBtnRadioBusqueda1(listener);
         menuPrincipal.addBtnRadioBusqueda2(listener);
         menuPrincipal.addBtnPopConfirmar(listener);
-        agregarUsuario.addBtnAgregar(listener);
         
         usuariosActuales();
         recursosActuales();
@@ -400,24 +404,28 @@ public class MenuPrincipalController {
                 menuPrincipal.getJpBusquedaAvanzada().setVisible(false);
             }    
             else if(e.getSource() == agregarUsuario.getBtnAgregar()) {
-                mapaUsuarios = usuarioDAO.getUsuarios();
-                if(mapaUsuarios.size() > 0) {
-                    Set<Map.Entry<Integer, Usuario>> entrySetMapa = mapaUsuarios.entrySet();
-
-                    modeloLista.clear();
-
-                    listaMapUsuarios = new ArrayList<>(mapaUsuarios.entrySet());
-
-                    for (Map.Entry<Integer, Usuario> entry : entrySetMapa){
-                        Usuario value = entry.getValue();
-                        String item = "" + value;
-                        modeloLista.addElement(item);
+                try {
+                    Thread.sleep(200);
+                    mapaUsuarios = usuarioDAO.getUsuarios();
+                    if(mapaUsuarios.size() > 0) {
+                        Set<Map.Entry<Integer, Usuario>> entrySetMapa = mapaUsuarios.entrySet();
+                        modeloLista.clear();
+                        
+                        listaMapUsuarios = new ArrayList<>(mapaUsuarios.entrySet());
+                        
+                        for (Map.Entry<Integer, Usuario> entry : entrySetMapa){
+                            Usuario value = entry.getValue();
+                            String item = "" + value;
+                            modeloLista.addElement(item);
+                        }
+                        menuPrincipal.getJList().setModel(modeloLista);
                     }
-                    menuPrincipal.getJList().setModel(modeloLista);
-                }
-                else {
-                    modeloLista.clear();
-                    menuPrincipal.getJList().setModel(modeloLista);
+                    else {
+                        modeloLista.clear();
+                        menuPrincipal.getJList().setModel(modeloLista);
+                    }
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }  
