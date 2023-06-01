@@ -408,7 +408,7 @@ public class MenuPrincipalController {
                     if(index != -1) {
                         Map.Entry<Integer, Prestamo> entry = listaMapPrestamos.get(index);
                         administrarPrestamos.setVisible(true);
-                        administrarPrestamosController.abrirVista(entry.getKey());
+                        administrarPrestamosController.abrirVista();
                     }
                 }
             }

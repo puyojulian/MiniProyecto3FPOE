@@ -5,6 +5,7 @@
 package co.edu.univalle.miniproyecto3.controller;
 
 import co.edu.univalle.miniproyecto3.model.Prestamo;
+import co.edu.univalle.miniproyecto3.model.Usuario;
 import co.edu.univalle.miniproyecto3.repository.PrestamoDAO;
 import co.edu.univalle.miniproyecto3.repository.RecursoDAO;
 import co.edu.univalle.miniproyecto3.vista.AdministrarPrestamos;
@@ -31,7 +32,7 @@ public class AdministrarPrestamosController {
     private DefaultComboBoxModel defaultComboBoxRecurso;
     private javax.swing.JComboBox<String> jComboDevolucionRecursos;
     private List llavesRecursos;
-    private List llavesDevoluciones;
+    private List listaUsuarios;
 
     public AdministrarPrestamosController(AdministrarPrestamos administrarPrestamos, PrestamoDAO prestamoDAO, RecursoDAO recursoDAO) {
         this.administrarPrestamos = administrarPrestamos;
@@ -41,7 +42,7 @@ public class AdministrarPrestamosController {
         defaultComboBoxRecurso = new DefaultComboBoxModel();
         jComboDevolucionRecursos = new javax.swing.JComboBox<>();
         llavesRecursos = new ArrayList<>();
-        llavesDevoluciones = new ArrayList<>();
+        listaUsuarios = new ArrayList<>();
         
         HandlerActions listener = new HandlerActions();
         
@@ -58,26 +59,32 @@ public class AdministrarPrestamosController {
     public void abrirVista() {
 //        llaveTemporal = llave;
 //        prestamoTemporal = prestamoDAO.getPrestamo(llave);
-        mostrarItemsDevolucion(prestamoTemporal);
+        mostrarItemsDevolucion();
 
     }
     
-    public void mostrarItemsDevolucion(Prestamo prestamo) {
+    public void mostrarItemsDevolucion() {
         defaultComboBoxUsuario.removeAllElements();
-        defaultComboBoxRecurso.removeAllElements();
-        defaultComboBoxUsuario.addElement(prestamo.getUsuario().toString());
-//        defaultComboBoxRecurso.addElement(prestamo.getRecurso().toString());
-        
-        int idUsuario  = prestamo.getUsuario().getId();
         
         prestamoDAO.getPrestamos().forEach((clave, valor) -> {
-           if (valor.getUsuario().getId() == idUsuario){
-               llavesDevoluciones.add(clave);
-               defaultComboBoxRecurso.addElement(valor.getRecurso().toString());
-           }
+            defaultComboBoxUsuario.addElement(valor.getUsuario().toString());
+            
+            listaUsuarios.add(valor.getUsuario().getId());
         });
         
         administrarPrestamos.getjComboDevolucionUsuarios().setModel(defaultComboBoxUsuario);
+        mostrarRecursosDevolucion(administrarPrestamos.getjComboDevolucionUsuarios().getSelectedIndex()); 
+    }
+    
+    public void mostrarRecursosDevolucion(Integer index) {;
+        defaultComboBoxRecurso.removeAllElements();
+
+        prestamoDAO.getPrestamos().forEach((clave, valor) -> {
+            if (valor.getUsuario().getId() == (int)listaUsuarios.get(index)) {
+               defaultComboBoxRecurso.addElement(valor.getRecurso().toString());
+            }
+        });
+        
         administrarPrestamos.getjComboDevolucionRecursos().setModel(defaultComboBoxRecurso);
     }
     
@@ -114,23 +121,23 @@ public class AdministrarPrestamosController {
                 if(administrarPrestamos.getjTabbedPane1().getSelectedIndex() == 0){
                     int index = administrarPrestamos.getjComboPrestamoRecursos().getSelectedIndex();
                     System.out.println(index);
-                    System.out.println(llavesDevoluciones.get(index));
-//                    prestamoDAO.deletePrestamo(llavesDevoluciones.get(index));
-                    cleanFields();
+                    prestamoDAO.deletePrestamo(index);
+                    
+//                    cleanFields();
                 }
                 if(administrarPrestamos.getjTabbedPane1().getSelectedIndex() == 1){
                     int index = administrarPrestamos.getjComboPrestamoRecursos().getSelectedIndex();
-                    System.out.println(index);
                     String llave = llavesRecursos.get(index).toString();
                     
                     prestamo = new Prestamo(prestamoTemporal.getUsuario(), recursoDAO.getRecurso(llave) );
                     prestamoDAO.addPrestamo(prestamo);
-                    
-                    System.out.println(llavesRecursos);
                 }
             }
             if (e.getSource() == administrarPrestamos.getBtnVolver()) {
                 administrarPrestamos.dispose();
+            }
+            if (e.getSource() == administrarPrestamos.getjComboDevolucionUsuarios()) {
+                mostrarRecursosDevolucion(administrarPrestamos.getjComboDevolucionUsuarios().getSelectedIndex());
             }
         }
 
@@ -138,7 +145,7 @@ public class AdministrarPrestamosController {
         public void stateChanged(ChangeEvent e) {
             if (e.getSource() == administrarPrestamos.getjTabbedPane1()) {
                 if(administrarPrestamos.getjTabbedPane1().getSelectedIndex() == 0){
-                    mostrarItemsDevolucion(prestamoTemporal);
+                    mostrarItemsDevolucion();
                 }
                 if(administrarPrestamos.getjTabbedPane1().getSelectedIndex() == 1){
                     mostrarItemsPrestamo(prestamoTemporal);
