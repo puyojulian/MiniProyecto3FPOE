@@ -501,6 +501,15 @@ public class MenuPrincipalController {
                     Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            else if(e.getSource() == editarRecurso.getBtnEditar()) {
+                try {
+                    Thread.sleep(200);
+                    mapaRecursos = recursoDAO.getRecursos();
+                    actualizarJListaRecursos();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }  
     }
 }
