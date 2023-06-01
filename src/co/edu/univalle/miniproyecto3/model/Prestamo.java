@@ -23,6 +23,10 @@ public class Prestamo {
         this.id = consecutivo++;
     }
 
+    public int getId() {
+        return id;
+    }
+    
     public Usuario getUsuario() {
         return usuario;
     }

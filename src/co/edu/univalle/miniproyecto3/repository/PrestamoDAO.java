@@ -17,7 +17,7 @@ public class PrestamoDAO implements PrestamoDAOInterface {
     Map <Integer, Prestamo> mapaPrestamos = new HashMap();
 
     @Override
-    public Map<Integer, Prestamo> getPrestamo() {
+    public Map<Integer, Prestamo> getPrestamos() {
         return mapaPrestamos;
     }
 
@@ -28,6 +28,7 @@ public class PrestamoDAO implements PrestamoDAOInterface {
 
     @Override
     public boolean addPrestamo(Prestamo prestamo) {
+        prestamo.getRecurso().setDisponible(false);
         mapaPrestamos.put(mapaPrestamos.size() + 1, prestamo);
         return true;
     }
@@ -47,12 +48,12 @@ public class PrestamoDAO implements PrestamoDAOInterface {
         Recurso recurso;
         recurso = new Recurso();
         
-        prestamo = mapaPrestamos.get(llave);
+        prestamo = mapaPrestamos.get(llave+1);
         recurso = prestamo.getRecurso();
         
         recurso.setDisponible(true);
-        
-        mapaPrestamos.remove(llave);
+ 
+        mapaPrestamos.remove(llave+1);
         return true;
     }
     

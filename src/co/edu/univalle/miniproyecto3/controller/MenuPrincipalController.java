@@ -78,7 +78,7 @@ public class MenuPrincipalController {
         editarRecursoController = new EditarRecursoController(editarRecurso, recursoDAO);
         administrarPrestamos = new AdministrarPrestamos();
         administrarPrestamos.addBtnConfirmar(listener);
-        administrarPrestamosController = new AdministrarPrestamosController(administrarPrestamos, prestamoDAO);
+        administrarPrestamosController = new AdministrarPrestamosController(administrarPrestamos, prestamoDAO, recursoDAO);
         
         menuPrincipal.addBtnRecursos(listener);
         menuPrincipal.addBtnUsuarios(listener);
@@ -97,7 +97,7 @@ public class MenuPrincipalController {
         recursosActuales();
         mapaUsuarios = usuarioDAO.getUsuarios();
         mapaRecursos = recursoDAO.getRecursos();
-        mapaPrestamos = prestamoDAO.getPrestamo();
+        mapaPrestamos = prestamoDAO.getPrestamos();
         prestamosActuales();
         
 //        agregarUsuarioController = new AgregarUsuarioController(agregarUsuario, usuarioDAO, menuPrincipal, mapaUsuarios, listaMapUsuarios, modeloLista);
@@ -183,6 +183,10 @@ public class MenuPrincipalController {
                 modeloLista.addElement(item);
             }
             menuPrincipal.getJList().setModel(modeloLista);
+            
+            mapaRecursos.forEach((clave, valor) -> {
+            System.out.println(clave + ": " + valor);
+            });
         }
         else {
             modeloLista.clear();
@@ -225,6 +229,8 @@ public class MenuPrincipalController {
                 
                 menuPrincipal.getBtnRadioBusqueda1().setText("Nombre y Código");
                 menuPrincipal.getBtnRadioBusqueda2().setText("Nombre y Rol");
+                menuPrincipal.getBtnAgregar().setEnabled(true);
+                menuPrincipal.getBtnEliminar().setEnabled(true);
                 
                 actualizarJListaUsuarios();
 //                if(mapaUsuarios.size() > 0) {
@@ -259,6 +265,8 @@ public class MenuPrincipalController {
                 
                 menuPrincipal.getBtnRadioBusqueda1().setText("Título y Autor");
                 menuPrincipal.getBtnRadioBusqueda2().setText("Título y Género");
+                menuPrincipal.getBtnAgregar().setEnabled(true);
+                menuPrincipal.getBtnEliminar().setEnabled(true);
                 
 //                if(mapaRecursos.size() > 0) {
 //                    Set<Map.Entry<String, Recurso>> entrySetMapa = mapaRecursos.entrySet();
@@ -288,6 +296,11 @@ public class MenuPrincipalController {
                 menuPrincipal.getBtnUsuarios().setEnabled(true);
                 menuPrincipal.getBtnPrestamos().setEnabled(false);
                 
+                menuPrincipal.getBtnRadioBusqueda1().setText("Nombre y Fecha");
+                menuPrincipal.getBtnRadioBusqueda2().setText("Título y Autor");
+                menuPrincipal.getBtnAgregar().setEnabled(false);
+                menuPrincipal.getBtnEliminar().setEnabled(false);
+                
                 actualizarJListaPrestamos();
                 
 //                if(mapaPrestamos.size() > 0) {
@@ -310,10 +323,6 @@ public class MenuPrincipalController {
 //                    modeloLista.clear();
 //                    jLista.setModel(modeloLista);
 //                }
-                
-                menuPrincipal.getBtnRadioBusqueda1().setText("Nombre y Fecha");
-                menuPrincipal.getBtnRadioBusqueda2().setText("Título y Autor");
-
             }
             else if (e.getSource() == menuPrincipal.getBtnEliminar()) { // ELIMINAR
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
@@ -347,16 +356,16 @@ public class MenuPrincipalController {
                         menuPrincipal.getJList().setModel(modeloLista);
                     }
                 }
-                else if(menuPrincipal.getBtnPrestamos().isSelected()) {
-                    index = menuPrincipal.getJListIndex();
-                    Map.Entry<Integer, Prestamo> entry = listaMapPrestamos.get(index);
-                    
-                    prestamoDAO.deletePrestamo((entry.getKey()));
-                    listaMapPrestamos.remove(index);
-                    modeloLista.remove(index); 
-
-                    menuPrincipal.getJList().setModel(modeloLista);
-                }
+//                else if(menuPrincipal.getBtnPrestamos().isSelected()) {
+//                    index = menuPrincipal.getJListIndex();
+//                    Map.Entry<Integer, Prestamo> entry = listaMapPrestamos.get(index);
+//                    
+//                    prestamoDAO.deletePrestamo((entry.getKey()));
+//                    listaMapPrestamos.remove(index);
+//                    modeloLista.remove(index); 
+//
+//                    menuPrincipal.getJList().setModel(modeloLista);
+//                }
             }
             else if (e.getSource() == menuPrincipal.getBtnBusqueda()) { // Obtener JPanel de Busqueda Avanzada.
                 if(menuPrincipal.getJpBusquedaAvanzada().isVisible()) {
@@ -373,9 +382,9 @@ public class MenuPrincipalController {
                 else if(menuPrincipal.getBtnRecursos().isSelected()) {
                     agregarRecurso.setVisible(true);
                 }
-                else if(menuPrincipal.getBtnPrestamos().isSelected()) {
-                    administrarPrestamos.setVisible(true);
-                }
+//                else if(menuPrincipal.getBtnPrestamos().isSelected()) {
+//                    administrarPrestamos.setVisible(true);
+//                }
             }
             else if (e.getSource() == menuPrincipal.getBtnActualizar()) { // ACTUALIZAR
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
@@ -395,7 +404,12 @@ public class MenuPrincipalController {
                     }
                 }
                 else if(menuPrincipal.getBtnPrestamos().isSelected()) {
-                    administrarPrestamos.setVisible(true);
+                    index = menuPrincipal.getJListIndex();
+                    if(index != -1) {
+                        Map.Entry<Integer, Prestamo> entry = listaMapPrestamos.get(index);
+                        administrarPrestamos.setVisible(true);
+                        administrarPrestamosController.abrirVista(entry.getKey());
+                    }
                 }
             }
             else if (e.getSource() == menuPrincipal.getBtnDetalles()) { // DETALLES 
@@ -516,7 +530,7 @@ public class MenuPrincipalController {
             else if(e.getSource() == administrarPrestamos.getBtnConfirmar()) {
                 try {
                     Thread.sleep(200);
-                    mapaPrestamos = prestamoDAO.getPrestamo();
+                    mapaPrestamos = prestamoDAO.getPrestamos();
                     actualizarJListaPrestamos();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);

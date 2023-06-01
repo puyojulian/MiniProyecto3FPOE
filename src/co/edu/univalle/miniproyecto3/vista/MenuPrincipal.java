@@ -302,7 +302,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public JButton getBtnBuscar() {
         return btnBuscar;
     }
-
+    
     public JButton getBtnBusqueda() {
         return btnBusqueda;
     }
