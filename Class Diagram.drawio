@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-06-01T19:56:42.674Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="e4krM6Y5stK1sCHqPKDN" version="21.3.6" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-01T19:57:13.887Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="lPKnreNSIoNXjmbA5aaU" version="21.3.6" type="github">
   <diagram id="eEuae1JQCu5OSizYnwCm" name="Clases">
     <mxGraphModel dx="-399" dy="837" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
@@ -608,7 +608,7 @@
         <mxCell id="NglG0VcA6JqtisvNWovp-61" value="+ changedUpdate(e: DocumentEvent): void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-47">
           <mxGeometry y="410" width="270" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="NglG0VcA6JqtisvNWovp-120" value="Vusta" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="NglG0VcA6JqtisvNWovp-120" value="Vista" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="2690" y="880" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="NglG0VcA6JqtisvNWovp-121" value="EditarUsuario" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
