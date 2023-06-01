@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public interface PrestamoDAOInterface {
     
-    public Map<Integer, Prestamo> getPrestamo();
+    public Map<Integer, Prestamo> getPrestamos();
     
     public Prestamo getPrestamo(Integer llave);
     
