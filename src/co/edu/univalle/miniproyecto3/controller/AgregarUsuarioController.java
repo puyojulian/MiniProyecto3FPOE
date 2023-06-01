@@ -7,14 +7,8 @@ package co.edu.univalle.miniproyecto3.controller;
 import co.edu.univalle.miniproyecto3.model.Usuario;
 import co.edu.univalle.miniproyecto3.repository.UsuarioDAO;
 import co.edu.univalle.miniproyecto3.vista.AgregarUsuario;
-import co.edu.univalle.miniproyecto3.vista.MenuPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,21 +18,11 @@ import javax.swing.JOptionPane;
 public class AgregarUsuarioController {
     private UsuarioDAO usuarioDAO;
     private AgregarUsuario agregarUsuario;
-//    private MenuPrincipal menuPrincipal;
-//    private Map mapaUsuarios;
-//    private List<Map.Entry<Integer, Usuario>> listaMapUsuarios;
-//    private DefaultListModel<String> modeloLista;
-    
-//    public AgregarUsuarioController(AgregarUsuario agregarUsuario, UsuarioDAO usuarioDAO, MenuPrincipal menuPrincipal, Map mapaUsuarios, List<Map.Entry<Integer, Usuario>> listaMapUsuarios, DefaultListModel modeloLista) {
+
     public AgregarUsuarioController(AgregarUsuario agregarUsuario, UsuarioDAO usuarioDAO) {
 
-//        listaMapUsuarios = new ArrayList<>();
-//        this.modeloLista = modeloLista;
-//        this.listaMapUsuarios = listaMapUsuarios;
         this.agregarUsuario = agregarUsuario;
         this.usuarioDAO = usuarioDAO;
-//        this.menuPrincipal = menuPrincipal;
-//        this.mapaUsuarios = mapaUsuarios;
         
         HandlerActions listener = new HandlerActions();
         
@@ -51,37 +35,7 @@ public class AgregarUsuarioController {
     public void crearUsuario(String nombre, String rol) {
         usuarioDAO.addUsuario(new Usuario(nombre, rol));
     }
-    
-//    public DefaultListModel Actualizar() {
-//        if(mapaUsuarios.size() > 0) {
-//            Set<Map.Entry<Integer, Usuario>> entrySetMapa = mapaUsuarios.entrySet();
-//
-//            listaMapUsuarios = new ArrayList<>(entrySetMapa);
-//            
-//            modeloLista.clear();
-//
-//            for (Map.Entry<Integer, Usuario> entry : listaMapUsuarios){
-//                Integer key = entry.getKey();
-//                Usuario value = entry.getValue();
-//                String item = "" + value;
-//                modeloLista.addElement(item);
-//            }
-//        }
-//        return modeloLista;
-//    }
-
-//    public Map getMapaUsuarios() {
-//        return mapaUsuarios;
-//    }
-
-//    public List<Map.Entry<Integer, Usuario>> getListaMapUsuarios() {
-//        return listaMapUsuarios;
-//    }
-//
-//    public DefaultListModel<String> getModeloLista() {
-//        return modeloLista;
-//    }
-    
+       
     class HandlerActions implements ActionListener{
 
         @Override
@@ -103,7 +57,6 @@ public class AgregarUsuarioController {
                     
                     agregarUsuario.setTxtNombre(strNombre);
                     agregarUsuario.setTxtTipoUsuario(strRol);
-//                    menuPrincipal.getJList().setModel(Actualizar());
                 }
             }
             if (e.getSource() == agregarUsuario.getBtnVolver()){

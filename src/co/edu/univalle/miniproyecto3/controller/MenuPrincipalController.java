@@ -35,6 +35,7 @@ public class MenuPrincipalController {
     private AgregarRecursoController agregarRecursoController;
     private AgregarUsuarioController agregarUsuarioController;
     private EditarUsuarioController editarUsuarioController;
+    private EditarRecursoController editarRecursoController;
     private UsuarioDAO usuarioDAO;
     private RecursoDAO recursoDAO;
     private PrestamoDAO prestamoDAO;
@@ -72,10 +73,9 @@ public class MenuPrincipalController {
         editarUsuario.addBtnEditar(listener);
         editarUsuarioController = new EditarUsuarioController(editarUsuario, usuarioDAO);
         editarRecurso = new EditarRecurso();
+        editarRecurso.addBtnEditar(listener);
+        editarRecursoController = new EditarRecursoController(editarRecurso, recursoDAO);
         administrarPrestamos = new AdministrarPrestamos();
-
-        
-        
         
         menuPrincipal.addBtnRecursos(listener);
         menuPrincipal.addBtnUsuarios(listener);
@@ -384,7 +384,12 @@ public class MenuPrincipalController {
                     } 
                 }
                 else if(menuPrincipal.getBtnRecursos().isSelected()) {
-                    editarRecurso.setVisible(true);
+                    index = menuPrincipal.getJListIndex();
+                    if(index != -1) {
+                        Map.Entry<String, Recurso> entry = listaMapRecursos.get(index);
+                        editarRecurso.setVisible(true);
+                        editarRecursoController.abrirVista(entry.getKey());
+                    }
                 }
                 else if(menuPrincipal.getBtnPrestamos().isSelected()) {
                     administrarPrestamos.setVisible(true);
