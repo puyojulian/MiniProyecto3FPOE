@@ -50,6 +50,8 @@ public class EditarRecurso extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        setLocationRelativeTo(null);
+
         btnCancelar.setText("VOLVER");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,7 +276,6 @@ public class EditarRecurso extends javax.swing.JFrame {
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblISBN;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextField txtISBN;

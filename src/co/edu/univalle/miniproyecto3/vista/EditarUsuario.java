@@ -46,6 +46,8 @@ public class EditarUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        setLocationRelativeTo(null);
+
         lblNombre.setText("NOMBRE:");
 
         lblTipo.setText("TIPO DE USUARIO:");
