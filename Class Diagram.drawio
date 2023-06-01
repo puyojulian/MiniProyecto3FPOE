@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-06-01T19:31:05.736Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="Aa6z_XJh6etU8n7TfgUS" version="21.3.6" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-01T19:53:31.844Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="tgySPzoh2hSVcRGkFV_0" version="21.3.6" type="github">
   <diagram id="eEuae1JQCu5OSizYnwCm" name="Clases">
-    <mxGraphModel dx="759" dy="2303" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1470" dy="3070" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -191,7 +191,7 @@
           <mxGeometry y="424" width="230" height="26" as="geometry" />
         </mxCell>
         <mxCell id="9MVvQYMJY0EsTZ2StRbT-1" value="PrestamoDAOInterface" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
-          <mxGeometry x="2050" y="310" width="230" height="170" as="geometry">
+          <mxGeometry x="2370" y="350" width="230" height="170" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -211,10 +211,10 @@
           <mxGeometry y="140" width="230" height="26" as="geometry" />
         </mxCell>
         <mxCell id="9MVvQYMJY0EsTZ2StRbT-12" value="Repository" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="2365" y="10" width="110" height="20" as="geometry" />
+          <mxGeometry x="2685" y="50" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="9MVvQYMJY0EsTZ2StRbT-43" value="RecursoDAO" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
-          <mxGeometry x="2300" y="40" width="240" height="240" as="geometry">
+          <mxGeometry x="2620" y="80" width="240" height="240" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -243,7 +243,7 @@
           <mxGeometry y="206" width="240" height="26" as="geometry" />
         </mxCell>
         <mxCell id="9MVvQYMJY0EsTZ2StRbT-61" value="PrestamoDAO" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
-          <mxGeometry x="2020" y="40" width="260" height="220" as="geometry">
+          <mxGeometry x="2340" y="80" width="260" height="220" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -269,7 +269,7 @@
           <mxGeometry y="180" width="260" height="26" as="geometry" />
         </mxCell>
         <mxCell id="9MVvQYMJY0EsTZ2StRbT-79" value="UsuarioDAO" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
-          <mxGeometry x="2560" y="40" width="250" height="200" as="geometry">
+          <mxGeometry x="2880" y="80" width="250" height="200" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -295,7 +295,7 @@
           <mxGeometry y="164" width="250" height="26" as="geometry" />
         </mxCell>
         <mxCell id="9MVvQYMJY0EsTZ2StRbT-97" value="RecursoDAOInterface" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
-          <mxGeometry x="2300" y="310" width="240" height="170" as="geometry">
+          <mxGeometry x="2620" y="350" width="240" height="170" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -315,7 +315,7 @@
           <mxGeometry y="140" width="240" height="26" as="geometry" />
         </mxCell>
         <mxCell id="9MVvQYMJY0EsTZ2StRbT-108" value="UsuarioDAOInterface" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
-          <mxGeometry x="2560" y="310" width="240" height="180" as="geometry">
+          <mxGeometry x="2880" y="350" width="240" height="180" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -335,10 +335,10 @@
           <mxGeometry y="140" width="240" height="26" as="geometry" />
         </mxCell>
         <mxCell id="9MVvQYMJY0EsTZ2StRbT-126" value="Controller" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1690" y="1000" width="110" height="20" as="geometry" />
+          <mxGeometry x="1630" y="960" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="9MVvQYMJY0EsTZ2StRbT-164" value="MenuPrincipalController" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
-          <mxGeometry x="1200" y="1040" width="370" height="900" as="geometry">
+          <mxGeometry x="1140" y="1000" width="370" height="900" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -445,7 +445,7 @@
           <mxGeometry y="866" width="370" height="26" as="geometry" />
         </mxCell>
         <mxCell id="NglG0VcA6JqtisvNWovp-1" value="EditarRecursoController" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="1610" y="1040" width="270" height="438" as="geometry">
+          <mxGeometry x="1550" y="1000" width="270" height="438" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -498,7 +498,7 @@
           <mxGeometry y="412" width="270" height="26" as="geometry" />
         </mxCell>
         <mxCell id="NglG0VcA6JqtisvNWovp-19" value="EditarUsuarioController" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="1910" y="1040" width="280" height="290" as="geometry">
+          <mxGeometry x="1850" y="1000" width="280" height="290" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -533,7 +533,7 @@
           <mxGeometry y="256" width="280" height="26" as="geometry" />
         </mxCell>
         <mxCell id="NglG0VcA6JqtisvNWovp-36" value="AgregarUsuarioController" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="1910" y="1350" width="280" height="210" as="geometry">
+          <mxGeometry x="1850" y="1310" width="280" height="210" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -559,7 +559,7 @@
           <mxGeometry y="178" width="280" height="26" as="geometry" />
         </mxCell>
         <mxCell id="NglG0VcA6JqtisvNWovp-47" value="AgregarRecursoController" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="1610" y="1510" width="270" height="440" as="geometry">
+          <mxGeometry x="1550" y="1470" width="270" height="440" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -607,6 +607,291 @@
         </mxCell>
         <mxCell id="NglG0VcA6JqtisvNWovp-61" value="+ changedUpdate(e: DocumentEvent): void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-47">
           <mxGeometry y="410" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-120" value="Vusta" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2690" y="880" width="110" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-121" value="EditarUsuario" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="2690" y="940" width="270" height="768" as="geometry">
+            <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-122" value="- buttonGroup1: javax.swing.ButtonGroup  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="26" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-123" value="- jPanel1: javax.swing.JPanel      " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="52" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-124" value="- lblNombre: javax.swing.JLabel  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="78" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-125" value="- lblTipo: javax.swing.JLabel     " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="104" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-126" value="- txtNombre: javax.swing.JTextField     " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="130" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-127" value="- txtTipo: javax.swing.JTextField  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="156" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-212" value="- lblEstado: javax.swing.JLabel   " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="182" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-214" value="- jCombo: javax.swing.JComboBox&lt;String&gt; " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="208" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-215" value="- btnEditar: javax.swing.JButton  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="234" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-216" value="- btnCancelar: javax.swing.JButton  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="260" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-218" value="- txtCodigo: javax.swing.JTextField  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="286" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-217" value="- lblCodigo: javax.swing.JLabel    " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="312" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-128" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="338" width="270" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-219" value="+ EditarUsuario() : void  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="346" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-129" value="+ btnCancelarActionPerformed(evt: &#xa;   java.awt.event.ActionEvent) : void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="372" width="270" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-220" value="+ btnEditarActionPerformed(evt: &#xa;   java.awt.event.ActionEvent) : void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="412" width="270" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-221" value="+ txtNombreActionPerformed(evt: &#xa;   java.awt.event.ActionEvent) : void " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="452" width="270" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-130" value="+ getBtnCancelar() : JButton" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="492" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-131" value="+ getBtnEditar() : JButton      " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="518" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-132" value="+ getJCombo() : JComboBox&lt;String&gt;  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="544" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-133" value="+ getTxtCodigo() : JTextField " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="570" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-134" value="+ getTxtNombre() : JTextField " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="596" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-135" value="+ getTxtTipo() : JTextField " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="622" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-222" value="+ addBtnCancelar(listener: &#xa;   java.awt.event.ActionListener) : void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="648" width="270" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-223" value="+ addBtnEditar(listener: &#xa;   java.awt.event.ActionListener) : void " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="688" width="270" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-224" value="+ addComboBox(listener: &#xa;   java.awt.event.ActionListener) : void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-121">
+          <mxGeometry y="728" width="270" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-173" value="MenuPrincipal" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="2300" y="940" width="370" height="840" as="geometry">
+            <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-174" value="- btnActualizar: JButton    " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="26" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-175" value="- btnAgregar: JButton  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="52" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-176" value="- btnBuscar: JButton   " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="78" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-177" value="- btnBusqueda: JButton   " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="104" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-178" value="- btnEliminar: JButton  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="130" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-179" value="- btnPrestamos: JToggleButton " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="156" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-180" value="- btnRecursos: JToggleButton" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="182" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-181" value="- btnUsuarios: JToggleButton" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="208" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-182" value="- jList: JList&lt;String&gt; " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="234" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-183" value="- jpContenido: JPanel " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="260" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-184" value="- jpOpciones: JPanel " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="286" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-185" value="- jpBusquedaAvanzada: JPanel  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="312" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-186" value="- txtBuscar: JTextField        " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="338" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-187" value="- btnRadioBusqueda1: JRadioButton  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="364" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-188" value="- btnRadioBusqueda2: JRadioButton " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="390" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-189" value="- btnPopConfirmar: JButton  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="416" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-190" value="- txtBusqueda1: JTextField " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="442" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-191" value="- txtBusqueda2: JTextField   " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="468" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-192" value="- jLayeredPane1: JLayeredPane  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="494" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-200" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="520" width="370" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-201" value="+MenuPrincipal() : void   " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="528" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-202" value="+main(args: String[]) : void   " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="554" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-203" value="+getBtnActualizar() : JButton" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="580" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-204" value="+getBtnAgregar() : JButton " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="606" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-205" value="+getBtnBuscar() : JButton " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="632" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-206" value="+getBtnBusqueda() : JButton " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="658" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-207" value="+getBtnEliminar() : JButton  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="684" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-197" value="+getBtnPrestamos() : JToggleButton" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="710" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-199" value="+getBtnRecursos() : JToggleButton      " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="736" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-208" value="+getBtnUsuarios() : JToggleButton  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="762" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-209" value="+getJList() : JList&lt;String&gt; " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="788" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-210" value="+getJListIndex() : int          " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-173">
+          <mxGeometry y="814" width="370" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-225" value="EditarRecurso" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="2990" y="940" width="270" height="814" as="geometry">
+            <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-226" value="- btnCancelar: JButton" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="26" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-227" value="- btnEditar: JButton" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="52" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-228" value="- btnModificar: JButton" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="78" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-229" value="- btnRadioArea: JRadioButton" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="104" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-230" value="- btnRadioAutor: JRadioButton " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="130" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-231" value="- btnRadioGenero: JRadioButton " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="156" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-232" value="- buttonGroup1: ButtonGroup " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="182" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-233" value="- jList1: JList&lt;String&gt; " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="208" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-234" value="- txtISBN: JTextField  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="234" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-235" value="- txtTitulo: JTextField" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="260" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-236" value="- txtValorLista: JTextField" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="286" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-252" value="+ EditarUsuario() : void  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="312" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-253" value="- btnCancelarActionPerformed() " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="338" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-238" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="364" width="270" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-239" value="+ EditarRecurso()  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="372" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-243" value="+ getBtnCancelar() : JButton" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="398" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-244" value="+ getBtnEditar() : JButton      " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="424" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-245" value="+ getBtnModificar(): JButton  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="450" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-246" value="+ getBtnRadioArea(): JRadioButton  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="476" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-247" value="+ getBtnRadioAutor(): JRadioButton " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="502" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-248" value="+ getBtnRadioGenero(): JRadioButton" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="528" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-254" value="+ getJList(): JList&lt;String&gt;   " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="554" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-257" value="+ getTxtISBN(): JTextField " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="580" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-261" value="+ getTxtTitulo(): JTextField" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="606" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-260" value="+ getTxtValorLista(): JTextField  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="632" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-259" value="+ addBtnEditar(ActionListener) " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="658" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-258" value="+ addBtnCancelar(ActionListener)  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="684" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-256" value="+ addBtnModificar(ActionListener)  " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="710" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-255" value="+ addBtnRadioAutor(ActionListener)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="736" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-262" value="+ addBtnRadioGenero(ActionListener)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="762" width="270" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="NglG0VcA6JqtisvNWovp-263" value="+ addBtnRadioArea(ActionListener) " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="NglG0VcA6JqtisvNWovp-225">
+          <mxGeometry y="788" width="270" height="26" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
