@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-06-01T04:18:06.505Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="t-jVpXeyA9As5--9Rlzb" version="21.3.6" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-01T04:20:04.184Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="hAhGo0xfYXQFYIm6rn3Y" version="21.3.6" type="github">
   <diagram id="eEuae1JQCu5OSizYnwCm" name="Clases">
-    <mxGraphModel dx="-743" dy="558" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="38" dy="1580" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -191,7 +191,7 @@
           <mxGeometry y="424" width="230" height="26" as="geometry" />
         </mxCell>
         <mxCell id="9MVvQYMJY0EsTZ2StRbT-1" value="PrestamoDAOInterface" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="2250" y="340" width="230" height="170" as="geometry">
+          <mxGeometry x="2050" y="310" width="230" height="170" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -211,10 +211,10 @@
           <mxGeometry y="140" width="230" height="26" as="geometry" />
         </mxCell>
         <mxCell id="9MVvQYMJY0EsTZ2StRbT-12" value="Repository" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="2300" y="30" width="110" height="20" as="geometry" />
+          <mxGeometry x="2365" y="10" width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="9MVvQYMJY0EsTZ2StRbT-43" value="RecursoDAO" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="2500" y="70" width="240" height="240" as="geometry">
+          <mxGeometry x="2300" y="40" width="240" height="240" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -243,7 +243,7 @@
           <mxGeometry y="206" width="240" height="26" as="geometry" />
         </mxCell>
         <mxCell id="9MVvQYMJY0EsTZ2StRbT-61" value="PrestamoDAO" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="2220" y="70" width="260" height="220" as="geometry">
+          <mxGeometry x="2020" y="40" width="260" height="220" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -269,7 +269,7 @@
           <mxGeometry y="180" width="260" height="26" as="geometry" />
         </mxCell>
         <mxCell id="9MVvQYMJY0EsTZ2StRbT-79" value="UsuarioDAO" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="2760" y="70" width="250" height="200" as="geometry">
+          <mxGeometry x="2560" y="40" width="250" height="200" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -295,7 +295,7 @@
           <mxGeometry y="164" width="250" height="26" as="geometry" />
         </mxCell>
         <mxCell id="9MVvQYMJY0EsTZ2StRbT-97" value="RecursoDAOInterface" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="2500" y="340" width="240" height="170" as="geometry">
+          <mxGeometry x="2300" y="310" width="240" height="170" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -315,7 +315,7 @@
           <mxGeometry y="140" width="240" height="26" as="geometry" />
         </mxCell>
         <mxCell id="9MVvQYMJY0EsTZ2StRbT-108" value="UsuarioDAOInterface" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="2760" y="340" width="240" height="180" as="geometry">
+          <mxGeometry x="2560" y="310" width="240" height="180" as="geometry">
             <mxRectangle x="130" y="380" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
