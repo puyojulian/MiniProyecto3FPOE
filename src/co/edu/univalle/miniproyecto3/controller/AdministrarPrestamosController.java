@@ -4,10 +4,19 @@
  */
 package co.edu.univalle.miniproyecto3.controller;
 
+import co.edu.univalle.miniproyecto3.repository.PrestamoDAO;
+import co.edu.univalle.miniproyecto3.vista.AdministrarPrestamos;
+
 /**
  *
  * @author User
  */
 public class AdministrarPrestamosController {
-    
+    private AdministrarPrestamos administrarPrestamos;
+    private PrestamoDAO prestamoDAO;
+
+    public AdministrarPrestamosController(AdministrarPrestamos administrarPrestamos, PrestamoDAO prestamoDAO) {
+        this.administrarPrestamos = administrarPrestamos;
+        this.prestamoDAO = prestamoDAO;
+    }   
 }

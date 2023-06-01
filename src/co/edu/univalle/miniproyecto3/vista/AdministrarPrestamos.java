@@ -4,6 +4,11 @@
  */
 package co.edu.univalle.miniproyecto3.vista;
 
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JTabbedPane;
+
 /**
  *
  * @author User
@@ -45,18 +50,8 @@ public class AdministrarPrestamos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnConfirmar.setText("CONFIRMAR");
-        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfirmarActionPerformed(evt);
-            }
-        });
 
         btnVolver.setText("VOLVER");
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
-            }
-        });
 
         jComboPrestamoUsuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -65,11 +60,6 @@ public class AdministrarPrestamos extends javax.swing.JFrame {
         jLabel2.setText("Recursos Disponibles");
 
         jComboPrestamoRecursos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboPrestamoRecursos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboPrestamoRecursosActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -203,22 +193,62 @@ public class AdministrarPrestamos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnConfirmarActionPerformed
-
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVolverActionPerformed
-
-    private void jComboPrestamoRecursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboPrestamoRecursosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboPrestamoRecursosActionPerformed
-
     private void jComboDevolucionRecursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboDevolucionRecursosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboDevolucionRecursosActionPerformed
 
+    public JButton getBtnConfirmar() {
+        return btnConfirmar;
+    }
+
+    public JButton getBtnVolver() {
+        return btnVolver;
+    }
+
+    public JComboBox<String> getjComboDevolucionRecursos() {
+        return jComboDevolucionRecursos;
+    }
+
+    public JComboBox<String> getjComboDevolucionUsuarios() {
+        return jComboDevolucionUsuarios;
+    }
+
+    public JComboBox<String> getjComboPrestamoRecursos() {
+        return jComboPrestamoRecursos;
+    }
+
+    public JComboBox<String> getjComboPrestamoUsuarios() {
+        return jComboPrestamoUsuarios;
+    }
+
+    public JTabbedPane getjTabbedPane1() {
+        return jTabbedPane1;
+    }
+    
+    public void addBtnConfirmar(ActionListener listener){
+        btnConfirmar.addActionListener(listener);
+    }
+    
+    public void addBtnVolver(ActionListener listener){
+        btnVolver.addActionListener(listener);
+    }
+    
+    public void addjComboDevolucionRecursos(ActionListener listener){
+        jComboDevolucionRecursos.addActionListener(listener);
+    }
+    
+    public void addjComboDevolucionUsuarios(ActionListener listener){
+        jComboDevolucionUsuarios.addActionListener(listener);
+    }
+    
+    public void addjComboPrestamoRecursos(ActionListener listener){
+        jComboPrestamoRecursos.addActionListener(listener);
+    }
+    
+    public void addjComboPrestamoUsuarios(ActionListener listener){
+        jComboPrestamoUsuarios.addActionListener(listener);
+    }
+    
     /**
      * @param args the command line arguments
      */

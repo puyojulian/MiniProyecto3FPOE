@@ -36,6 +36,7 @@ public class MenuPrincipalController {
     private AgregarUsuarioController agregarUsuarioController;
     private EditarUsuarioController editarUsuarioController;
     private EditarRecursoController editarRecursoController;
+    private AdministrarPrestamosController administrarPrestamosController;
     private UsuarioDAO usuarioDAO;
     private RecursoDAO recursoDAO;
     private PrestamoDAO prestamoDAO;
@@ -76,6 +77,8 @@ public class MenuPrincipalController {
         editarRecurso.addBtnEditar(listener);
         editarRecursoController = new EditarRecursoController(editarRecurso, recursoDAO);
         administrarPrestamos = new AdministrarPrestamos();
+        administrarPrestamos.addBtnConfirmar(listener);
+        administrarPrestamosController = new AdministrarPrestamosController(administrarPrestamos, prestamoDAO);
         
         menuPrincipal.addBtnRecursos(listener);
         menuPrincipal.addBtnUsuarios(listener);
@@ -506,6 +509,15 @@ public class MenuPrincipalController {
                     Thread.sleep(200);
                     mapaRecursos = recursoDAO.getRecursos();
                     actualizarJListaRecursos();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            else if(e.getSource() == administrarPrestamos.getBtnConfirmar()) {
+                try {
+                    Thread.sleep(200);
+                    mapaPrestamos = prestamoDAO.getPrestamo();
+                    actualizarJListaPrestamos();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
                 }
