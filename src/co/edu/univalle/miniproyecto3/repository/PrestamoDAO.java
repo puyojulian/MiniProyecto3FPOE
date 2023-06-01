@@ -48,12 +48,12 @@ public class PrestamoDAO implements PrestamoDAOInterface {
         Recurso recurso;
         recurso = new Recurso();
         
-        prestamo = mapaPrestamos.get(llave+1);
+        prestamo = mapaPrestamos.get(llave + 1);
         recurso = prestamo.getRecurso();
         
         recurso.setDisponible(true);
  
-        mapaPrestamos.remove(llave+1);
+        mapaPrestamos.remove(llave + 1);
         return true;
     }
     
