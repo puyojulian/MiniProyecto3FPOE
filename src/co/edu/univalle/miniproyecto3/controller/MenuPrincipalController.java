@@ -404,12 +404,8 @@ public class MenuPrincipalController {
                     }
                 }
                 else if(menuPrincipal.getBtnPrestamos().isSelected()) {
-                    index = menuPrincipal.getJListIndex();
-                    if(index != -1) {
-                        Map.Entry<Integer, Prestamo> entry = listaMapPrestamos.get(index);
-                        administrarPrestamos.setVisible(true);
-                        administrarPrestamosController.abrirVista();
-                    }
+                    administrarPrestamos.setVisible(true);
+                    administrarPrestamosController.abrirVista();
                 }
             }
             else if (e.getSource() == menuPrincipal.getBtnDetalles()) { // DETALLES 
