@@ -81,6 +81,9 @@ public class AdministrarPrestamosController {
         
         administrarPrestamos.getjComboDevolucionUsuarios().setModel(defaultComboBoxUsuario);
         mostrarRecursosDevolucion((int)listaUsuarios.get(0));
+//        if (!listaRecursos.isEmpty()) {
+//            mostrarRecursosDevolucion((int)listaUsuarios.get(0));
+//        }
     }
     
     public void mostrarRecursosDevolucion(Integer index) {;
@@ -116,6 +119,11 @@ public class AdministrarPrestamosController {
     public void cleanFields() {
         defaultComboBoxUsuario.removeAllElements();
         defaultComboBoxRecurso.removeAllElements();
+        
+//        listaUsuarios.clear();
+//        listaPrestamos.clear();
+//        listaRecursos.clear();
+        
         administrarPrestamos.getjComboDevolucionRecursos().setModel(defaultComboBoxRecurso);
         administrarPrestamos.getjComboDevolucionUsuarios().setModel(defaultComboBoxUsuario);
         administrarPrestamos.getjComboPrestamoRecursos().setModel(defaultComboBoxRecurso);
@@ -137,12 +145,9 @@ public class AdministrarPrestamosController {
             if (e.getSource() == administrarPrestamos.getBtnConfirmar()) {
                 if(administrarPrestamos.getjTabbedPane1().getSelectedIndex() == 0){
                     verificarLlaveDevolucion();
-                    System.out.println(indexU);
-                    System.out.println(indexR);
-                    System.out.println(indexPrestamo);
                     prestamoDAO.deletePrestamo(indexPrestamo);
-                    mostrarItemsDevolucion();
 //                    cleanFields();
+                    mostrarItemsDevolucion();
                 }
                 if(administrarPrestamos.getjTabbedPane1().getSelectedIndex() == 1){
                     int index = administrarPrestamos.getjComboPrestamoRecursos().getSelectedIndex();
@@ -157,7 +162,9 @@ public class AdministrarPrestamosController {
             }
             if (e.getSource() == administrarPrestamos.getjComboDevolucionUsuarios()) {
                 indexU = administrarPrestamos.getjComboDevolucionUsuarios().getSelectedIndex();
-                mostrarRecursosDevolucion((int)listaUsuarios.get(indexU));
+                if (indexU != -1){
+                    mostrarRecursosDevolucion((int)listaUsuarios.get(indexU));
+                }
             }
             if (e.getSource() == administrarPrestamos.getjComboDevolucionRecursos()) {
                 indexR = administrarPrestamos.getjComboDevolucionRecursos().getSelectedIndex();

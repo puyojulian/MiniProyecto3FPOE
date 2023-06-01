@@ -29,7 +29,7 @@ public class PrestamoDAO implements PrestamoDAOInterface {
     @Override
     public boolean addPrestamo(Prestamo prestamo) {
         prestamo.getRecurso().setDisponible(false);
-        mapaPrestamos.put(mapaPrestamos.size() + 1, prestamo);
+        mapaPrestamos.put(mapaPrestamos.size(), prestamo);
         return true;
     }
 
@@ -41,19 +41,15 @@ public class PrestamoDAO implements PrestamoDAOInterface {
 
     @Override
     public boolean deletePrestamo(Integer llave) {
-        
-        Prestamo prestamo;
-        prestamo = new Prestamo();
-                    
+        Prestamo prestamo;           
         Recurso recurso;
-        recurso = new Recurso();
         
-        prestamo = mapaPrestamos.get(llave + 1);
+        prestamo = mapaPrestamos.get(llave);
         recurso = prestamo.getRecurso();
         
         recurso.setDisponible(true);
  
-        mapaPrestamos.remove(llave + 1);
+        mapaPrestamos.remove(llave);
         return true;
     }
     
