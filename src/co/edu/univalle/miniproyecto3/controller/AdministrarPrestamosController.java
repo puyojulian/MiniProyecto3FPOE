@@ -53,9 +53,9 @@ public class AdministrarPrestamosController {
     }
     
     public void abrirVista() {
-        mostrarItemsDevolucion();
         tabbedIndex = 0;
         administrarPrestamos.getjTabbedPane1().setSelectedIndex(tabbedIndex);
+        mostrarItemsDevolucion();
     }
     
     public void mostrarItemsDevolucion() {
@@ -68,9 +68,9 @@ public class AdministrarPrestamosController {
                 listaUsuarios.add(entry.getValue().getUsuario().getId());
             }
         }
-        
+        System.out.println(listaUsuarios);
         if(!listaUsuarios.isEmpty()) {
-            mostrarRecursosDevolucion((int)listaUsuarios.get(0));
+            mostrarRecursosDevolucion((int) listaUsuarios.get(0));
         }
         else {
             administrarPrestamos.getjComboDevolucionRecursos().removeAllItems();
@@ -158,7 +158,7 @@ public class AdministrarPrestamosController {
             }
             else if (e.getSource() == administrarPrestamos.getjComboDevolucionUsuarios()) {
                 indexU = administrarPrestamos.getjComboDevolucionUsuarios().getSelectedIndex();
-                if(indexU != -1) {
+                if(indexU != -1 && !listaUsuarios.isEmpty()) {
                     mostrarRecursosDevolucion((int)listaUsuarios.get(indexU));
                 }
             }
