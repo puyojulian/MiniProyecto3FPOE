@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -30,8 +29,6 @@ public class AdministrarPrestamosController {
     private int indexU = 0;
     private int indexR = 0;
     private int tabbedIndex;
-    private DefaultComboBoxModel defaultComboBoxUsuario;
-    private DefaultComboBoxModel defaultComboBoxRecurso;
     private List listaRecursos;
     private List listaUsuarios;
 //    private List listaPrestamos;
@@ -40,8 +37,6 @@ public class AdministrarPrestamosController {
         this.administrarPrestamos = vista;
         this.prestamoDAO = prestamoDao;
         this.recursoDAO = recursoDao;
-        defaultComboBoxUsuario = new DefaultComboBoxModel();
-        defaultComboBoxRecurso = new DefaultComboBoxModel();
         listaRecursos = new ArrayList<>();
         listaUsuarios = new ArrayList<>();
 //        listaPrestamos = new ArrayList<>();
@@ -68,67 +63,69 @@ public class AdministrarPrestamosController {
     }
     
     public void mostrarItemsDevolucion() {
-        defaultComboBoxUsuario = new DefaultComboBoxModel();
+        administrarPrestamos.getjComboDevolucionUsuarios().removeAllItems();
         listaUsuarios.clear();
-//        listaPrestamos.clear();
 
         if(!prestamoDAO.getPrestamos().isEmpty()) {
             for (Map.Entry<Integer, Prestamo> entry : prestamoDAO.getPrestamos().entrySet()) {
-                defaultComboBoxUsuario.addElement(entry.getValue().getUsuario().getNombre());
+                administrarPrestamos.getjComboDevolucionUsuarios().addItem(entry.getValue().getUsuario().getNombre());
                 listaUsuarios.add(entry.getValue().getUsuario().getId());
-//                listaPrestamos.add(entry.getKey());
             }
         }
         
-        administrarPrestamos.getjComboDevolucionUsuarios().setModel(defaultComboBoxUsuario);
         if(!listaUsuarios.isEmpty()) {
             mostrarRecursosDevolucion((int)listaUsuarios.get(0));
+        }
+        else {
+            administrarPrestamos.getjComboDevolucionRecursos().removeAllItems();
         }
     }
     
     public void mostrarRecursosDevolucion(Integer index) {
-        defaultComboBoxRecurso = new DefaultComboBoxModel();
+        administrarPrestamos.getjComboDevolucionRecursos().removeAllItems();
         listaRecursos.clear();
         
         if(!prestamoDAO.getPrestamos().isEmpty()) {
             for (Map.Entry<Integer, Prestamo> entry : prestamoDAO.getPrestamos().entrySet()) {
                 if (entry.getValue().getUsuario().getId() == index) {
-                    defaultComboBoxRecurso.addElement(entry.getValue().getRecurso().getNombre());
+                    administrarPrestamos.getjComboDevolucionRecursos().addItem(entry.getValue().getRecurso().getNombre());
                     listaRecursos.add(entry.getValue().getRecurso().getCodigoRecurso());
                 }
             }
         }
-        administrarPrestamos.getjComboDevolucionRecursos().setModel(defaultComboBoxRecurso);
+        else {
+            administrarPrestamos.getjComboDevolucionRecursos().removeAllItems();
+        }
     }
     
     public void mostrarItemsPrestamo(Prestamo prestamo) {
-        defaultComboBoxUsuario.removeAllElements();
-        defaultComboBoxRecurso.removeAllElements();
-        defaultComboBoxUsuario.addElement(prestamo.getUsuario().toString());
+//        defaultComboBoxUsuario.removeAllElements();
+//        defaultComboBoxRecurso.removeAllElements();
+//        defaultComboBoxUsuario.addElement(prestamo.getUsuario().toString());
         
         if(!prestamoDAO.getPrestamos().isEmpty()) {
             recursoDAO.getRecursos().forEach((clave, valor) -> {
                 if (valor.isDisponible()){
                     listaRecursos.add(recursoDAO.setLlave(valor));
-                    defaultComboBoxRecurso.addElement(valor.toString());
+//                    defaultComboBoxRecurso.addElement(valor.toString());
                 }
             });
         }
         
-        administrarPrestamos.getjComboPrestamoUsuarios().setModel(defaultComboBoxUsuario);
-        administrarPrestamos.getjComboPrestamoRecursos().setModel(defaultComboBoxRecurso);
+//        administrarPrestamos.getjComboPrestamoUsuarios().setModel(defaultComboBoxUsuario);
+//        administrarPrestamos.getjComboPrestamoRecursos().setModel(defaultComboBoxRecurso);
     }
     
     public void cleanFields() {
-        defaultComboBoxUsuario.removeAllElements();
-        defaultComboBoxRecurso.removeAllElements();
+//        defaultComboBoxUsuario.removeAllElements();
+//        defaultComboBoxRecurso.removeAllElements();
         listaUsuarios.clear();
         listaRecursos.clear();
 //        listaPrestamos.clear();
-        administrarPrestamos.getjComboDevolucionRecursos().setModel(defaultComboBoxRecurso);
-        administrarPrestamos.getjComboDevolucionUsuarios().setModel(defaultComboBoxUsuario);
-        administrarPrestamos.getjComboPrestamoRecursos().setModel(defaultComboBoxRecurso);
-        administrarPrestamos.getjComboPrestamoUsuarios().setModel(defaultComboBoxUsuario);
+//        administrarPrestamos.getjComboDevolucionRecursos().setModel(defaultComboBoxRecurso);
+//        administrarPrestamos.getjComboDevolucionUsuarios().setModel(defaultComboBoxUsuario);
+//        administrarPrestamos.getjComboPrestamoRecursos().setModel(defaultComboBoxRecurso);
+//        administrarPrestamos.getjComboPrestamoUsuarios().setModel(defaultComboBoxUsuario);
     }
     
     public Integer verificarLlaveDevolucion() {
@@ -146,28 +143,10 @@ public class AdministrarPrestamosController {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == administrarPrestamos.getBtnConfirmar()) {
                 if(tabbedIndex == 0){
-                    System.out.println("Indice U " + indexU);
-                    System.out.println("Lista U"  + listaUsuarios);
-                    System.out.println("Indice R " + indexR);
-                    System.out.println("Lista R " + listaRecursos);
-                    System.out.println("Indice P " + verificarLlaveDevolucion());
-                    System.out.println("Mapa P " + prestamoDAO.getPrestamos());
                     prestamoDAO.deletePrestamo(verificarLlaveDevolucion());
-                    System.out.println("Indice U " + indexU);
-                    System.out.println("Lista U"  + listaUsuarios);
-                    System.out.println("Indice R " + indexR);
-                    System.out.println("Lista R " + listaRecursos);
-                    System.out.println("Indice P " + verificarLlaveDevolucion());
-                    System.out.println("Mapa P " + prestamoDAO.getPrestamos());
+                    mostrarItemsDevolucion();
                     indexU = 0;
                     indexR = 0;
-                    mostrarItemsDevolucion();
-                    System.out.println("Indice U " + indexU);
-                    System.out.println("Lista U"  + listaUsuarios);
-                    System.out.println("Indice R " + indexR);
-                    System.out.println("Lista R " + listaRecursos);
-                    System.out.println("Indice P " + verificarLlaveDevolucion());
-                    System.out.println("Mapa P " + prestamoDAO.getPrestamos());
 //                    cleanFields();
                 }
                 else if(tabbedIndex == 1){
