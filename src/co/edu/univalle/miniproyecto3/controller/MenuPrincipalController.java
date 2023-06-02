@@ -78,7 +78,7 @@ public class MenuPrincipalController {
         editarRecursoController = new EditarRecursoController(editarRecurso, recursoDAO);
         administrarPrestamos = new AdministrarPrestamos();
         administrarPrestamos.addBtnConfirmar(listener);
-        administrarPrestamosController = new AdministrarPrestamosController(administrarPrestamos, prestamoDAO, recursoDAO);
+        administrarPrestamosController = new AdministrarPrestamosController(administrarPrestamos, prestamoDAO, recursoDAO, usuarioDAO);
         
         menuPrincipal.addBtnRecursos(listener);
         menuPrincipal.addBtnUsuarios(listener);

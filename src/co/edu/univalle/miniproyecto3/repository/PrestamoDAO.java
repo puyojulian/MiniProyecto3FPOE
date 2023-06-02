@@ -29,7 +29,7 @@ public class PrestamoDAO implements PrestamoDAOInterface {
     @Override
     public boolean addPrestamo(Prestamo prestamo) {
         prestamo.getRecurso().setDisponible(false);
-        mapaPrestamos.put(mapaPrestamos.size(), prestamo);
+        mapaPrestamos.put(prestamo.getId(), prestamo);
         return true;
     }
 
