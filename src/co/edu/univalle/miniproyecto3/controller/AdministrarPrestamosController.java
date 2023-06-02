@@ -52,14 +52,10 @@ public class AdministrarPrestamosController {
         administrarPrestamos.addjTabbedPanePrestamo(listener);
     }
     
-//    public void abrirVista(int llave) {
     public void abrirVista() {
-//        llaveTemporal = llave;
-//        prestamoTemporal = prestamoDAO.getPrestamo(llave);
         mostrarItemsDevolucion();
         tabbedIndex = 0;
         administrarPrestamos.getjTabbedPane1().setSelectedIndex(tabbedIndex);
-
     }
     
     public void mostrarItemsDevolucion() {
