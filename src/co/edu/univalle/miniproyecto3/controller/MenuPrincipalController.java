@@ -12,8 +12,12 @@ import co.edu.univalle.miniproyecto3.vista.AgregarUsuario;
 import co.edu.univalle.miniproyecto3.vista.EditarRecurso;
 import co.edu.univalle.miniproyecto3.vista.EditarUsuario;
 import co.edu.univalle.miniproyecto3.vista.MenuPrincipal;
+import java.awt.AWTException;
+import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -90,6 +94,13 @@ public class MenuPrincipalController {
         this.listaParametros = new ArrayList();
         
         HandlerActions listener = new HandlerActions();
+        KeyEventHandler keyListener = new KeyEventHandler();
+        
+        menuPrincipal.getTxtBusqueda1().addKeyListener(keyListener);
+        menuPrincipal.getTxtBusqueda2().addKeyListener(keyListener);
+        menuPrincipal.getBtnPopConfirmar().addKeyListener(keyListener);
+        menuPrincipal.getTxtBuscar().addKeyListener(keyListener);
+        menuPrincipal.getBtnBuscar().addKeyListener(keyListener);
         
         agregarRecurso = new AgregarRecurso();
         agregarRecurso.addBtnAgregar(listener);
@@ -659,5 +670,46 @@ public class MenuPrincipalController {
                 }
             }
         }  
+    }
+    
+    class KeyEventHandler implements KeyListener {
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                if(menuPrincipal.getTxtBuscar().hasFocus()) {
+                    try {
+                        Robot robot = new Robot();
+                        // Simulate a key press
+                        menuPrincipal.getBtnBuscar().requestFocus();
+                        robot.keyPress(KeyEvent.VK_SPACE);
+                        robot.keyRelease(KeyEvent.VK_SPACE);
+                    } catch (AWTException ex) {
+                        Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if(menuPrincipal.getTxtBusqueda1().hasFocus() || menuPrincipal.getTxtBusqueda2().hasFocus()) {
+                    try {
+                        Robot robot = new Robot();
+                        // Simulate a key press
+                        menuPrincipal.getBtnPopConfirmar().requestFocus();
+                        robot.keyPress(KeyEvent.VK_SPACE);
+                        robot.keyRelease(KeyEvent.VK_SPACE);
+                    } catch (AWTException ex) {
+                        Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+            // Not used.
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            // Not used.
+        }
     }
 }
