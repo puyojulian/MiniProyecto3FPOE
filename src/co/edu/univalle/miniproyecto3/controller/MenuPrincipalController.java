@@ -146,7 +146,9 @@ public class MenuPrincipalController {
                     String token = tokenizer.nextToken();
                     listaParametros.add(token);
                 }
-                usuarioDAO.addUsuario(new Usuario((String)listaParametros.get(0), (String)listaParametros.get(1)));
+                if(listaParametros.size() == 2) {
+                    usuarioDAO.addUsuario(new Usuario((String)listaParametros.get(0), (String)listaParametros.get(1)));
+                }
                 listaParametros.clear();
             }
         } catch (FileNotFoundException ex) {
@@ -184,7 +186,13 @@ public class MenuPrincipalController {
                     String token = tokenizer.nextToken();
                     listaParametros.add(token);
                 }
-                recursoDAO.addRecurso(new Recurso((String)listaParametros.get(0), (String)listaParametros.get(1), (String)listaParametros.get(2), (String)listaParametros.get(3), (String)listaParametros.get(4)));
+                if(listaParametros.size() == 5) {
+                    recursoDAO.addRecurso(new Recurso((String)listaParametros.get(0), 
+                            (String)listaParametros.get(1), 
+                            (String)listaParametros.get(2), 
+                            (String)listaParametros.get(3), 
+                            (String)listaParametros.get(4)));
+                }
                 listaParametros.clear();
             }
         } catch (FileNotFoundException ex) {
