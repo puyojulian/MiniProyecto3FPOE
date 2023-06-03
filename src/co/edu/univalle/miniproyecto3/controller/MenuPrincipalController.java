@@ -16,7 +16,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -24,7 +23,6 @@ import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -48,7 +46,6 @@ public class MenuPrincipalController {
     private Map mapaUsuarios;
     private Map mapaRecursos;
     private Map mapaPrestamos;
-//    private javax.swing.JList<String> jLista;
     private javax.swing.JTable jTable;
     private List<Map.Entry<Integer, Usuario>> listaMapUsuarios;
     private List<Map.Entry<String, Recurso>> listaMapRecursos;
@@ -56,7 +53,6 @@ public class MenuPrincipalController {
     private String strBusqueda1;
     private String strBusqueda2;
     private DefaultTableModel modeloTabla;
-//    private DefaultListModel<String> modeloLista;
     private DefaultTableModel modeloTablaResultado;
     private DefaultListModel<String> modeloListaResultado;
     private List listaTemporal;
@@ -67,9 +63,7 @@ public class MenuPrincipalController {
         this.recursoDAO = new RecursoDAO();
         this.prestamoDAO = new PrestamoDAO();
         this.menuPrincipal = menuPrincipal;
-//        this.jLista = menuPrincipal.getJList();
         this.jTable = menuPrincipal.getJTable();
-//        this.modeloLista = new DefaultListModel<>();
         this.modeloListaResultado = new DefaultListModel<>();
         this.modeloTabla = new DefaultTableModel();
         this.modeloTablaResultado = new DefaultTableModel();
@@ -112,6 +106,8 @@ public class MenuPrincipalController {
         mapaPrestamos = prestamoDAO.getPrestamos();
         prestamosActuales();
         
+        menuPrincipal.getBtnRecursos().setSelected(true);
+        actualizarJListaRecursos();
     }
 
     private void usuariosActuales(){
@@ -163,7 +159,6 @@ public class MenuPrincipalController {
 
             listaTemporal.clear();
             modeloTabla.setRowCount(0);
-//            modeloLista.clear();
 
             listaMapUsuarios = new ArrayList<>(mapaUsuarios.entrySet());
             
@@ -178,17 +173,13 @@ public class MenuPrincipalController {
                     listaTemporal.add(token);
                 }
                 
-//                modeloLista.addElement(item);
                 modeloTabla.addRow(listaTemporal.toArray());
                 listaTemporal.clear();
             }
-//            menuPrincipal.getJList().setModel(modeloLista);
             jTable.setModel(modeloTabla);
         }
         else {
-//            modeloLista.clear();
             modeloTabla.setRowCount(0);
-//            menuPrincipal.getJList().setModel(modeloLista);
             jTable.setModel(modeloTabla);
         }
     }
@@ -199,7 +190,6 @@ public class MenuPrincipalController {
 
             listaTemporal.clear();
             modeloTabla.setRowCount(0);
-//            modeloLista.clear();
 
             listaMapRecursos = new ArrayList<>(mapaRecursos.entrySet());
             
@@ -214,17 +204,13 @@ public class MenuPrincipalController {
                     listaTemporal.add(token);
                 }
                 
-//                modeloLista.addElement(item);
                 modeloTabla.addRow(listaTemporal.toArray());
                 listaTemporal.clear();
             }
-//            menuPrincipal.getJList().setModel(modeloLista);
             jTable.setModel(modeloTabla);
         }
         else {
-//            modeloLista.clear();
             modeloTabla.setRowCount(0);
-//            menuPrincipal.getJList().setModel(modeloLista);
             jTable.setModel(modeloTabla);
         }
     }
@@ -366,7 +352,6 @@ public class MenuPrincipalController {
             }
             else if (e.getSource() == menuPrincipal.getBtnEliminar()) { // ELIMINAR
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
-//                    index = menuPrincipal.getJListIndex();
                     index = jTable.getSelectedRow();
                     System.out.println(index);
                     
@@ -375,17 +360,14 @@ public class MenuPrincipalController {
 
                         usuarioDAO.deleteUsuario((entry.getKey()));
                         listaMapUsuarios.remove(index);
-//                        modeloLista.remove(index);
                         modeloTabla.removeRow(index);
 
-//                        menuPrincipal.getJList().setModel(modeloLista);
                         jTable.setModel(modeloTabla);    
                     } else {
                         mensajeTemporal("Elija el usuario que desea eliminar", "Error", 1150);
                     }
                 }
                 else if(menuPrincipal.getBtnRecursos().isSelected()) {
-//                    index = menuPrincipal.getJListIndex();
                     index = jTable.getSelectedRow();
                     System.out.println(index);
                     if(index != -1) {
@@ -393,10 +375,8 @@ public class MenuPrincipalController {
 
                         recursoDAO.deleteRecurso((entry.getKey()));
                         listaMapRecursos.remove(index);
-//                        modeloLista.remove(index); 
                         modeloTabla.removeRow(index);
 
-//                        menuPrincipal.getJList().setModel(modeloLista);
                         jTable.setModel(modeloTabla);
                     } else {
                         mensajeTemporal("Elija el recurso que desea eliminar", "Error", 1150);
@@ -421,7 +401,6 @@ public class MenuPrincipalController {
             }
             else if (e.getSource() == menuPrincipal.getBtnActualizar()) { // ACTUALIZAR
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
-//                    index = menuPrincipal.getJListIndex();
                     index = jTable.getSelectedRow();
                     if(index != -1) {
                         Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
@@ -467,7 +446,8 @@ public class MenuPrincipalController {
                     String strBusqueda1Clean = strBusqueda1.replaceAll("\\s", "");
                     for (int i = 0; i < modeloTabla.getRowCount(); i++) {
                         for (int j = 0; j < modeloTabla.getColumnCount(); j++) {
-                            if(strBusqueda1Clean.equalsIgnoreCase((String)modeloTabla.getValueAt(i,j))) {
+                            String rawString = (String)modeloTabla.getValueAt(i,j);   
+                            if(strBusqueda1Clean.equalsIgnoreCase(rawString.replaceAll("\\s", ""))) {
                                 Object[] rowData = new Object[modeloTabla.getColumnCount()];
                                 for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
                                     rowData[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
