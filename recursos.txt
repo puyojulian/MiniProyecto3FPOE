@@ -46,3 +46,23 @@
 9788408216318, La Reina Roja, Victoria Aveyard, Ficción, Literatura Juvenil
 9788499082478, El Principito Ilustrado, Antoine de Saint-Exupéry, Ficción, Literatura Infantil
 9788425350727, El asedio, Arturo Pérez-Reverte, Ficción, Novela Histórica
+9780142407332, The Outsiders, S.E. Hinton, Fiction, Young Adult
+9780060254926, Charlotte's Web, E.B. White, Children's Fiction, Animals
+9780451524935, Fahrenheit 451, Ray Bradbury, Fiction, Science Fiction
+9780061122415, Animal Farm, George Orwell, Fiction, Political Allegory
+9780679783268, One Hundred Years of Solitude, Gabriel García Márquez, Fiction, Magic Realism
+9780141188938, The Lord of the Rings, J.R.R. Tolkien, Fiction, Fantasy
+9780141439587, Jane Eyre, Charlotte Brontë, Fiction, Classic Literature
+9780064407663, The Giver, Lois Lowry, Fiction, Dystopian
+9781451635626, The Fault in Our Stars, John Green, Fiction, Young Adult
+9780064404990, Bridge to Terabithia, Katherine Paterson, Children's Fiction, Friendship
+9780316015844, The Lightning Thief, Rick Riordan, Fiction, Fantasy
+9780142414934, The Chronicles of Narnia, C.S. Lewis, Fiction, Fantasy
+9780061124952, The Book Thief, Markus Zusak, Fiction, Historical Fiction
+9780765326368, The Maze Runner, James Dashner, Fiction, Dystopian
+9780141182608, To the Lighthouse, Virginia Woolf, Fiction, Modernist Literature
+9780064400558, Holes, Louis Sachar, Children's Fiction, Adventure
+9780140449146, Les Misérables, Victor Hugo, Fiction, Classic Literature
+9780316013697, The Hunger Games Trilogy, Suzanne Collins, Fiction, Young Adult
+9781451683214, Gone Girl, Gillian Flynn, Fiction, Thriller
+9780143039959, Life of Pi, Yann Martel, Fiction, Adventure
