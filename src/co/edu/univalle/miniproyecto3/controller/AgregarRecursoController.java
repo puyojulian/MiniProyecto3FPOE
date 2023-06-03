@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package co.edu.univalle.miniproyecto3.controller;
 
 import co.edu.univalle.miniproyecto3.model.Recurso;
@@ -9,15 +5,12 @@ import co.edu.univalle.miniproyecto3.repository.RecursoDAO;
 import co.edu.univalle.miniproyecto3.vista.AgregarRecurso;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-/**
- *
- * @author julia
- */
 public class AgregarRecursoController {
     private RecursoDAO recursoDAO;
     private AgregarRecurso agregarRecurso;
@@ -51,6 +44,24 @@ public class AgregarRecursoController {
         return !hayCamposVacios;
     }
     
+    public void mensajeTemporal(String mensaje, String titulo, int milisegundos) {
+        JOptionPane msg = new JOptionPane(mensaje, JOptionPane.INFORMATION_MESSAGE);
+        final JDialog dlg = msg.createDialog(titulo);
+        dlg.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        new Thread(new Runnable() {
+          @Override
+          public void run() {
+            try {
+              Thread.sleep(milisegundos);
+            } catch (InterruptedException e) {
+              e.printStackTrace();
+            }
+            dlg.setVisible(false);
+          }
+        }).start();
+        dlg.setVisible(true);
+    }
+    
     class ActionEventHandler implements ActionListener {
 
         @Override
@@ -73,14 +84,15 @@ public class AgregarRecursoController {
                         recursoTemporal.addArea(agregarRecurso.getTextArea2().getText());
                     }
                     cleanFields();
+                    mensajeTemporal("Recurso agregado satisfactoriamente", "Aviso", 1150);
                 }
                 else {
-                    JOptionPane.showMessageDialog(null, "Ingrese al menos una entrada por campo.", "Error", JOptionPane.ERROR_MESSAGE);
+                    mensajeTemporal("Ingrese al menos una entrada por campo", "Error", 1150);
                 }
             }
             else if(e.getSource() == agregarRecurso.getBotonCancelar()) {
                 cleanFields();
-                agregarRecurso.setVisible(false);
+                agregarRecurso.dispose();
             }
         }
     }

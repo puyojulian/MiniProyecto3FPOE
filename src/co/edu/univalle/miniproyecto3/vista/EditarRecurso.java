@@ -54,7 +54,7 @@ public class EditarRecurso extends javax.swing.JFrame {
 
         btnEditar.setText("EDITAR");
 
-        btnModificar.setText("Modificar");
+        btnModificar.setText("Agregar");
 
         buttonGroup1.add(btnRadioArea);
         btnRadioArea.setText("Área/s");

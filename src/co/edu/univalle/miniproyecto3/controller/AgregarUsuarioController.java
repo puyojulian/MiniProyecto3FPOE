@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package co.edu.univalle.miniproyecto3.controller;
 
 import co.edu.univalle.miniproyecto3.model.Usuario;
@@ -12,10 +8,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author julia
- */
 public class AgregarUsuarioController {
     private UsuarioDAO usuarioDAO;
     private AgregarUsuario agregarUsuario;
@@ -34,6 +26,24 @@ public class AgregarUsuarioController {
     public void crearUsuario(String nombre, String rol) {
         usuarioDAO.addUsuario(new Usuario(nombre, rol));
     }
+    
+    public void mensajeTemporal(String mensaje, String titulo, int milisegundos) {
+        JOptionPane msg = new JOptionPane(mensaje, JOptionPane.INFORMATION_MESSAGE);
+        final JDialog dlg = msg.createDialog(titulo);
+        dlg.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        new Thread(new Runnable() {
+          @Override
+          public void run() {
+            try {
+              Thread.sleep(milisegundos);
+            } catch (InterruptedException e) {
+              e.printStackTrace();
+            }
+            dlg.setVisible(false);
+          }
+        }).start();
+        dlg.setVisible(true);
+    } 
                        
     class HandlerActions implements ActionListener{
 
@@ -44,9 +54,8 @@ public class AgregarUsuarioController {
                 String strRol = agregarUsuario.getTxtTipoUsuario().getText();
                 
                 if (strNombre.isEmpty() || strRol.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Todos los campos deben ser completados", "Error", JOptionPane.ERROR_MESSAGE);
+                    mensajeTemporal("Todos los campos deben ser completados", "Error", 1150);
                 } else {
-                    
                     crearUsuario(strNombre, strRol);
                     
                     strNombre = "";
@@ -62,23 +71,5 @@ public class AgregarUsuarioController {
                 agregarUsuario.dispose();
             }
         }
-        
-        public void mensajeTemporal(String mensaje, String titulo, int milisegundos) {
-            JOptionPane msg = new JOptionPane(mensaje, JOptionPane.INFORMATION_MESSAGE);
-            final JDialog dlg = msg.createDialog(titulo);
-            dlg.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-            new Thread(new Runnable() {
-              @Override
-              public void run() {
-                try {
-                  Thread.sleep(milisegundos);
-                } catch (InterruptedException e) {
-                  e.printStackTrace();
-                }
-                dlg.setVisible(false);
-              }
-            }).start();
-            dlg.setVisible(true);
-        } 
     }
 }

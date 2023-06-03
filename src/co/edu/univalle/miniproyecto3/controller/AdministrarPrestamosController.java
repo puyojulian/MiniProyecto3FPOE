@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package co.edu.univalle.miniproyecto3.controller;
 
 import co.edu.univalle.miniproyecto3.model.Prestamo;
@@ -15,13 +11,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-/**
- *
- * @author User
- */
 public class AdministrarPrestamosController {
     private AdministrarPrestamos administrarPrestamos;
     private PrestamoDAO prestamoDAO;
@@ -138,16 +132,39 @@ public class AdministrarPrestamosController {
         return -1;
     }
     
+    public void mensajeTemporal(String mensaje, String titulo, int milisegundos) {
+        JOptionPane msg = new JOptionPane(mensaje, JOptionPane.INFORMATION_MESSAGE);
+        final JDialog dlg = msg.createDialog(titulo);
+        dlg.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        new Thread(new Runnable() {
+          @Override
+          public void run() {
+            try {
+              Thread.sleep(milisegundos);
+            } catch (InterruptedException e) {
+              e.printStackTrace();
+            }
+            dlg.setVisible(false);
+          }
+        }).start();
+        dlg.setVisible(true);
+    }
+    
     class HandlerActions implements ActionListener, ChangeListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == administrarPrestamos.getBtnConfirmar()) {
                 if(tabbedIndex == 0){
-                    prestamoDAO.deletePrestamo(verificarLlaveDevolucion());
-                    mostrarItemsDevolucion();
-                    indexU = 0;
-                    indexR = 0;
+                    if(!listaUsuarios.isEmpty()) {
+                        prestamoDAO.deletePrestamo(verificarLlaveDevolucion());
+                        mostrarItemsDevolucion();
+                        indexU = 0;
+                        indexR = 0;
+                        mensajeTemporal("Prestamo eliminado satisfactoriamente", "Aviso",1150);
+                    } else {
+                        mensajeTemporal("No hay prestamos para eliminar", "Aviso",1150);
+                    }
                 }
                 else if(tabbedIndex == 1){
                     if(recursosDisponibles > 0) {
@@ -155,6 +172,9 @@ public class AdministrarPrestamosController {
                         mostrarItemsPrestamo();
                         indexU = 0;
                         indexR = 0;
+                        mensajeTemporal("Prestamo agregado satisfactoriamente", "Aviso",1150);
+                    } else {
+                        mensajeTemporal("No hay recursos disponibles para prestar", "Aviso",1150);
                     }
                 }
             }

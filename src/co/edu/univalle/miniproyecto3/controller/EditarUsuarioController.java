@@ -9,6 +9,8 @@ import co.edu.univalle.miniproyecto3.repository.UsuarioDAO;
 import co.edu.univalle.miniproyecto3.vista.EditarUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,7 +18,6 @@ import java.awt.event.ActionListener;
  */
 public class EditarUsuarioController {
     
-    private int llaveTemporal;
     private Usuario usuarioTemporal;
     private UsuarioDAO usuarioDAO;
     private EditarUsuario editarUsuario;
@@ -25,7 +26,6 @@ public class EditarUsuarioController {
     public EditarUsuarioController(EditarUsuario vista, UsuarioDAO dao) {
         this.editarUsuario = vista;
         this.usuarioDAO = dao;
-        llaveTemporal = 0;
         
         ActionHandler manejadoraDeEventos = new ActionHandler();
         
@@ -35,7 +35,6 @@ public class EditarUsuarioController {
     }
     
     public void abrirVista(int llave) {
-        llaveTemporal = llave;
         usuarioTemporal = usuarioDAO.getUsuario(llave);
         mostrarItems(usuarioTemporal);
     }
@@ -51,6 +50,24 @@ public class EditarUsuarioController {
         }
     }
     
+    public void mensajeTemporal(String mensaje, String titulo, int milisegundos) {
+        JOptionPane msg = new JOptionPane(mensaje, JOptionPane.INFORMATION_MESSAGE);
+        final JDialog dlg = msg.createDialog(titulo);
+        dlg.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        new Thread(new Runnable() {
+          @Override
+          public void run() {
+            try {
+              Thread.sleep(milisegundos);
+            } catch (InterruptedException e) {
+              e.printStackTrace();
+            }
+            dlg.setVisible(false);
+          }
+        }).start();
+        dlg.setVisible(true);
+    }
+    
     class ActionHandler implements ActionListener {
 
         @Override
@@ -59,20 +76,26 @@ public class EditarUsuarioController {
                 editarUsuario.getTxtCodigo().setText("");
                 editarUsuario.getTxtNombre().setText("");
                 editarUsuario.getTxtTipo().setText("");
-                editarUsuario.setVisible(false);
+                editarUsuario.dispose();
             }
             else if(e.getSource() == editarUsuario.getBtnEditar()) {
-                usuarioTemporal.setNombre(editarUsuario.getTxtNombre().getText());
-                usuarioTemporal.setRol(editarUsuario.getTxtTipo().getText());
-                if(editarUsuario.getJCombo().getSelectedIndex() == 0) {
-                    usuarioTemporal.setEstadoActivo(true);
-                }
-                else if (editarUsuario.getJCombo().getSelectedIndex() == 1) {
-                    usuarioTemporal.setEstadoActivo(false);
+                if ("".equals(editarUsuario.getTxtNombre().getText()) || "".equals(editarUsuario.getTxtTipo().getText())) {
+                    mensajeTemporal("Debe editar los campos de texto con un valor", "Error", 1150);
+                    mostrarItems(usuarioTemporal);
+                } else {
+                    usuarioTemporal.setNombre(editarUsuario.getTxtNombre().getText());
+                    usuarioTemporal.setRol(editarUsuario.getTxtTipo().getText());
+                    if(editarUsuario.getJCombo().getSelectedIndex() == 0) {
+                        usuarioTemporal.setEstadoActivo(true);
+                    }
+                    else if (editarUsuario.getJCombo().getSelectedIndex() == 1) {
+                        usuarioTemporal.setEstadoActivo(false);
+                    }
+                    mensajeTemporal("Usuario editado satisfactoriamente", "Aviso", 1150);
+                    editarUsuario.dispose();
                 }
             }
         }
         
     }
-    
 }

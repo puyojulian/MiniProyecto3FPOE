@@ -25,6 +25,8 @@ import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 public class MenuPrincipalController {
     
@@ -264,6 +266,24 @@ public class MenuPrincipalController {
             jTable.setModel(modeloTabla);
         }
     }
+    
+    public void mensajeTemporal(String mensaje, String titulo, int milisegundos) {
+        JOptionPane msg = new JOptionPane(mensaje, JOptionPane.INFORMATION_MESSAGE);
+        final JDialog dlg = msg.createDialog(titulo);
+        dlg.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        new Thread(new Runnable() {
+          @Override
+          public void run() {
+            try {
+              Thread.sleep(milisegundos);
+            } catch (InterruptedException e) {
+              e.printStackTrace();
+            }
+            dlg.setVisible(false);
+          }
+        }).start();
+        dlg.setVisible(true);
+    }
         
     class HandlerActions implements ActionListener{
         @Override
@@ -331,8 +351,10 @@ public class MenuPrincipalController {
                         modeloTabla.removeRow(index);
 
 //                        menuPrincipal.getJList().setModel(modeloLista);
-                        jTable.setModel(modeloTabla);
-                    }    
+                        jTable.setModel(modeloTabla);    
+                    } else {
+                        mensajeTemporal("Elija el usuario que desea eliminar", "Error", 1150);
+                    }
                 }
                 else if(menuPrincipal.getBtnRecursos().isSelected()) {
 //                    index = menuPrincipal.getJListIndex();
@@ -348,6 +370,8 @@ public class MenuPrincipalController {
 
 //                        menuPrincipal.getJList().setModel(modeloLista);
                         jTable.setModel(modeloTabla);
+                    } else {
+                        mensajeTemporal("Elija el recurso que desea eliminar", "Error", 1150);
                     }
                 }
             }
@@ -375,7 +399,9 @@ public class MenuPrincipalController {
                         Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
                         editarUsuario.setVisible(true);
                         editarUsuarioController.abrirVista(entry.getKey());
-                    } 
+                    } else {
+                        mensajeTemporal("Elija el usuario que desea editar", "Error", 1150);
+                    }
                 }
                 else if(menuPrincipal.getBtnRecursos().isSelected()) {
 //                    index = menuPrincipal.getJListIndex();
@@ -385,6 +411,8 @@ public class MenuPrincipalController {
                         Map.Entry<String, Recurso> entry = listaMapRecursos.get(index);
                         editarRecurso.setVisible(true);
                         editarRecursoController.abrirVista(entry.getKey());
+                    } else {
+                        mensajeTemporal("Elija el recurso que desea editar", "Error", 1150);
                     }
                 }
                 else if(menuPrincipal.getBtnPrestamos().isSelected()) {

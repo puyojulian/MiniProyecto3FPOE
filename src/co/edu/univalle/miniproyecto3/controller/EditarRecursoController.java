@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package co.edu.univalle.miniproyecto3.controller;
 
 import co.edu.univalle.miniproyecto3.model.Recurso;
@@ -13,17 +9,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-/**
- *
- * @author User
- */
 public class EditarRecursoController {
     private RecursoDAO recursoDAO;
     private EditarRecurso editarRecurso;
-    private String llaveTemporal;
     private Recurso recursoTemporal;
     private DefaultListModel<String> modeloLista;
 
@@ -45,7 +38,6 @@ public class EditarRecursoController {
     }
     
     public void abrirVista(String llave) {
-        llaveTemporal = llave;
         recursoTemporal = recursoDAO.getRecurso(llave);
         mostrarItems(recursoTemporal);
     }
@@ -122,33 +114,67 @@ public class EditarRecursoController {
         }
     }
     
+    public void mensajeTemporal(String mensaje, String titulo, int milisegundos) {
+        JOptionPane msg = new JOptionPane(mensaje, JOptionPane.INFORMATION_MESSAGE);
+        final JDialog dlg = msg.createDialog(titulo);
+        dlg.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        new Thread(new Runnable() {
+          @Override
+          public void run() {
+            try {
+              Thread.sleep(milisegundos);
+            } catch (InterruptedException e) {
+              e.printStackTrace();
+            }
+            dlg.setVisible(false);
+          }
+        }).start();
+        dlg.setVisible(true);
+    }
+    
     class ActionHandler implements ActionListener, ListSelectionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getSource() == editarRecurso.getBtnEditar()) {
-                recursoTemporal.setNombre(editarRecurso.getTxtTitulo().getText());
-                recursoTemporal.setIsbn(editarRecurso.getTxtISBN().getText());
-                limpiarCampos();
-                editarRecurso.setVisible(false);
+                if ("".equals(editarRecurso.getTxtTitulo().getText().replaceAll("\\s", "")) || "".equals(editarRecurso.getTxtISBN().getText().replaceAll("\\s", ""))) {
+                    mensajeTemporal("Debes llenar los campo con un valor", "Error", 1150);
+                    mostrarItems(recursoTemporal);
+                } else {
+                    recursoTemporal.setNombre(editarRecurso.getTxtTitulo().getText());
+                    recursoTemporal.setIsbn(editarRecurso.getTxtISBN().getText());
+                    limpiarCampos();
+                    mensajeTemporal("Recurso editado satisfactoriamente", "Aviso", 1150);
+                    editarRecurso.dispose();
+                }
             }
             else if(e.getSource() == editarRecurso.getBtnCancelar()) {
                 limpiarCampos();
-                editarRecurso.setVisible(false);
+                editarRecurso.dispose();
             }
             else if(e.getSource() == editarRecurso.getBtnModificar()) {
                 if(editarRecurso.getJList().getSelectedIndex() == -1) {
-                    if(editarRecurso.getBtnRadioAutor().isSelected()) {
-                        recursoTemporal.addAutor(editarRecurso.getTxtValorLista().getText());
-                        actualizarJListaAutores();
-                    }
-                    else if(editarRecurso.getBtnRadioGenero().isSelected()) {
-                        recursoTemporal.addGenero(editarRecurso.getTxtValorLista().getText());
-                        actualizarJListaGeneros();
-                    }
-                    else if(editarRecurso.getBtnRadioArea().isSelected()) {
-                        recursoTemporal.addArea(editarRecurso.getTxtValorLista().getText());
-                        actualizarJListaAreas();
+                    if (!"".equals(editarRecurso.getTxtValorLista().getText())) {
+                        if(editarRecurso.getBtnRadioAutor().isSelected()) {
+                            recursoTemporal.addAutor(editarRecurso.getTxtValorLista().getText());
+                            actualizarJListaAutores();
+                            editarRecurso.getTxtValorLista().setText("");
+                            mensajeTemporal("Autor agregado", "Aviso", 1000);
+                        }
+                        else if(editarRecurso.getBtnRadioGenero().isSelected()) {
+                            recursoTemporal.addGenero(editarRecurso.getTxtValorLista().getText());
+                            actualizarJListaGeneros();
+                            editarRecurso.getTxtValorLista().setText("");
+                            mensajeTemporal("Genero agregado", "Aviso", 1000);
+                        }
+                        else if(editarRecurso.getBtnRadioArea().isSelected()) {
+                            recursoTemporal.addArea(editarRecurso.getTxtValorLista().getText());
+                            actualizarJListaAreas();
+                            editarRecurso.getTxtValorLista().setText("");
+                            mensajeTemporal("Area de conocimiento agregada", "Aviso", 1000);
+                        }
+                    } else {
+                        mensajeTemporal("Debe llenar el campo con un valor", "Error", 1000);
                     }
                 }
                 else {
@@ -158,6 +184,8 @@ public class EditarRecursoController {
                         listaTemporal.set(index,editarRecurso.getTxtValorLista().getText());
                         recursoTemporal.setAutores((ArrayList) listaTemporal);
                         actualizarJListaAutores();
+                        editarRecurso.getBtnModificar().setText("Agregar");
+                        mensajeTemporal("Autor modificado", "Aviso", 1000);
                     }
                     else if(editarRecurso.getBtnRadioGenero().isSelected()) {
                         int index = editarRecurso.getJList().getSelectedIndex();
@@ -165,6 +193,8 @@ public class EditarRecursoController {
                         listaTemporal.set(index,editarRecurso.getTxtValorLista().getText());
                         recursoTemporal.setGenerosLiterario((ArrayList) listaTemporal);
                         actualizarJListaGeneros();
+                        editarRecurso.getBtnModificar().setText("Agregar");
+                        mensajeTemporal("Genero modificado", "Aviso", 1000);
                     }
                     else if(editarRecurso.getBtnRadioArea().isSelected()) {
                         int index = editarRecurso.getJList().getSelectedIndex();
@@ -172,6 +202,8 @@ public class EditarRecursoController {
                         listaTemporal.set(index,editarRecurso.getTxtValorLista().getText());
                         recursoTemporal.setAreasConocimiento((ArrayList) listaTemporal);
                         actualizarJListaAreas();
+                        editarRecurso.getBtnModificar().setText("Agregar");
+                        mensajeTemporal("Area de conocimiento modificada", "Aviso", 1000);
                     }
                 }
             }
