@@ -53,11 +53,6 @@ public class EditarRecurso extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 
         btnCancelar.setText("VOLVER");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
 
         btnEditar.setText("EDITAR");
 
@@ -158,10 +153,6 @@ public class EditarRecurso extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarActionPerformed
 
     public JButton getBtnCancelar() {
         return btnCancelar;

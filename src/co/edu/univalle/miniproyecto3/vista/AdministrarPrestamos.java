@@ -60,12 +60,6 @@ public class AdministrarPrestamos extends javax.swing.JFrame {
 
         jLabel4.setText("Recursos Prestados");
 
-        jComboDevolucionRecursos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboDevolucionRecursosActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -189,10 +183,6 @@ public class AdministrarPrestamos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jComboDevolucionRecursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboDevolucionRecursosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboDevolucionRecursosActionPerformed
 
     public JButton getBtnConfirmar() {
         return btnConfirmar;

@@ -52,29 +52,13 @@ public class EditarUsuario extends javax.swing.JFrame {
 
         lblTipo.setText("TIPO DE USUARIO:");
 
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
-
         lblEstado.setText("ESTADO:");
 
         jCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
 
         btnEditar.setText("EDITAR");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
 
         btnCancelar.setText("CANCELAR");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
 
         txtCodigo.setEditable(false);
 
@@ -152,18 +136,6 @@ public class EditarUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarActionPerformed
-
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
 
     public JButton getBtnCancelar() {
         return btnCancelar;

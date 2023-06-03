@@ -28,8 +28,6 @@ public class AgregarUsuarioController {
         
         agregarUsuario.addBtnAgregar(listener);
         agregarUsuario.addBtnVolver(listener);
-        
-//        Actualizar();
     }
     
     public void crearUsuario(String nombre, String rol) {
@@ -53,7 +51,7 @@ public class AgregarUsuarioController {
                     strNombre = "";
                     strRol = "";
                     
-                    JOptionPane.showMessageDialog(null, "Nuevo usuario registrado satifactoriamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+//                    JOptionPane.showMessageDialog(null, "Nuevo usuario registrado satifactoriamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                     
                     agregarUsuario.setTxtNombre(strNombre);
                     agregarUsuario.setTxtTipoUsuario(strRol);

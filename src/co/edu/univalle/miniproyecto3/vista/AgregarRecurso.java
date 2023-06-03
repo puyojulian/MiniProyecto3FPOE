@@ -59,12 +59,6 @@ public class AgregarRecurso extends javax.swing.JFrame {
 
         labelIsbn.setText("ISBN:");
 
-        textArea2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textArea2ActionPerformed(evt);
-            }
-        });
-
         labelArea.setText("ÁREA(S) DE CONOCIMIENTO:");
 
         btnAgregar.setText("AGREGAR");
@@ -168,10 +162,6 @@ public class AgregarRecurso extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void textArea2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textArea2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textArea2ActionPerformed
 
     /**
      * @param args the command line arguments

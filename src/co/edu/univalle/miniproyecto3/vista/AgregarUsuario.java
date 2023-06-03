@@ -45,22 +45,12 @@ public class AgregarUsuario extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 
         btnAgregar.setText("AGREGAR");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
 
         lblNombre.setText("NOMBRE:");
 
         lblTipoUsuario.setText("TIPO DE USUARIO:");
 
         btnVolver.setText("VOLVER");
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,14 +108,6 @@ public class AgregarUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments

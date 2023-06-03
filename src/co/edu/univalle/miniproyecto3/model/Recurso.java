@@ -20,16 +20,6 @@ public class Recurso {
     private boolean disponible;
     private static int consecutivo = 0;
 
-//    public Recurso(String nombre, String autor) {
-//        this.codigoRecurso = consecutivo++;
-//        this.isbn = 0;
-//        this.nombre = "";
-//        autores = new ArrayList();
-//        autores.add(autor);
-//        generosLiterarios = new ArrayList();
-//        areasConocimiento = new ArrayList();
-//    }
-
     public Recurso() {
     }
 
@@ -116,8 +106,6 @@ public class Recurso {
     
     @Override
     public String toString() {
-//        return " Cod: " + codigoRecurso + " ISBN: " + isbn + " Nombre: " + nombre + " Autor: " + autores.get(0) + " Género: " + generosLiterarios.get(0) + " Área: " + areasConocimiento.get(0);
         return codigoRecurso + ", " + isbn + ", " + nombre + ", " + autores.get(0) + ", " + generosLiterarios.get(0) + ", " + areasConocimiento.get(0) + ", " + disponible;
-
     }
 }
