@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
@@ -37,8 +38,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnPrestamos = new javax.swing.JToggleButton();
         btnUsuarios = new javax.swing.JToggleButton();
         btnRecursos = new javax.swing.JToggleButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList = new javax.swing.JList<>();
         txtBuscar = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
@@ -46,6 +45,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         btnBusqueda = new javax.swing.JButton();
         btnDetalles = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable = new javax.swing.JTable();
         jpBusquedaAvanzada = new javax.swing.JPanel();
         btnPopConfirmar = new javax.swing.JButton();
         txtBusqueda1 = new javax.swing.JTextField();
@@ -94,10 +95,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(38, 38, 38))
         );
 
-        jList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList.setFocusable(false);
-        jScrollPane1.setViewportView(jList);
-
         btnAgregar.setText("AGREGAR");
 
         btnActualizar.setText("ACTUALIZAR");
@@ -114,6 +111,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         btnDetalles.setText("DETALLES");
 
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane2.setViewportView(jTable);
+
         javax.swing.GroupLayout jpContenidoLayout = new javax.swing.GroupLayout(jpContenido);
         jpContenido.setLayout(jpContenidoLayout);
         jpContenidoLayout.setHorizontalGroup(
@@ -123,14 +135,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(jpOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpContenidoLayout.createSequentialGroup()
-                        .addComponent(txtBuscar)
-                        .addGap(18, 18, 18)
-                        .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12))
                     .addGroup(jpContenidoLayout.createSequentialGroup()
                         .addComponent(btnDetalles)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -139,8 +143,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addComponent(btnActualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEliminar)
-                        .addGap(10, 10, 10)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jpContenidoLayout.createSequentialGroup()
+                        .addComponent(txtBuscar)
+                        .addGap(18, 18, 18)
+                        .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19))
+                    .addGroup(jpContenidoLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jpContenidoLayout.setVerticalGroup(
             jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,9 +168,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
                         .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnDetalles)
                             .addComponent(btnAgregar)
@@ -165,8 +178,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
                             .addComponent(btnEliminar))))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
-
-        jpOpciones.getAccessibleContext().setAccessibleName("OPCIONES");
 
         jpBusquedaAvanzada.setMinimumSize(new java.awt.Dimension(300, 300));
         jpBusquedaAvanzada.setPreferredSize(new java.awt.Dimension(300, 300));
@@ -185,7 +196,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jpBusquedaAvanzadaLayout.setHorizontalGroup(
             jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpBusquedaAvanzadaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(82, Short.MAX_VALUE)
                 .addGroup(jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRadioBusqueda2)
                     .addComponent(btnRadioBusqueda1)
@@ -193,12 +204,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addComponent(txtBusqueda1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtBusqueda2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnPopConfirmar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         jpBusquedaAvanzadaLayout.setVerticalGroup(
             jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBusquedaAvanzadaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addComponent(btnRadioBusqueda1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRadioBusqueda2)
@@ -208,7 +219,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(txtBusqueda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnPopConfirmar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         jLayeredPane1.setLayer(jpContenido, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -324,14 +335,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         return btnUsuarios;
     }
 
-    public JList<String> getJList() {
-        return jList;
+//    public JList<String> getJList() {
+//        return jList;
+//    }
+//    
+//    public int getJListIndex() {
+//        int index = jList.getSelectedIndex();
+//        return index;
+//    }
+    
+    public JTable getJTable() {
+        return jTable;
     }
     
     public int getJListIndex() {
-        int index = jList.getSelectedIndex();
-        return index;
+        return jTable.getSelectedRow();
     }
+    
+    
 
     public JPanel getJpBusquedaAvanzada() {
         return jpBusquedaAvanzada;
@@ -426,8 +447,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnRecursos;
     private javax.swing.JToggleButton btnUsuarios;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JList<String> jList;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable;
     private javax.swing.JPanel jpBusquedaAvanzada;
     private javax.swing.JPanel jpContenido;
     private javax.swing.JPanel jpOpciones;

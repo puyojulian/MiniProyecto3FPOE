@@ -23,6 +23,8 @@ import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class MenuPrincipalController {
     
@@ -43,14 +45,18 @@ public class MenuPrincipalController {
     private Map mapaUsuarios;
     private Map mapaRecursos;
     private Map mapaPrestamos;
-    private javax.swing.JList<String> jLista;
+//    private javax.swing.JList<String> jLista;
+    private javax.swing.JTable jTable;
     private List<Map.Entry<Integer, Usuario>> listaMapUsuarios;
     private List<Map.Entry<String, Recurso>> listaMapRecursos;
     private List<Map.Entry<Integer, Prestamo>> listaMapPrestamos;
     private String strBusqueda1;
     private String strBusqueda2;
-    private DefaultListModel<String> modeloLista;
+    private DefaultTableModel modeloTabla;
+//    private DefaultListModel<String> modeloLista;
+    private DefaultTableModel modeloTablaResultado;
     private DefaultListModel<String> modeloListaResultado;
+    private List listaTemporal;
     private int index;
     
     public MenuPrincipalController(MenuPrincipal menuPrincipal) {
@@ -58,9 +64,13 @@ public class MenuPrincipalController {
         this.recursoDAO = new RecursoDAO();
         this.prestamoDAO = new PrestamoDAO();
         this.menuPrincipal = menuPrincipal;
-        this.jLista = menuPrincipal.getJList();
-        this.modeloLista = new DefaultListModel<>();
+//        this.jLista = menuPrincipal.getJList();
+        this.jTable = menuPrincipal.getJTable();
+//        this.modeloLista = new DefaultListModel<>();
         this.modeloListaResultado = new DefaultListModel<>();
+        this.modeloTabla = new DefaultTableModel();
+        this.modeloTablaResultado = new DefaultTableModel();
+        this.listaTemporal = new ArrayList();
         
         HandlerActions listener = new HandlerActions();
         
@@ -142,24 +152,42 @@ public class MenuPrincipalController {
         }
     }
     
+    
+    
     public void actualizarJListaUsuarios() {
         if(mapaUsuarios.size() > 0) {
             Set<Map.Entry<Integer, Usuario>> entrySetMapa = mapaUsuarios.entrySet();
 
-            modeloLista.clear();
+            listaTemporal.clear();
+            modeloTabla.setRowCount(0);
+//            modeloLista.clear();
 
             listaMapUsuarios = new ArrayList<>(mapaUsuarios.entrySet());
+            
+            String[] atributosTablaUsuarios = {"ID", "NOMBRE", "ESTADO ACTIVO", "ROL"};
+            modeloTabla.setColumnIdentifiers(atributosTablaUsuarios);
 
             for (Map.Entry<Integer, Usuario> entry : entrySetMapa){
                 Usuario value = entry.getValue();
                 String item = "" + value;
-                modeloLista.addElement(item);
+                StringTokenizer tokenizer = new StringTokenizer(item,",");
+                while(tokenizer.hasMoreTokens()) {
+                    String token = tokenizer.nextToken();
+                    listaTemporal.add(token);
+                }
+                
+//                modeloLista.addElement(item);
+                modeloTabla.addRow(listaTemporal.toArray());
+                listaTemporal.clear();
             }
-            menuPrincipal.getJList().setModel(modeloLista);
+//            menuPrincipal.getJList().setModel(modeloLista);
+            jTable.setModel(modeloTabla);
         }
         else {
-            modeloLista.clear();
-            menuPrincipal.getJList().setModel(modeloLista);
+//            modeloLista.clear();
+            modeloTabla.setRowCount(0);
+//            menuPrincipal.getJList().setModel(modeloLista);
+            jTable.setModel(modeloTabla);
         }
     }
     
@@ -167,20 +195,36 @@ public class MenuPrincipalController {
         if(mapaRecursos.size() > 0) {
             Set<Map.Entry<String, Recurso>> entrySetMapa = mapaRecursos.entrySet();
 
-            modeloLista.clear();
+            listaTemporal.clear();
+            modeloTabla.setRowCount(0);
+//            modeloLista.clear();
 
             listaMapRecursos = new ArrayList<>(mapaRecursos.entrySet());
+            
+            String[] atributosTablaRecursos = {"CODIGO", "ISBN", "TÍTULO", "AUTOR", "GÉNERO", "ÁREA", "DISPONIBLE"};
+            modeloTabla.setColumnIdentifiers(atributosTablaRecursos);
 
             for (Map.Entry<String, Recurso> entry : entrySetMapa){
                 Recurso value = entry.getValue();
-                String item = "" + value;   
-                modeloLista.addElement(item);
+                String item = "" + value;
+                StringTokenizer tokenizer = new StringTokenizer(item,",");
+                while(tokenizer.hasMoreTokens()) {
+                    String token = tokenizer.nextToken();
+                    listaTemporal.add(token);
+                }
+                
+//                modeloLista.addElement(item);
+                modeloTabla.addRow(listaTemporal.toArray());
+                listaTemporal.clear();
             }
-            menuPrincipal.getJList().setModel(modeloLista);
+//            menuPrincipal.getJList().setModel(modeloLista);
+            jTable.setModel(modeloTabla);
         }
         else {
-            modeloLista.clear();
-            menuPrincipal.getJList().setModel(modeloLista);
+//            modeloLista.clear();
+            modeloTabla.setRowCount(0);
+//            menuPrincipal.getJList().setModel(modeloLista);
+            jTable.setModel(modeloTabla);
         }
     }
     
@@ -188,20 +232,36 @@ public class MenuPrincipalController {
         if(mapaPrestamos.size() > 0) {
             Set<Map.Entry<Integer, Prestamo>> entrySetMapa = mapaPrestamos.entrySet();
 
-            modeloLista.clear();
+            listaTemporal.clear();
+            modeloTabla.setRowCount(0);
+//            modeloLista.clear();
 
             listaMapPrestamos = new ArrayList<>(mapaPrestamos.entrySet());
+            
+            String[] atributosTablaRPrestamos = {"ID RECURSO", "ID USUARIO", "NOMBRE", "ESTADO ACTIVO", "ROL", "CODIGO", "ISBN", "TÍTULO", "AUTOR", "GÉNERO", "ÁREA", "DISPONIBLE"};
+            modeloTabla.setColumnIdentifiers(atributosTablaRPrestamos);
 
             for (Map.Entry<Integer, Prestamo> entry : entrySetMapa){
                 Prestamo value = entry.getValue();
                 String item = "" + value;
-                modeloLista.addElement(item);
+                StringTokenizer tokenizer = new StringTokenizer(item,",");
+                while(tokenizer.hasMoreTokens()) {
+                    String token = tokenizer.nextToken();
+                    listaTemporal.add(token);
+                }
+                
+//                modeloLista.addElement(item);
+                modeloTabla.addRow(listaTemporal.toArray());
+                listaTemporal.clear();
             }
-            jLista.setModel(modeloLista);
+//            jLista.setModel(modeloLista);
+            jTable.setModel(modeloTabla);
         }
         else {
-            modeloLista.clear();
-            jLista.setModel(modeloLista);
+//            modeloLista.clear();
+            modeloTabla.setRowCount(0);
+//            jLista.setModel(modeloLista);
+            jTable.setModel(modeloTabla);
         }
     }
         
@@ -258,28 +318,36 @@ public class MenuPrincipalController {
             }
             else if (e.getSource() == menuPrincipal.getBtnEliminar()) { // ELIMINAR
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
-                    index = menuPrincipal.getJListIndex();
+//                    index = menuPrincipal.getJListIndex();
+                    index = jTable.getSelectedRow();
+                    System.out.println(index);
                     
                     if(index != -1) {
                         Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
 
                         usuarioDAO.deleteUsuario((entry.getKey()));
                         listaMapUsuarios.remove(index);
-                        modeloLista.remove(index); 
+//                        modeloLista.remove(index);
+                        modeloTabla.removeRow(index);
 
-                        menuPrincipal.getJList().setModel(modeloLista);
+//                        menuPrincipal.getJList().setModel(modeloLista);
+                        jTable.setModel(modeloTabla);
                     }    
                 }
                 else if(menuPrincipal.getBtnRecursos().isSelected()) {
-                    index = menuPrincipal.getJListIndex();
+//                    index = menuPrincipal.getJListIndex();
+                    index = jTable.getSelectedRow();
+                    System.out.println(index);
                     if(index != -1) {
                         Map.Entry<String, Recurso> entry = listaMapRecursos.get(index);
 
                         recursoDAO.deleteRecurso((entry.getKey()));
                         listaMapRecursos.remove(index);
-                        modeloLista.remove(index); 
+//                        modeloLista.remove(index); 
+                        modeloTabla.removeRow(index);
 
-                        menuPrincipal.getJList().setModel(modeloLista);
+//                        menuPrincipal.getJList().setModel(modeloLista);
+                        jTable.setModel(modeloTabla);
                     }
                 }
             }
@@ -301,7 +369,8 @@ public class MenuPrincipalController {
             }
             else if (e.getSource() == menuPrincipal.getBtnActualizar()) { // ACTUALIZAR
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
-                    index = menuPrincipal.getJListIndex();
+//                    index = menuPrincipal.getJListIndex();
+                    index = jTable.getSelectedRow();
                     if(index != -1) {
                         Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
                         editarUsuario.setVisible(true);
@@ -309,7 +378,9 @@ public class MenuPrincipalController {
                     } 
                 }
                 else if(menuPrincipal.getBtnRecursos().isSelected()) {
-                    index = menuPrincipal.getJListIndex();
+//                    index = menuPrincipal.getJListIndex();
+                    index = jTable.getSelectedRow();
+                    System.out.println("");
                     if(index != -1) {
                         Map.Entry<String, Recurso> entry = listaMapRecursos.get(index);
                         editarRecurso.setVisible(true);
@@ -332,74 +403,74 @@ public class MenuPrincipalController {
 
                 }
             }
-            else if(e.getSource() == menuPrincipal.getBtnBuscar()) { //BUSQUEDA PRINCIPAL
-                modeloListaResultado.clear();
-                strBusqueda1 = menuPrincipal.getTxtBuscar().getText();
-                if(!"".equals(strBusqueda1)) {
-                    String strBusqueda1Clean = strBusqueda1.replaceAll("\\s", "");
-                    for (int i = 0; i < modeloLista.size(); i++) {
-                        String filaLista = modeloLista.getElementAt(i);
-                        StringTokenizer listaTemporal =  new StringTokenizer(filaLista,",");
-                        while (listaTemporal.hasMoreTokens()) {
-                            String token = listaTemporal.nextToken();
-                            String tokenClean = token.replaceAll("\\s", "");
-                            if(strBusqueda1Clean.equalsIgnoreCase(tokenClean)) {
-                                modeloListaResultado.addElement(filaLista);
-                                break;
-                            }
-                            else {
-                                StringTokenizer elementoTemporal = new StringTokenizer(token," ");
-                                while (elementoTemporal.hasMoreTokens()) {
-                                    if(strBusqueda1.equalsIgnoreCase(elementoTemporal.nextToken())) {
-                                        modeloListaResultado.addElement(filaLista);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    menuPrincipal.getJList().setModel(modeloListaResultado);
-                }
-                else {
-                    menuPrincipal.getJList().setModel(modeloLista);
-                }
-            }
-            else if(e.getSource() == menuPrincipal.getBtnPopConfirmar()) {
-                modeloListaResultado.clear();
-                strBusqueda1 = menuPrincipal.getTxtBusqueda1().getText();
-                strBusqueda2 = menuPrincipal.getTxtBusqueda2().getText();
-                if(!"".equals(strBusqueda1)) {
-                    String strBusqueda1Clean = strBusqueda1.replaceAll("\\s", "");
-                    String strBusqueda2Clean = strBusqueda2.replaceAll("\\s", "");
-                    for (int i = 0; i < modeloLista.size(); i++) {
-                        String filaLista = modeloLista.getElementAt(i);
-                        StringTokenizer listaTemporal =  new StringTokenizer(filaLista,",");
-                        while (listaTemporal.hasMoreTokens()) {
-                            String token = listaTemporal.nextToken();
-                            String tokenClean = token.replaceAll("\\s", "");
-                            if(strBusqueda1Clean.equalsIgnoreCase(tokenClean) || strBusqueda2Clean.equalsIgnoreCase(tokenClean)) {
-                                modeloListaResultado.addElement(filaLista);
-                                break;
-                            }
-                            else {
-                                StringTokenizer elementoTemporal = new StringTokenizer(token," ");
-                                while (elementoTemporal.hasMoreTokens()) {
-                                    String subToken = elementoTemporal.nextToken();
-                                    if(strBusqueda1.equalsIgnoreCase(subToken) || strBusqueda2.equalsIgnoreCase(subToken)) {
-                                        modeloListaResultado.addElement(filaLista);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    menuPrincipal.getJList().setModel(modeloListaResultado);
-                }
-                else {
-                    menuPrincipal.getJList().setModel(modeloLista);
-                }
-                menuPrincipal.getJpBusquedaAvanzada().setVisible(false);
-            }    
+//            else if(e.getSource() == menuPrincipal.getBtnBuscar()) { //BUSQUEDA PRINCIPAL
+//                modeloListaResultado.clear();
+//                strBusqueda1 = menuPrincipal.getTxtBuscar().getText();
+//                if(!"".equals(strBusqueda1)) {
+//                    String strBusqueda1Clean = strBusqueda1.replaceAll("\\s", "");
+//                    for (int i = 0; i < modeloLista.size(); i++) {
+//                        String filaLista = modeloLista.getElementAt(i);
+//                        StringTokenizer listaTemporal =  new StringTokenizer(filaLista,",");
+//                        while (listaTemporal.hasMoreTokens()) {
+//                            String token = listaTemporal.nextToken();
+//                            String tokenClean = token.replaceAll("\\s", "");
+//                            if(strBusqueda1Clean.equalsIgnoreCase(tokenClean)) {
+//                                modeloListaResultado.addElement(filaLista);
+//                                break;
+//                            }
+//                            else {
+//                                StringTokenizer elementoTemporal = new StringTokenizer(token," ");
+//                                while (elementoTemporal.hasMoreTokens()) {
+//                                    if(strBusqueda1.equalsIgnoreCase(elementoTemporal.nextToken())) {
+//                                        modeloListaResultado.addElement(filaLista);
+//                                        break;
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+////                    menuPrincipal.getJList().setModel(modeloListaResultado); //CAMBIAR
+//                }
+//                else {
+////                    menuPrincipal.getJList().setModel(modeloLista); //CAMBIAR
+//                }
+//            }
+//            else if(e.getSource() == menuPrincipal.getBtnPopConfirmar()) {
+//                modeloListaResultado.clear();
+//                strBusqueda1 = menuPrincipal.getTxtBusqueda1().getText();
+//                strBusqueda2 = menuPrincipal.getTxtBusqueda2().getText();
+//                if(!"".equals(strBusqueda1)) {
+//                    String strBusqueda1Clean = strBusqueda1.replaceAll("\\s", "");
+//                    String strBusqueda2Clean = strBusqueda2.replaceAll("\\s", "");
+//                    for (int i = 0; i < modeloLista.size(); i++) {
+//                        String filaLista = modeloLista.getElementAt(i);
+//                        StringTokenizer listaTemporal =  new StringTokenizer(filaLista,",");
+//                        while (listaTemporal.hasMoreTokens()) {
+//                            String token = listaTemporal.nextToken();
+//                            String tokenClean = token.replaceAll("\\s", "");
+//                            if(strBusqueda1Clean.equalsIgnoreCase(tokenClean) || strBusqueda2Clean.equalsIgnoreCase(tokenClean)) {
+//                                modeloListaResultado.addElement(filaLista);
+//                                break;
+//                            }
+//                            else {
+//                                StringTokenizer elementoTemporal = new StringTokenizer(token," ");
+//                                while (elementoTemporal.hasMoreTokens()) {
+//                                    String subToken = elementoTemporal.nextToken();
+//                                    if(strBusqueda1.equalsIgnoreCase(subToken) || strBusqueda2.equalsIgnoreCase(subToken)) {
+//                                        modeloListaResultado.addElement(filaLista);
+//                                        break;
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+////                    menuPrincipal.getJList().setModel(modeloListaResultado); //CAMBIAR
+//                }
+//                else {
+////                    menuPrincipal.getJList().setModel(modeloLista); //CAMBIAR
+//                }
+//                menuPrincipal.getJpBusquedaAvanzada().setVisible(false);
+//            }    
             else if(e.getSource() == agregarUsuario.getBtnAgregar()) {
                 try {
                     Thread.sleep(200);

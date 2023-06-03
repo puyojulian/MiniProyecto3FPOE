@@ -104,16 +104,6 @@
                       <Component id="jpOpciones" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" alignment="0" pref="612" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="txtBuscar" max="32767" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnBuscar" min="-2" pref="137" max="-2" attributes="0"/>
-                                  <Component id="btnBusqueda" min="-2" pref="137" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="btnDetalles" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
@@ -122,10 +112,22 @@
                               <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="txtBuscar" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnBuscar" min="-2" pref="137" max="-2" attributes="0"/>
+                                  <Component id="btnBusqueda" min="-2" pref="137" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jScrollPane2" min="-2" pref="602" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -144,9 +146,9 @@
                                   </Group>
                                   <Component id="txtBuscar" alignment="1" min="-2" pref="51" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" min="-2" pref="446" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" min="-2" pref="436" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btnDetalles" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -171,9 +173,6 @@
                   </Border>
                 </Property>
               </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="OPCIONES"/>
-              </AccessibilityProperties>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -221,27 +220,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JList" name="jList">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                      <StringArray count="0"/>
-                    </Property>
-                    <Property name="selectionMode" type="int" value="0"/>
-                    <Property name="focusable" type="boolean" value="false"/>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-              </SubComponents>
-            </Container>
             <Component class="javax.swing.JTextField" name="txtBuscar">
             </Component>
             <Component class="javax.swing.JButton" name="btnAgregar">
@@ -282,6 +260,28 @@
                 <Property name="text" type="java.lang.String" value="DETALLES"/>
               </Properties>
             </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="jTable">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="selectionMode" type="int" value="0"/>
+                    <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
+                      <JTableSelectionModel selectionMode="0"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jpBusquedaAvanzada">
@@ -302,7 +302,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="82" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnRadioBusqueda2" min="-2" max="-2" attributes="0"/>
                           <Component id="btnRadioBusqueda1" min="-2" max="-2" attributes="0"/>
@@ -312,14 +312,14 @@
                           </Group>
                           <Component id="btnPopConfirmar" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="83" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="42" max="32767" attributes="0"/>
                       <Component id="btnRadioBusqueda1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnRadioBusqueda2" min="-2" max="-2" attributes="0"/>
@@ -329,7 +329,7 @@
                       <Component id="txtBusqueda1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnPopConfirmar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="43" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
