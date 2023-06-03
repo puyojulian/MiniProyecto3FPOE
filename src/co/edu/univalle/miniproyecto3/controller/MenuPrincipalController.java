@@ -139,9 +139,7 @@ public class MenuPrincipalController {
             brUsuarios = new BufferedReader(frUsuarios);
             String linea;
             while((linea = brUsuarios.readLine()) != null) {
-                System.out.println(linea);
                 StringTokenizer tokenizer = new StringTokenizer(linea,",");
-                System.out.println(tokenizer.countTokens());
                 while(tokenizer.hasMoreTokens()) {
                     String token = tokenizer.nextToken();
                     listaParametros.add(token);
@@ -179,9 +177,7 @@ public class MenuPrincipalController {
             brRecursos = new BufferedReader(frRecursos);
             String linea;
             while((linea = brRecursos.readLine()) != null) {
-                System.out.println(linea);
                 StringTokenizer tokenizer = new StringTokenizer(linea,",");
-                System.out.println(tokenizer.countTokens());
                 while(tokenizer.hasMoreTokens()) {
                     String token = tokenizer.nextToken();
                     listaParametros.add(token);
