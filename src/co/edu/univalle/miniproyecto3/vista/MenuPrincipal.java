@@ -53,6 +53,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         txtBusqueda2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnPopCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -180,11 +181,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jpBusquedaAvanzada.setPreferredSize(new java.awt.Dimension(300, 300));
         jpBusquedaAvanzada.setVisible(false);
 
-        btnPopConfirmar.setText("Confirmar");
+        btnPopConfirmar.setText("Buscar");
 
         jLabel1.setText("¡Dos categorías a la vez!");
 
         jLabel2.setText("Busqueda Avanzada");
+
+        btnPopCerrar.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        btnPopCerrar.setText("Salir");
 
         javax.swing.GroupLayout jpBusquedaAvanzadaLayout = new javax.swing.GroupLayout(jpBusquedaAvanzada);
         jpBusquedaAvanzada.setLayout(jpBusquedaAvanzadaLayout);
@@ -194,24 +198,31 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtBusqueda2, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                    .addComponent(txtBusqueda1)
-                    .addGroup(jpBusquedaAvanzadaLayout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(btnPopConfirmar)))
+                    .addComponent(txtBusqueda1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBusquedaAvanzadaLayout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
+                .addContainerGap(88, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(88, 88, 88))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBusquedaAvanzadaLayout.createSequentialGroup()
-                .addContainerGap(99, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(95, 95, 95))
+            .addGroup(jpBusquedaAvanzadaLayout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(btnPopConfirmar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBusquedaAvanzadaLayout.createSequentialGroup()
+                .addContainerGap(228, Short.MAX_VALUE)
+                .addComponent(btnPopCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
         jpBusquedaAvanzadaLayout.setVerticalGroup(
             jpBusquedaAvanzadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBusquedaAvanzadaLayout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
+                .addComponent(btnPopCerrar)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
@@ -219,9 +230,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(txtBusqueda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtBusqueda2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(40, 40, 40)
                 .addComponent(btnPopConfirmar)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jLayeredPane1.setLayer(jpContenido, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -336,6 +347,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public JToggleButton getBtnUsuarios() {
         return btnUsuarios;
     }
+
+    public JButton getBtnPopCerrar() {
+        return btnPopCerrar;
+    }
     
     public JTable getJTable() {
         return jTable;
@@ -405,6 +420,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnPopConfirmar.addActionListener(listener);
     }
     
+    public void addBtnPopCerrar(ActionListener listener){
+        btnPopCerrar.addActionListener(listener);
+    }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -415,6 +434,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnDetalles;
     private javax.swing.JButton btnEliminar;
     private javax.swing.ButtonGroup btnGroupPop;
+    private javax.swing.JButton btnPopCerrar;
     private javax.swing.JButton btnPopConfirmar;
     private javax.swing.JToggleButton btnPrestamos;
     private javax.swing.JToggleButton btnRecursos;

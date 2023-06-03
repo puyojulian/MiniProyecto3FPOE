@@ -14,7 +14,9 @@ import co.edu.univalle.miniproyecto3.vista.EditarUsuario;
 import co.edu.univalle.miniproyecto3.vista.MenuPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -57,6 +59,8 @@ public class MenuPrincipalController {
     private DefaultListModel<String> modeloListaResultado;
     private List listaTemporal;
     private int index;
+    private Object[] rowData1;
+    private Object[] rowData2;
     
     public MenuPrincipalController(MenuPrincipal menuPrincipal) {
         this.usuarioDAO = new UsuarioDAO();
@@ -96,6 +100,7 @@ public class MenuPrincipalController {
         menuPrincipal.addBtnActualizar(listener);
         menuPrincipal.addBtnEliminar(listener);
         menuPrincipal.addBtnPopConfirmar(listener);
+        menuPrincipal.addBtnPopCerrar(listener);
         
         usuariosActuales();
         recursosActuales();
@@ -449,12 +454,12 @@ public class MenuPrincipalController {
                     jTable.setModel(modeloTabla); //CAMBIAR
                 }
             }
-            else if(e.getSource() == menuPrincipal.getBtnPopConfirmar()) {
+            else if(e.getSource() == menuPrincipal.getBtnPopConfirmar()) { //BUSQUEDA AVANZADA
                 modeloTablaResultado.setRowCount(0);
                 establecerIdentificadoresColumnas(modeloTablaResultado);
                 strBusqueda1 = menuPrincipal.getTxtBusqueda1().getText();
                 strBusqueda2 = menuPrincipal.getTxtBusqueda2().getText();
-                if(!"".equals(strBusqueda1)) {
+                if(!"".equals(strBusqueda1) && !"".equals(strBusqueda2)) {
                     String strBusqueda1Clean = strBusqueda1.replaceAll("\\s", "");
                     String strBusqueda2Clean = strBusqueda2.replaceAll("\\s", "");
                     System.out.println(strBusqueda1Clean);
@@ -462,26 +467,59 @@ public class MenuPrincipalController {
                     for (int i = 0; i < modeloTabla.getRowCount(); i++) {
                         for (int j = 0; j < modeloTabla.getColumnCount(); j++) {
                             String rawString = (String)modeloTabla.getValueAt(i,j);
-                            if(strBusqueda1Clean.equalsIgnoreCase(rawString.replaceAll("\\s", "")) || strBusqueda2Clean.equalsIgnoreCase(rawString.replaceAll("\\s", ""))) { // rawString.replaceAll("\\s", "") es string de solo caracteres.
-                                Object[] rowData = new Object[modeloTabla.getColumnCount()];
+                            if(strBusqueda1Clean.equalsIgnoreCase(rawString.replaceAll("\\s", ""))) { // rawString.replaceAll("\\s", "") es string de solo caracteres.
+                                rowData1= new Object[modeloTabla.getColumnCount()];
                                 for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
-                                    rowData[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
+                                    rowData1[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
                                 }
-                                modeloTablaResultado.addRow(rowData);
-                                System.out.println(rowData);
+//                                modeloTablaResultado.addRow(rowData);
+                                System.out.println(rowData1);
                                 break;
                             }
                             else {
                                 StringTokenizer elementoTemporal = new StringTokenizer((String)modeloTabla.getValueAt(i,j)," ");
                                 while (elementoTemporal.hasMoreTokens()) {
                                     String subToken = elementoTemporal.nextToken();
-                                    if(strBusqueda1.equalsIgnoreCase(subToken) || strBusqueda2Clean.equalsIgnoreCase(subToken)) {
-                                        Object[] rowData = new Object[modeloTabla.getColumnCount()];
+                                    if(strBusqueda1Clean.equalsIgnoreCase(subToken)) {
+                                        rowData1 = new Object[modeloTabla.getColumnCount()];
                                         for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
-                                            rowData[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
+                                            rowData1[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
                                         }
-                                        modeloTablaResultado.addRow(rowData);
-                                        System.out.println(rowData);
+//                                        modeloTablaResultado.addRow(rowData1);
+                                        System.out.println(rowData1);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        for (int j = 0; j < modeloTabla.getColumnCount(); j++) {
+                            String rawString = (String)modeloTabla.getValueAt(i,j);
+                            if(strBusqueda2Clean.equalsIgnoreCase(rawString.replaceAll("\\s", ""))) { // rawString.replaceAll("\\s", "") es string de solo caracteres.
+                                rowData2 = new Object[modeloTabla.getColumnCount()];
+                                for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
+                                    rowData2[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
+                                }
+//                                modeloTablaResultado.addRow(rowData2);
+                                if(Arrays.equals(rowData1, rowData2)) {
+                                    modeloTablaResultado.addRow(rowData2);  
+                                }
+                                System.out.println(rowData2);
+                                break;
+                            }
+                            else {
+                                StringTokenizer elementoTemporal = new StringTokenizer((String)modeloTabla.getValueAt(i,j)," ");
+                                while (elementoTemporal.hasMoreTokens()) {
+                                    String subToken = elementoTemporal.nextToken();
+                                    if(strBusqueda2Clean.equalsIgnoreCase(subToken)) {
+                                        rowData2 = new Object[modeloTabla.getColumnCount()];
+                                        for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
+                                            rowData2[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
+                                        }
+//                                        modeloTablaResultado.addRow(rowData2);
+                                        if(Arrays.equals(rowData1, rowData2)) {
+                                            modeloTablaResultado.addRow(rowData2);  
+                                        }
+                                        System.out.println(rowData2);
                                         break;
                                     }
                                 }
@@ -489,12 +527,20 @@ public class MenuPrincipalController {
                         }
                     }
                     jTable.setModel(modeloTablaResultado);
+                    menuPrincipal.getJpBusquedaAvanzada().setVisible(false);
+                    menuPrincipal.getTxtBusqueda1().setText("");
+                    menuPrincipal.getTxtBusqueda2().setText("");
                 }
                 else {
                     jTable.setModel(modeloTabla);
+                    mensajeTemporal("Ningun campo puede estar vacío.", "Error", 1150);
                 }
+            }
+            else if(e.getSource() == menuPrincipal.getBtnPopCerrar()) {
                 menuPrincipal.getJpBusquedaAvanzada().setVisible(false);
-            }    
+                menuPrincipal.getTxtBusqueda1().setText("");
+                menuPrincipal.getTxtBusqueda2().setText("");
+            }
             else if(e.getSource() == agregarUsuario.getBtnAgregar()) {
                 try {
                     Thread.sleep(200);
