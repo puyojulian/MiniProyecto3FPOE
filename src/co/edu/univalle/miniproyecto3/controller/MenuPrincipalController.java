@@ -95,8 +95,6 @@ public class MenuPrincipalController {
         menuPrincipal.addBtnAgregar(listener);
         menuPrincipal.addBtnActualizar(listener);
         menuPrincipal.addBtnEliminar(listener);
-        menuPrincipal.addBtnRadioBusqueda1(listener);
-        menuPrincipal.addBtnRadioBusqueda2(listener);
         menuPrincipal.addBtnPopConfirmar(listener);
         
         usuariosActuales();
@@ -162,7 +160,7 @@ public class MenuPrincipalController {
 
             listaMapUsuarios = new ArrayList<>(mapaUsuarios.entrySet());
             
-            establecerIdentificadoresColumnas();
+            establecerIdentificadoresColumnas(modeloTabla);
 
             for (Map.Entry<Integer, Usuario> entry : entrySetMapa){
                 Usuario value = entry.getValue();
@@ -193,7 +191,7 @@ public class MenuPrincipalController {
 
             listaMapRecursos = new ArrayList<>(mapaRecursos.entrySet());
             
-            establecerIdentificadoresColumnas();
+            establecerIdentificadoresColumnas(modeloTabla);
 
             for (Map.Entry<String, Recurso> entry : entrySetMapa){
                 Recurso value = entry.getValue();
@@ -221,11 +219,10 @@ public class MenuPrincipalController {
 
             listaTemporal.clear();
             modeloTabla.setRowCount(0);
-//            modeloLista.clear();
 
             listaMapPrestamos = new ArrayList<>(mapaPrestamos.entrySet());
             
-            establecerIdentificadoresColumnas();
+            establecerIdentificadoresColumnas(modeloTabla);
 
             for (Map.Entry<Integer, Prestamo> entry : entrySetMapa){
                 Prestamo value = entry.getValue();
@@ -236,17 +233,13 @@ public class MenuPrincipalController {
                     listaTemporal.add(token);
                 }
                 
-//                modeloLista.addElement(item);
                 modeloTabla.addRow(listaTemporal.toArray());
                 listaTemporal.clear();
             }
-//            jLista.setModel(modeloLista);
             jTable.setModel(modeloTabla);
         }
         else {
-//            modeloLista.clear();
             modeloTabla.setRowCount(0);
-//            jLista.setModel(modeloLista);
             jTable.setModel(modeloTabla);
         }
     }
@@ -269,33 +262,18 @@ public class MenuPrincipalController {
         dlg.setVisible(true);
     }
     
-    public void establecerIdentificadoresColumnas() {
+    public void establecerIdentificadoresColumnas(DefaultTableModel modelo) {
         if(menuPrincipal.getBtnUsuarios().isSelected()) {
             String[] atributosTablaUsuarios = {"ID", "NOMBRE", "ESTADO ACTIVO", "ROL"};
-            modeloTabla.setColumnIdentifiers(atributosTablaUsuarios);
+            modelo.setColumnIdentifiers(atributosTablaUsuarios);
         }
         else if(menuPrincipal.getBtnRecursos().isSelected()){
             String[] atributosTablaRecursos = {"CODIGO", "ISBN", "TÍTULO", "AUTOR", "GÉNERO", "ÁREA", "DISPONIBLE"};
-            modeloTabla.setColumnIdentifiers(atributosTablaRecursos);
+            modelo.setColumnIdentifiers(atributosTablaRecursos);
         }
         else if(menuPrincipal.getBtnPrestamos().isSelected()){
             String[] atributosTablaRPrestamos = {"ID RECURSO", "ID USUARIO", "NOMBRE", "ESTADO ACTIVO", "ROL", "CODIGO", "ISBN", "TÍTULO", "AUTOR", "GÉNERO", "ÁREA", "DISPONIBLE"};
-            modeloTabla.setColumnIdentifiers(atributosTablaRPrestamos);
-        }
-    }
-    
-    public void establecerIdentificadoresColumnasResultado() {
-        if(menuPrincipal.getBtnUsuarios().isSelected()) {
-            String[] atributosTablaUsuarios = {"ID", "NOMBRE", "ESTADO ACTIVO", "ROL"};
-            modeloTablaResultado.setColumnIdentifiers(atributosTablaUsuarios);
-        }
-        else if(menuPrincipal.getBtnRecursos().isSelected()){
-            String[] atributosTablaRecursos = {"CODIGO", "ISBN", "TÍTULO", "AUTOR", "GÉNERO", "ÁREA", "DISPONIBLE"};
-            modeloTablaResultado.setColumnIdentifiers(atributosTablaRecursos);
-        }
-        else if(menuPrincipal.getBtnPrestamos().isSelected()){
-            String[] atributosTablaRPrestamos = {"ID RECURSO", "ID USUARIO", "NOMBRE", "ESTADO ACTIVO", "ROL", "CODIGO", "ISBN", "TÍTULO", "AUTOR", "GÉNERO", "ÁREA", "DISPONIBLE"};
-            modeloTablaResultado.setColumnIdentifiers(atributosTablaRPrestamos);
+            modelo.setColumnIdentifiers(atributosTablaRPrestamos);
         }
     }
         
@@ -311,8 +289,6 @@ public class MenuPrincipalController {
                 
                 menuPrincipal.getBtnActualizar().setText("EDITAR");
                 
-                menuPrincipal.getBtnRadioBusqueda1().setText("Nombre y Código");
-                menuPrincipal.getBtnRadioBusqueda2().setText("Nombre y Rol");
                 menuPrincipal.getBtnAgregar().setEnabled(true);
                 menuPrincipal.getBtnEliminar().setEnabled(true);
                 
@@ -329,8 +305,6 @@ public class MenuPrincipalController {
                 
                 actualizarJListaRecursos();
                 
-                menuPrincipal.getBtnRadioBusqueda1().setText("Título y Autor");
-                menuPrincipal.getBtnRadioBusqueda2().setText("Título y Género");
                 menuPrincipal.getBtnAgregar().setEnabled(true);
                 menuPrincipal.getBtnEliminar().setEnabled(true);
             }
@@ -343,8 +317,6 @@ public class MenuPrincipalController {
                 
                 menuPrincipal.getBtnActualizar().setText("ADMINISTRAR");
                 
-                menuPrincipal.getBtnRadioBusqueda1().setText("Nombre y Fecha");
-                menuPrincipal.getBtnRadioBusqueda2().setText("Título y Autor");
                 menuPrincipal.getBtnAgregar().setEnabled(false);
                 menuPrincipal.getBtnEliminar().setEnabled(false);
                 
@@ -440,7 +412,7 @@ public class MenuPrincipalController {
             }
             else if(e.getSource() == menuPrincipal.getBtnBuscar()) { //BUSQUEDA PRINCIPAL
                 modeloTablaResultado.setRowCount(0);
-                establecerIdentificadoresColumnasResultado();
+                establecerIdentificadoresColumnas(modeloTablaResultado);
                 strBusqueda1 = menuPrincipal.getTxtBuscar().getText();
                 if(!"".equals(strBusqueda1)) {
                     String strBusqueda1Clean = strBusqueda1.replaceAll("\\s", "");
@@ -479,12 +451,14 @@ public class MenuPrincipalController {
             }
             else if(e.getSource() == menuPrincipal.getBtnPopConfirmar()) {
                 modeloTablaResultado.setRowCount(0);
-                establecerIdentificadoresColumnasResultado();
-                strBusqueda1 = menuPrincipal.getTxtBuscar().getText();
+                establecerIdentificadoresColumnas(modeloTablaResultado);
+                strBusqueda1 = menuPrincipal.getTxtBusqueda1().getText();
                 strBusqueda2 = menuPrincipal.getTxtBusqueda2().getText();
                 if(!"".equals(strBusqueda1)) {
                     String strBusqueda1Clean = strBusqueda1.replaceAll("\\s", "");
                     String strBusqueda2Clean = strBusqueda2.replaceAll("\\s", "");
+                    System.out.println(strBusqueda1Clean);
+                    System.out.println(strBusqueda2Clean);
                     for (int i = 0; i < modeloTabla.getRowCount(); i++) {
                         for (int j = 0; j < modeloTabla.getColumnCount(); j++) {
                             String rawString = (String)modeloTabla.getValueAt(i,j);
@@ -494,6 +468,7 @@ public class MenuPrincipalController {
                                     rowData[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
                                 }
                                 modeloTablaResultado.addRow(rowData);
+                                System.out.println(rowData);
                                 break;
                             }
                             else {
@@ -506,6 +481,7 @@ public class MenuPrincipalController {
                                             rowData[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
                                         }
                                         modeloTablaResultado.addRow(rowData);
+                                        System.out.println(rowData);
                                         break;
                                     }
                                 }
@@ -515,8 +491,9 @@ public class MenuPrincipalController {
                     jTable.setModel(modeloTablaResultado);
                 }
                 else {
-                    jTable.setModel(modeloTabla); //CAMBIAR
+                    jTable.setModel(modeloTabla);
                 }
+                menuPrincipal.getJpBusquedaAvanzada().setVisible(false);
             }    
             else if(e.getSource() == agregarUsuario.getBtnAgregar()) {
                 try {
