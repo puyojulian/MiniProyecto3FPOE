@@ -37,6 +37,10 @@ public class Prestamo {
     
     @Override
     public String toString() {
-        return id + ", " + usuario.toString() + ", " + recurso.toString();
+        return id + ", " + usuario.getNombre() + 
+                ", " + usuario.getRol() +
+                ", " + recurso.getIsbn() + 
+                ", " + recurso.getNombre() + 
+                ", " + recurso.getAutores().get(0);
     }
 }

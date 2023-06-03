@@ -356,11 +356,11 @@ public class MenuPrincipalController {
             modelo.setColumnIdentifiers(atributosTablaUsuarios);
         }
         else if(menuPrincipal.getBtnRecursos().isSelected()){
-            String[] atributosTablaRecursos = {"CODIGO", "ISBN", "TÍTULO", "AUTOR", "GÉNERO", "ÁREA", "DISPONIBLE"};
+            String[] atributosTablaRecursos = {"CÓDIGO", "ISBN", "TÍTULO", "AUTOR", "GÉNERO", "ÁREA", "DISPONIBLE"};
             modelo.setColumnIdentifiers(atributosTablaRecursos);
         }
         else if(menuPrincipal.getBtnPrestamos().isSelected()){
-            String[] atributosTablaRPrestamos = {"ID RECURSO", "ID USUARIO", "NOMBRE", "ESTADO ACTIVO", "ROL", "CODIGO", "ISBN", "TÍTULO", "AUTOR", "GÉNERO", "ÁREA", "DISPONIBLE"};
+            String[] atributosTablaRPrestamos = {"CÓDIGO", "USUARIO", "ROL", "ISBN", "TÍTULO", "AUTOR"};
             modelo.setColumnIdentifiers(atributosTablaRPrestamos);
         }
     }
