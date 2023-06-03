@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -166,8 +167,7 @@ public class MenuPrincipalController {
 
             listaMapUsuarios = new ArrayList<>(mapaUsuarios.entrySet());
             
-            String[] atributosTablaUsuarios = {"ID", "NOMBRE", "ESTADO ACTIVO", "ROL"};
-            modeloTabla.setColumnIdentifiers(atributosTablaUsuarios);
+            establecerIdentificadoresColumnas();
 
             for (Map.Entry<Integer, Usuario> entry : entrySetMapa){
                 Usuario value = entry.getValue();
@@ -203,8 +203,7 @@ public class MenuPrincipalController {
 
             listaMapRecursos = new ArrayList<>(mapaRecursos.entrySet());
             
-            String[] atributosTablaRecursos = {"CODIGO", "ISBN", "TÍTULO", "AUTOR", "GÉNERO", "ÁREA", "DISPONIBLE"};
-            modeloTabla.setColumnIdentifiers(atributosTablaRecursos);
+            establecerIdentificadoresColumnas();
 
             for (Map.Entry<String, Recurso> entry : entrySetMapa){
                 Recurso value = entry.getValue();
@@ -240,8 +239,7 @@ public class MenuPrincipalController {
 
             listaMapPrestamos = new ArrayList<>(mapaPrestamos.entrySet());
             
-            String[] atributosTablaRPrestamos = {"ID RECURSO", "ID USUARIO", "NOMBRE", "ESTADO ACTIVO", "ROL", "CODIGO", "ISBN", "TÍTULO", "AUTOR", "GÉNERO", "ÁREA", "DISPONIBLE"};
-            modeloTabla.setColumnIdentifiers(atributosTablaRPrestamos);
+            establecerIdentificadoresColumnas();
 
             for (Map.Entry<Integer, Prestamo> entry : entrySetMapa){
                 Prestamo value = entry.getValue();
@@ -283,6 +281,36 @@ public class MenuPrincipalController {
           }
         }).start();
         dlg.setVisible(true);
+    }
+    
+    public void establecerIdentificadoresColumnas() {
+        if(menuPrincipal.getBtnUsuarios().isSelected()) {
+            String[] atributosTablaUsuarios = {"ID", "NOMBRE", "ESTADO ACTIVO", "ROL"};
+            modeloTabla.setColumnIdentifiers(atributosTablaUsuarios);
+        }
+        else if(menuPrincipal.getBtnRecursos().isSelected()){
+            String[] atributosTablaRecursos = {"CODIGO", "ISBN", "TÍTULO", "AUTOR", "GÉNERO", "ÁREA", "DISPONIBLE"};
+            modeloTabla.setColumnIdentifiers(atributosTablaRecursos);
+        }
+        else if(menuPrincipal.getBtnPrestamos().isSelected()){
+            String[] atributosTablaRPrestamos = {"ID RECURSO", "ID USUARIO", "NOMBRE", "ESTADO ACTIVO", "ROL", "CODIGO", "ISBN", "TÍTULO", "AUTOR", "GÉNERO", "ÁREA", "DISPONIBLE"};
+            modeloTabla.setColumnIdentifiers(atributosTablaRPrestamos);
+        }
+    }
+    
+    public void establecerIdentificadoresColumnasResultado() {
+        if(menuPrincipal.getBtnUsuarios().isSelected()) {
+            String[] atributosTablaUsuarios = {"ID", "NOMBRE", "ESTADO ACTIVO", "ROL"};
+            modeloTablaResultado.setColumnIdentifiers(atributosTablaUsuarios);
+        }
+        else if(menuPrincipal.getBtnRecursos().isSelected()){
+            String[] atributosTablaRecursos = {"CODIGO", "ISBN", "TÍTULO", "AUTOR", "GÉNERO", "ÁREA", "DISPONIBLE"};
+            modeloTablaResultado.setColumnIdentifiers(atributosTablaRecursos);
+        }
+        else if(menuPrincipal.getBtnPrestamos().isSelected()){
+            String[] atributosTablaRPrestamos = {"ID RECURSO", "ID USUARIO", "NOMBRE", "ESTADO ACTIVO", "ROL", "CODIGO", "ISBN", "TÍTULO", "AUTOR", "GÉNERO", "ÁREA", "DISPONIBLE"};
+            modeloTablaResultado.setColumnIdentifiers(atributosTablaRPrestamos);
+        }
     }
         
     class HandlerActions implements ActionListener{
@@ -431,74 +459,85 @@ public class MenuPrincipalController {
 
                 }
             }
-//            else if(e.getSource() == menuPrincipal.getBtnBuscar()) { //BUSQUEDA PRINCIPAL
-//                modeloListaResultado.clear();
-//                strBusqueda1 = menuPrincipal.getTxtBuscar().getText();
-//                if(!"".equals(strBusqueda1)) {
-//                    String strBusqueda1Clean = strBusqueda1.replaceAll("\\s", "");
-//                    for (int i = 0; i < modeloLista.size(); i++) {
-//                        String filaLista = modeloLista.getElementAt(i);
-//                        StringTokenizer listaTemporal =  new StringTokenizer(filaLista,",");
-//                        while (listaTemporal.hasMoreTokens()) {
-//                            String token = listaTemporal.nextToken();
-//                            String tokenClean = token.replaceAll("\\s", "");
-//                            if(strBusqueda1Clean.equalsIgnoreCase(tokenClean)) {
-//                                modeloListaResultado.addElement(filaLista);
-//                                break;
-//                            }
-//                            else {
-//                                StringTokenizer elementoTemporal = new StringTokenizer(token," ");
-//                                while (elementoTemporal.hasMoreTokens()) {
-//                                    if(strBusqueda1.equalsIgnoreCase(elementoTemporal.nextToken())) {
-//                                        modeloListaResultado.addElement(filaLista);
-//                                        break;
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-////                    menuPrincipal.getJList().setModel(modeloListaResultado); //CAMBIAR
-//                }
-//                else {
-////                    menuPrincipal.getJList().setModel(modeloLista); //CAMBIAR
-//                }
-//            }
-//            else if(e.getSource() == menuPrincipal.getBtnPopConfirmar()) {
-//                modeloListaResultado.clear();
-//                strBusqueda1 = menuPrincipal.getTxtBusqueda1().getText();
-//                strBusqueda2 = menuPrincipal.getTxtBusqueda2().getText();
-//                if(!"".equals(strBusqueda1)) {
-//                    String strBusqueda1Clean = strBusqueda1.replaceAll("\\s", "");
-//                    String strBusqueda2Clean = strBusqueda2.replaceAll("\\s", "");
-//                    for (int i = 0; i < modeloLista.size(); i++) {
-//                        String filaLista = modeloLista.getElementAt(i);
-//                        StringTokenizer listaTemporal =  new StringTokenizer(filaLista,",");
-//                        while (listaTemporal.hasMoreTokens()) {
-//                            String token = listaTemporal.nextToken();
-//                            String tokenClean = token.replaceAll("\\s", "");
-//                            if(strBusqueda1Clean.equalsIgnoreCase(tokenClean) || strBusqueda2Clean.equalsIgnoreCase(tokenClean)) {
-//                                modeloListaResultado.addElement(filaLista);
-//                                break;
-//                            }
-//                            else {
-//                                StringTokenizer elementoTemporal = new StringTokenizer(token," ");
-//                                while (elementoTemporal.hasMoreTokens()) {
-//                                    String subToken = elementoTemporal.nextToken();
-//                                    if(strBusqueda1.equalsIgnoreCase(subToken) || strBusqueda2.equalsIgnoreCase(subToken)) {
-//                                        modeloListaResultado.addElement(filaLista);
-//                                        break;
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-////                    menuPrincipal.getJList().setModel(modeloListaResultado); //CAMBIAR
-//                }
-//                else {
-////                    menuPrincipal.getJList().setModel(modeloLista); //CAMBIAR
-//                }
-//                menuPrincipal.getJpBusquedaAvanzada().setVisible(false);
-//            }    
+            else if(e.getSource() == menuPrincipal.getBtnBuscar()) { //BUSQUEDA PRINCIPAL
+                modeloTablaResultado.setRowCount(0);
+                establecerIdentificadoresColumnasResultado();
+                strBusqueda1 = menuPrincipal.getTxtBuscar().getText();
+                if(!"".equals(strBusqueda1)) {
+                    String strBusqueda1Clean = strBusqueda1.replaceAll("\\s", "");
+                    for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+                        for (int j = 0; j < modeloTabla.getColumnCount(); j++) {
+                            if(strBusqueda1Clean.equalsIgnoreCase((String)modeloTabla.getValueAt(i,j))) {
+                                Object[] rowData = new Object[modeloTabla.getColumnCount()];
+                                for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
+                                    rowData[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
+                                }
+                                modeloTablaResultado.addRow(rowData);
+                                break;
+                            }
+                            else {
+                                StringTokenizer elementoTemporal = new StringTokenizer((String)modeloTabla.getValueAt(i,j)," ");
+                                while (elementoTemporal.hasMoreTokens()) {
+                                    String subToken = elementoTemporal.nextToken();
+                                    if(strBusqueda1.equalsIgnoreCase(subToken)) {
+                                        Object[] rowData = new Object[modeloTabla.getColumnCount()];
+                                        for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
+                                            rowData[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
+                                        }
+                                        modeloTablaResultado.addRow(rowData);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    jTable.setModel(modeloTablaResultado);
+                }
+                else {
+                    jTable.setModel(modeloTabla); //CAMBIAR
+                }
+            }
+            else if(e.getSource() == menuPrincipal.getBtnPopConfirmar()) {
+                modeloTablaResultado.setRowCount(0);
+                establecerIdentificadoresColumnasResultado();
+                strBusqueda1 = menuPrincipal.getTxtBuscar().getText();
+                strBusqueda2 = menuPrincipal.getTxtBusqueda2().getText();
+                if(!"".equals(strBusqueda1)) {
+                    String strBusqueda1Clean = strBusqueda1.replaceAll("\\s", "");
+                    String strBusqueda2Clean = strBusqueda2.replaceAll("\\s", "");
+                    for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+                        for (int j = 0; j < modeloTabla.getColumnCount(); j++) {
+                            String rawString = (String)modeloTabla.getValueAt(i,j);
+                            if(strBusqueda1Clean.equalsIgnoreCase(rawString.replaceAll("\\s", "")) || strBusqueda2Clean.equalsIgnoreCase(rawString.replaceAll("\\s", ""))) { // rawString.replaceAll("\\s", "") es string de solo caracteres.
+                                Object[] rowData = new Object[modeloTabla.getColumnCount()];
+                                for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
+                                    rowData[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
+                                }
+                                modeloTablaResultado.addRow(rowData);
+                                break;
+                            }
+                            else {
+                                StringTokenizer elementoTemporal = new StringTokenizer((String)modeloTabla.getValueAt(i,j)," ");
+                                while (elementoTemporal.hasMoreTokens()) {
+                                    String subToken = elementoTemporal.nextToken();
+                                    if(strBusqueda1.equalsIgnoreCase(subToken) || strBusqueda2Clean.equalsIgnoreCase(subToken)) {
+                                        Object[] rowData = new Object[modeloTabla.getColumnCount()];
+                                        for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
+                                            rowData[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
+                                        }
+                                        modeloTablaResultado.addRow(rowData);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    jTable.setModel(modeloTablaResultado);
+                }
+                else {
+                    jTable.setModel(modeloTabla); //CAMBIAR
+                }
+            }    
             else if(e.getSource() == agregarUsuario.getBtnAgregar()) {
                 try {
                     Thread.sleep(200);
