@@ -46,8 +46,6 @@ public class EditarUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        setLocationRelativeTo(null);
-
         lblNombre.setText("NOMBRE:");
 
         lblTipo.setText("TIPO DE USUARIO:");
@@ -135,6 +133,7 @@ public class EditarUsuario extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public JButton getBtnCancelar() {

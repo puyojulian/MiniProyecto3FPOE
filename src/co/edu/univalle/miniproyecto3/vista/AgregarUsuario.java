@@ -42,8 +42,6 @@ public class AgregarUsuario extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        setLocationRelativeTo(null);
-
         btnAgregar.setText("AGREGAR");
 
         lblNombre.setText("NOMBRE:");
@@ -107,6 +105,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

@@ -50,8 +50,6 @@ public class AdministrarPrestamos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        setLocationRelativeTo(null);
-
         btnConfirmar.setText("CONFIRMAR");
 
         btnVolver.setText("VOLVER");
@@ -182,6 +180,7 @@ public class AdministrarPrestamos extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public JButton getBtnConfirmar() {

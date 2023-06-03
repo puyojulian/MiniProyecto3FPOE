@@ -50,8 +50,6 @@ public class EditarRecurso extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        setLocationRelativeTo(null);
-
         btnCancelar.setText("VOLVER");
 
         btnEditar.setText("EDITAR");
@@ -152,6 +150,7 @@ public class EditarRecurso extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public JButton getBtnCancelar() {

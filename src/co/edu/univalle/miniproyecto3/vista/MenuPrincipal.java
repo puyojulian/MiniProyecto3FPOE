@@ -60,11 +60,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setForeground(java.awt.Color.gray);
         setSize(new java.awt.Dimension(800, 600));
 
-        setLocationRelativeTo(null);
-
         jpContenido.setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jpOpciones.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RECURSOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 153, 51))); // NOI18N
+        jpOpciones.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "OPCIONES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 153, 51))); // NOI18N
 
         btnPrestamos.setText("PRESTAMOS");
 
@@ -256,6 +254,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
