@@ -1,0 +1,48 @@
+9780141182561, To Kill a Mockingbird, Harper Lee, Fiction, Literature
+9780061120084, 1984, George Orwell, Fiction, Science Fiction
+9780141439518, Pride and Prejudice, Jane Austen, Fiction, Classic Literature
+9780060256654, Where the Wild Things Are, Maurice Sendak, Children's Fiction, Picture Books
+9780743273565, The Great Gatsby, F. Scott Fitzgerald, Fiction, Classic Literature
+9780307474278, The Hunger Games, Suzanne Collins, Fiction, Young Adult
+9780143105954, The Catcher in the Rye, J.D. Salinger, Fiction, Literature
+9780060935467, Freakonomics: A Rogue Economist Explores the Hidden Side of Everything, Steven D. Levitt and Stephen J. Dubner, Non-Fiction, Economics
+9788415139587, Cien años de soledad, Gabriel García Márquez, Ficción, Literatura Latinoamericana
+9788423352036, El amor en los tiempos del cólera, Gabriel García Márquez, Ficción, Literatura Latinoamericana
+9788420471839, Rayuela, Julio Cortázar, Ficción, Literatura Latinoamericana
+9788408088809, El código Da Vinci, Dan Brown, Ficción, Misterio y Suspense
+9788497594659, El principito, Antoine de Saint-Exupéry, Ficción, Literatura Infantil
+9788420652405, Don Quijote de la Mancha, Miguel de Cervantes Saavedra, Ficción, Clásicos de la Literatura
+9788466368435, Los juegos del hambre, Suzanne Collins, Ficción, Literatura Juvenil
+9788490628720, La sombra del viento, Carlos Ruiz Zafón, Ficción, Misterio y Suspense
+9788408186833, Harry Potter y la piedra filosofal, J.K. Rowling, Ficción, Literatura Infantil y Juvenil
+9788497930220, Crónica de una muerte anunciada, Gabriel García Márquez, Ficción, Literatura Latinoamericana
+9788499082477, Los pilares de la Tierra, Ken Follett, Ficción, Novela Histórica
+9788498382549, La casa de los espíritus, Isabel Allende, Ficción, Literatura Latinoamericana
+9788466331378, El alquimista, Paulo Coelho, Ficción, Autoayuda y Superación Personal
+9788423354023, El laberinto de los espíritus, Carlos Ruiz Zafón, Ficción, Misterio y Suspense
+9788498382549, Como agua para chocolate, Laura Esquivel, Ficción, Literatura Latinoamericana
+9788490628720, Los detectives salvajes, Roberto Bolaño, Ficción, Literatura Latinoamericana
+9788497930220, Ficciones, Jorge Luis Borges, Ficción, Literatura Latinoamericana
+9788408186833, El perfume, Patrick Süskind, Ficción, Novela Histórica
+9788499082477, Pedro Páramo, Juan Rulfo, Ficción, Literatura Latinoamericana
+9788498382549, La metamorfosis, Franz Kafka, Ficción, Clásicos de la Literatura
+9788432250810, El amor en los tiempos del coronavirus, Aroa Moreno Durán, Ficción, Literatura Contemporánea
+9788490706375, La chica del tren, Paula Hawkins, Ficción, Thriller Psicológico
+9788423354016, Patria, Fernando Aramburu, Ficción, Literatura Contemporánea
+9788497930221, La Sombra del Vampiro, Isabel Allende, Ficción, Literatura Fantástica
+9788417430949, La mujer en la ventana, A.J. Finn, Ficción, Thriller Psicológico
+9788466332221, El fuego invisible, Javier Sierra, Ficción, Misterio y Aventuras
+9788467050406, Todo lo que sucedió con Miranda Huff, Javier Castillo, Ficción, Thriller
+9788423354092, La Templanza, María Dueñas, Ficción, Novela Histórica
+9788466329177, Origen, Dan Brown, Ficción, Misterio y Suspense
+9788498382548, Los siete maridos de Evelyn Hugo, Taylor Jenkins Reid, Ficción, Drama
+9788408217841, Sapiens: De animales a dioses, Yuval Noah Harari, No Ficción, Historia
+9788415729660, El poder del ahora, Eckhart Tolle, No Ficción, Espiritualidad
+9788416544892, El día que se perdió la cordura, Javier Castillo, Ficción, Thriller
+9788423342952, El prisionero del cielo, Carlos Ruiz Zafón, Ficción, Misterio y Suspense
+9788408218893, El Código de los Extraños, Albert Espinosa, Ficción, Literatura Contemporánea
+9788497593720, El túnel, Ernesto Sabato, Ficción, Literatura Latinoamericana
+9788491293084, La Casa Alemana, Annette Hess, Ficción, Novela Histórica
+9788408216318, La Reina Roja, Victoria Aveyard, Ficción, Literatura Juvenil
+9788499082478, El Principito Ilustrado, Antoine de Saint-Exupéry, Ficción, Literatura Infantil
+9788425350727, El asedio, Arturo Pérez-Reverte, Ficción, Novela Histórica

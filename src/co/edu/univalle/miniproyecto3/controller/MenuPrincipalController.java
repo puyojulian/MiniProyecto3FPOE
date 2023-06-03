@@ -14,7 +14,11 @@ import co.edu.univalle.miniproyecto3.vista.EditarUsuario;
 import co.edu.univalle.miniproyecto3.vista.MenuPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -58,11 +62,12 @@ public class MenuPrincipalController {
     private DefaultTableModel modeloTablaResultado;
     private DefaultListModel<String> modeloListaResultado;
     private List listaTemporal;
+    private List listaParametros;
     private int index;
     private Object[] rowData1;
     private Object[] rowData2;
     
-    public MenuPrincipalController(MenuPrincipal menuPrincipal) {
+    public MenuPrincipalController(MenuPrincipal menuPrincipal) throws IOException {
         this.usuarioDAO = new UsuarioDAO();
         this.recursoDAO = new RecursoDAO();
         this.prestamoDAO = new PrestamoDAO();
@@ -82,6 +87,7 @@ public class MenuPrincipalController {
             }
         };
         this.listaTemporal = new ArrayList();
+        this.listaParametros = new ArrayList();
         
         HandlerActions listener = new HandlerActions();
         
@@ -124,21 +130,86 @@ public class MenuPrincipalController {
     }
 
     private void usuariosActuales(){
-        usuarioDAO.addUsuario(new Usuario("Sebastian", "Estudiante"));
-        usuarioDAO.addUsuario(new Usuario("Carlos", "Estudiante"));
-        usuarioDAO.addUsuario(new Usuario("Julian", "Docente"));
+        FileReader frUsuarios = null;
+        listaParametros.clear();
+        BufferedReader brUsuarios = null;
+        try {
+            File archivo = new File("usuarios.txt");
+            frUsuarios = new FileReader(archivo);
+            brUsuarios = new BufferedReader(frUsuarios);
+            String linea;
+            while((linea = brUsuarios.readLine()) != null) {
+                System.out.println(linea);
+                StringTokenizer tokenizer = new StringTokenizer(linea,",");
+                System.out.println(tokenizer.countTokens());
+                while(tokenizer.hasMoreTokens()) {
+                    String token = tokenizer.nextToken();
+                    listaParametros.add(token);
+                }
+                usuarioDAO.addUsuario(new Usuario((String)listaParametros.get(0), (String)listaParametros.get(1)));
+                listaParametros.clear();
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (brUsuarios != null) {
+                    brUsuarios.close();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+//        usuarioDAO.addUsuario(new Usuario("Sebastian", "Estudiante"));
+//        usuarioDAO.addUsuario(new Usuario("Carlos", "Estudiante"));
+//        usuarioDAO.addUsuario(new Usuario("Julian", "Docente"));
     }
     
     private void recursosActuales(){
-        recursoDAO.addRecurso(new Recurso("9780141182561", "To Kill a Mockingbird", "Harper Lee", "Fiction", "Literature"));
-        recursoDAO.addRecurso(new Recurso("9780061120084", "1984", "George Orwell", "Fiction", "Science Fiction"));
-        recursoDAO.addRecurso(new Recurso("9780141439518", "Pride and Prejudice", "Jane Austen", "Fiction", "Classic Literature"));
-        recursoDAO.addRecurso(new Recurso("9780060256654", "Where the Wild Things Are", "Maurice Sendak", "Children's Fiction", "Picture Books"));
-        recursoDAO.addRecurso(new Recurso("9780743273565", "The Great Gatsby", "F. Scott Fitzgerald", "Fiction", "Classic Literature"));
-        recursoDAO.addRecurso(new Recurso("9780307474278", "The Hunger Games", "Suzanne Collins", "Fiction", "Young Adult"));
-        recursoDAO.addRecurso(new Recurso("9780143105954", "The Catcher in the Rye", "J.D. Salinger", "Fiction", "Literature"));
-        recursoDAO.addRecurso(new Recurso("9780064404990", "Bridge to Terabithia", "Katherine Paterson", "Children's Fiction", "Fantasy"));
-        recursoDAO.addRecurso(new Recurso("9780060935467", "Freakonomics: A Rogue Economist Explores the Hidden Side of Everything", "Steven D. Levitt and Stephen J. Dubner", "Non-Fiction", "Economics"));
+        FileReader frRecursos = null;
+        listaParametros.clear();
+        BufferedReader brRecursos = null;
+        try {
+            File archivo = new File("recursos.txt");
+            frRecursos = new FileReader(archivo);
+            brRecursos = new BufferedReader(frRecursos);
+            String linea;
+            while((linea = brRecursos.readLine()) != null) {
+                System.out.println(linea);
+                StringTokenizer tokenizer = new StringTokenizer(linea,",");
+                System.out.println(tokenizer.countTokens());
+                while(tokenizer.hasMoreTokens()) {
+                    String token = tokenizer.nextToken();
+                    listaParametros.add(token);
+                }
+                recursoDAO.addRecurso(new Recurso((String)listaParametros.get(0), (String)listaParametros.get(1), (String)listaParametros.get(2), (String)listaParametros.get(3), (String)listaParametros.get(4)));
+                listaParametros.clear();
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (brRecursos != null) {
+                    brRecursos.close();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+//        recursoDAO.addRecurso(new Recurso("9780141182561", "To Kill a Mockingbird", "Harper Lee", "Fiction", "Literature"));
+//        recursoDAO.addRecurso(new Recurso("9780061120084", "1984", "George Orwell", "Fiction", "Science Fiction"));
+//        recursoDAO.addRecurso(new Recurso("9780141439518", "Pride and Prejudice", "Jane Austen", "Fiction", "Classic Literature"));
+//        recursoDAO.addRecurso(new Recurso("9780060256654", "Where the Wild Things Are", "Maurice Sendak", "Children's Fiction", "Picture Books"));
+//        recursoDAO.addRecurso(new Recurso("9780743273565", "The Great Gatsby", "F. Scott Fitzgerald", "Fiction", "Classic Literature"));
+//        recursoDAO.addRecurso(new Recurso("9780307474278", "The Hunger Games", "Suzanne Collins", "Fiction", "Young Adult"));
+//        recursoDAO.addRecurso(new Recurso("9780143105954", "The Catcher in the Rye", "J.D. Salinger", "Fiction", "Literature"));
+//        recursoDAO.addRecurso(new Recurso("9780064404990", "Bridge to Terabithia", "Katherine Paterson", "Children's Fiction", "Fantasy"));
+//        recursoDAO.addRecurso(new Recurso("9780060935467", "Freakonomics: A Rogue Economist Explores the Hidden Side of Everything", "Steven D. Levitt and Stephen J. Dubner", "Non-Fiction", "Economics"));
     }
     
     private void prestamosActuales() {
@@ -163,8 +234,6 @@ public class MenuPrincipalController {
             count++;
         }
     }
-    
-    
     
     public void actualizarJListaUsuarios() {
         if(mapaUsuarios.size() > 0) {
