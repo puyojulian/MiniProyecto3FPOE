@@ -44,7 +44,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnBusqueda = new javax.swing.JButton();
-        btnDetalles = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         jpBusquedaAvanzada = new javax.swing.JPanel();
@@ -64,7 +63,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jpContenido.setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jpOpciones.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "OPCIONES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 153, 51))); // NOI18N
+        jpOpciones.setBorder(javax.swing.BorderFactory.createTitledBorder("OPCIONES"));
 
         btnPrestamos.setText("PRESTAMOS");
 
@@ -77,12 +76,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jpOpcionesLayout.setHorizontalGroup(
             jpOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpOpcionesLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jpOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnPrestamos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRecursos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jpOpcionesLayout.setVerticalGroup(
             jpOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,6 +94,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(btnPrestamos)
                 .addGap(38, 38, 38))
         );
+
+        txtBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         btnAgregar.setText("AGREGAR");
 
@@ -109,8 +110,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnBusqueda.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         btnBusqueda.setText("BUSQ. AVANZADA");
         btnBusqueda.setPreferredSize(new java.awt.Dimension(147, 23));
-
-        btnDetalles.setText("DETALLES");
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -134,17 +133,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(jpContenidoLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jpOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpContenidoLayout.createSequentialGroup()
-                        .addComponent(btnDetalles)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAgregar)
                         .addGap(18, 18, 18)
                         .addComponent(btnActualizar)
                         .addGap(18, 18, 18)
                         .addComponent(btnEliminar))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpContenidoLayout.createSequentialGroup()
                         .addComponent(txtBuscar)
                         .addGap(18, 18, 18)
@@ -160,17 +158,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jpOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpContenidoLayout.createSequentialGroup()
-                        .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpContenidoLayout.createSequentialGroup()
+                        .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jpContenidoLayout.createSequentialGroup()
                                 .addComponent(btnBuscar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtBuscar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnDetalles)
                             .addComponent(btnAgregar)
                             .addComponent(btnActualizar)
                             .addComponent(btnEliminar))))
@@ -379,10 +376,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public JTextField getTxtBusqueda2() {
         return txtBusqueda2;
     }
-
-    public JButton getBtnDetalles() {
-        return btnDetalles;
-    }
         
     public void addBtnRecursos(ActionListener listener){
         btnRecursos.addActionListener(listener);
@@ -431,7 +424,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnBusqueda;
-    private javax.swing.JButton btnDetalles;
     private javax.swing.JButton btnEliminar;
     private javax.swing.ButtonGroup btnGroupPop;
     private javax.swing.JButton btnPopCerrar;

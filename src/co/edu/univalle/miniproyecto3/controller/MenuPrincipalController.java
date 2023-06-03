@@ -487,17 +487,6 @@ public class MenuPrincipalController {
                     administrarPrestamosController.abrirVista();
                 }
             }
-            else if (e.getSource() == menuPrincipal.getBtnDetalles()) { // DETALLES 
-                if (menuPrincipal.getBtnUsuarios().isSelected()) {
-                    
-                }
-                else if(menuPrincipal.getBtnRecursos().isSelected()) {
-
-                }
-                else if(menuPrincipal.getBtnPrestamos().isSelected()) {
-
-                }
-            }
             else if(e.getSource() == menuPrincipal.getBtnBuscar()) { //BUSQUEDA PRINCIPAL
                 modeloTablaResultado.setRowCount(0);
                 establecerIdentificadoresColumnas(modeloTablaResultado);
