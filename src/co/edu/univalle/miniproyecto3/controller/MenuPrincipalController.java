@@ -69,8 +69,18 @@ public class MenuPrincipalController {
         this.menuPrincipal = menuPrincipal;
         this.jTable = menuPrincipal.getJTable();
         this.modeloListaResultado = new DefaultListModel<>();
-        this.modeloTabla = new DefaultTableModel();
-        this.modeloTablaResultado = new DefaultTableModel();
+        this.modeloTabla = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        this.modeloTablaResultado = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         this.listaTemporal = new ArrayList();
         
         HandlerActions listener = new HandlerActions();

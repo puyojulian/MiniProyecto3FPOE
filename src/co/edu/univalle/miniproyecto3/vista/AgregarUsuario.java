@@ -39,7 +39,6 @@ public class AgregarUsuario extends javax.swing.JFrame {
         txtTipoUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnAgregar.setText("AGREGAR");
