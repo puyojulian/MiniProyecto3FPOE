@@ -70,6 +70,7 @@ public class MenuPrincipalController {
     private int index;
     private Object[] rowData1;
     private Object[] rowData2;
+    private List keyList;
     
     public MenuPrincipalController(MenuPrincipal menuPrincipal) throws IOException {
         this.usuarioDAO = new UsuarioDAO();
@@ -92,6 +93,7 @@ public class MenuPrincipalController {
         };
         this.listaTemporal = new ArrayList();
         this.listaParametros = new ArrayList();
+        this.keyList = new ArrayList();
         
         HandlerActions listener = new HandlerActions();
         KeyEventHandler keyListener = new KeyEventHandler();
@@ -474,22 +476,33 @@ public class MenuPrincipalController {
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
                     index = jTable.getSelectedRow();
                     if(index != -1) {
-                        Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
-                        editarUsuario.setVisible(true);
-                        editarUsuarioController.abrirVista(entry.getKey());
-                    } else {
+                        if(jTable.getRowCount() < listaMapUsuarios.size()) {
+                            editarUsuario.setVisible(true);
+                            editarUsuarioController.abrirVista((int) keyList.get(index));
+                        } else {
+                            Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
+                            editarUsuario.setVisible(true);
+                            editarUsuarioController.abrirVista(entry.getKey());
+                        }
+                    } 
+                    else {
                         mensajeTemporal("Elija el usuario que desea editar", "Error", 1150);
                     }
                 }
                 else if(menuPrincipal.getBtnRecursos().isSelected()) {
-//                    index = menuPrincipal.getJListIndex();
-                    index = jTable.getSelectedRow();
-                    System.out.println("");
+                    index = jTable.getSelectedRow(); 
                     if(index != -1) {
-                        Map.Entry<String, Recurso> entry = listaMapRecursos.get(index);
-                        editarRecurso.setVisible(true);
-                        editarRecursoController.abrirVista(entry.getKey());
-                    } else {
+                        if(jTable.getRowCount() < listaMapRecursos.size()) {
+                            editarRecurso.setVisible(true);
+                            editarRecursoController.abrirVista((String) keyList.get(index));
+                        }
+                        else {
+                            Map.Entry<String, Recurso> entry = listaMapRecursos.get(index);
+                            editarRecurso.setVisible(true);
+                            editarRecursoController.abrirVista(entry.getKey());
+                        }
+                    } 
+                    else {
                         mensajeTemporal("Elija el recurso que desea editar", "Error", 1150);
                     }
                 }
@@ -499,6 +512,7 @@ public class MenuPrincipalController {
                 }
             }
             else if(e.getSource() == menuPrincipal.getBtnBuscar()) { //BUSQUEDA PRINCIPAL
+                keyList.clear();
                 modeloTablaResultado.setRowCount(0);
                 establecerIdentificadoresColumnas(modeloTablaResultado);
                 strBusqueda1 = menuPrincipal.getTxtBuscar().getText();
@@ -512,6 +526,18 @@ public class MenuPrincipalController {
                                 for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
                                     rowData[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
                                 }
+                                if(menuPrincipal.getBtnUsuarios().isSelected()) {
+                                    Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(i);
+                                    keyList.add(entry.getKey());
+                                }
+                                else if(menuPrincipal.getBtnRecursos().isSelected()) {
+                                    Map.Entry<String, Recurso> entry = listaMapRecursos.get(i);
+                                    keyList.add(entry.getKey());
+                                }
+                                else if(menuPrincipal.getBtnPrestamos().isSelected()) {
+                                    Map.Entry<Integer, Prestamo> entry = listaMapPrestamos.get(i);
+                                    keyList.add(entry.getKey());
+                                }
                                 modeloTablaResultado.addRow(rowData);
                                 break;
                             }
@@ -519,10 +545,22 @@ public class MenuPrincipalController {
                                 StringTokenizer elementoTemporal = new StringTokenizer((String)modeloTabla.getValueAt(i,j)," ");
                                 while (elementoTemporal.hasMoreTokens()) {
                                     String subToken = elementoTemporal.nextToken();
-                                    if(strBusqueda1.equalsIgnoreCase(subToken)) {
+                                    if(strBusqueda1Clean.equalsIgnoreCase(subToken)) {
                                         Object[] rowData = new Object[modeloTabla.getColumnCount()];
                                         for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
                                             rowData[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
+                                        }
+                                        if(menuPrincipal.getBtnUsuarios().isSelected()) {
+                                            Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(i);
+                                            keyList.add(entry.getKey());
+                                        }
+                                        else if(menuPrincipal.getBtnRecursos().isSelected()) {
+                                            Map.Entry<String, Recurso> entry = listaMapRecursos.get(i);
+                                            keyList.add(entry.getKey());
+                                        }
+                                        else if(menuPrincipal.getBtnPrestamos().isSelected()) {
+                                            Map.Entry<Integer, Prestamo> entry = listaMapPrestamos.get(i);
+                                            keyList.add(entry.getKey());
                                         }
                                         modeloTablaResultado.addRow(rowData);
                                         break;
@@ -538,6 +576,7 @@ public class MenuPrincipalController {
                 }
             }
             else if(e.getSource() == menuPrincipal.getBtnPopConfirmar()) { //BUSQUEDA AVANZADA
+                keyList.clear();
                 modeloTablaResultado.setRowCount(0);
                 establecerIdentificadoresColumnas(modeloTablaResultado);
                 strBusqueda1 = menuPrincipal.getTxtBusqueda1().getText();
@@ -545,8 +584,6 @@ public class MenuPrincipalController {
                 if(!"".equals(strBusqueda1) && !"".equals(strBusqueda2)) {
                     String strBusqueda1Clean = strBusqueda1.replaceAll("\\s", "");
                     String strBusqueda2Clean = strBusqueda2.replaceAll("\\s", "");
-                    System.out.println(strBusqueda1Clean);
-                    System.out.println(strBusqueda2Clean);
                     for (int i = 0; i < modeloTabla.getRowCount(); i++) {
                         for (int j = 0; j < modeloTabla.getColumnCount(); j++) {
                             String rawString = (String)modeloTabla.getValueAt(i,j);
@@ -555,8 +592,6 @@ public class MenuPrincipalController {
                                 for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
                                     rowData1[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
                                 }
-//                                modeloTablaResultado.addRow(rowData);
-                                System.out.println(rowData1);
                                 break;
                             }
                             else {
@@ -568,8 +603,6 @@ public class MenuPrincipalController {
                                         for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
                                             rowData1[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
                                         }
-//                                        modeloTablaResultado.addRow(rowData1);
-                                        System.out.println(rowData1);
                                         break;
                                     }
                                 }
@@ -582,11 +615,21 @@ public class MenuPrincipalController {
                                 for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
                                     rowData2[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
                                 }
-//                                modeloTablaResultado.addRow(rowData2);
                                 if(Arrays.equals(rowData1, rowData2)) {
+                                    if(menuPrincipal.getBtnUsuarios().isSelected()) {
+                                        Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(i);
+                                        keyList.add(entry.getKey());
+                                    }
+                                    else if(menuPrincipal.getBtnRecursos().isSelected()) {
+                                        Map.Entry<String, Recurso> entry = listaMapRecursos.get(i);
+                                        keyList.add(entry.getKey());
+                                    }
+                                    else if(menuPrincipal.getBtnPrestamos().isSelected()) {
+                                        Map.Entry<Integer, Prestamo> entry = listaMapPrestamos.get(i);
+                                        keyList.add(entry.getKey());
+                                    }
                                     modeloTablaResultado.addRow(rowData2);  
                                 }
-                                System.out.println(rowData2);
                                 break;
                             }
                             else {
@@ -598,11 +641,21 @@ public class MenuPrincipalController {
                                         for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
                                             rowData2[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
                                         }
-//                                        modeloTablaResultado.addRow(rowData2);
                                         if(Arrays.equals(rowData1, rowData2)) {
+                                            if(menuPrincipal.getBtnUsuarios().isSelected()) {
+                                                Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(i);
+                                                keyList.add(entry.getKey());
+                                            }
+                                            else if(menuPrincipal.getBtnRecursos().isSelected()) {
+                                                Map.Entry<String, Recurso> entry = listaMapRecursos.get(i);
+                                                keyList.add(entry.getKey());
+                                            }
+                                            else if(menuPrincipal.getBtnPrestamos().isSelected()) {
+                                                Map.Entry<Integer, Prestamo> entry = listaMapPrestamos.get(i);
+                                                keyList.add(entry.getKey());
+                                            }
                                             modeloTablaResultado.addRow(rowData2);  
                                         }
-                                        System.out.println(rowData2);
                                         break;
                                     }
                                 }
