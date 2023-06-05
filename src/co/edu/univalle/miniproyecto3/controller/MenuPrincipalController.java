@@ -135,11 +135,12 @@ public class MenuPrincipalController {
         menuPrincipal.addBtnEliminar(listener);
         menuPrincipal.addBtnPopConfirmar(listener);
         menuPrincipal.addBtnPopCerrar(listener);
+        menuPrincipal.addBtnAgrupar(listener);
+        menuPrincipal.addBtnVolver(listener);
         
         LocalDate fechaHoy = LocalDate.now();
         DateTimeFormatter formateador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         fechaHoyFormateada = fechaHoy.format(formateador);
-        System.out.println(fechaHoyFormateada);
         
         usuariosActuales();
         recursosActuales();
@@ -280,9 +281,7 @@ public class MenuPrincipalController {
             Usuario valueU = usuarios.toArray(new Usuario[0])[count - 1];
             if (valueR.isDisponible() == true){
                 valueR.setDisponible(false);
-                System.out.println(fechaHoyFormateada);
                 prestamoDAO.addPrestamo(new Prestamo(valueU, valueR, (String) listaFechas.get(count - 1)));
-                System.out.println(fechaHoyFormateada);
             }
 
             count++;
@@ -410,7 +409,7 @@ public class MenuPrincipalController {
             modelo.setColumnIdentifiers(atributosTablaRecursos);
         }
         else if(menuPrincipal.getBtnPrestamos().isSelected()){
-            String[] atributosTablaRPrestamos = {"CÓDIGO", "USUARIO", "ROL", "TÍTULO", "ESTADO", "FECHA REA.", "FECHA DEV."};
+            String[] atributosTablaRPrestamos = {"USUARIO", "ROL", "TÍTULO", "ESTADO", "FECHA REA.", "FECHA DEV."};
             modelo.setColumnIdentifiers(atributosTablaRPrestamos);
         }
     }
@@ -427,6 +426,8 @@ public class MenuPrincipalController {
                 
                 menuPrincipal.getBtnActualizar().setText("EDITAR");
                 
+                menuPrincipal.getBtnAgrupar().setVisible(false);
+                
                 menuPrincipal.getBtnAgregar().setEnabled(true);
                 menuPrincipal.getBtnEliminar().setEnabled(true);
                 
@@ -441,6 +442,8 @@ public class MenuPrincipalController {
                 
                 menuPrincipal.getBtnActualizar().setText("EDITAR");
                 
+                menuPrincipal.getBtnAgrupar().setVisible(false);
+                
                 actualizarJListaRecursos();
                 
                 menuPrincipal.getBtnAgregar().setEnabled(true);
@@ -454,6 +457,9 @@ public class MenuPrincipalController {
                 menuPrincipal.getBtnPrestamos().setEnabled(false);
                 
                 menuPrincipal.getBtnActualizar().setText("ADMINISTRAR");
+                
+                menuPrincipal.getBtnAgrupar().setEnabled(true);
+                menuPrincipal.getBtnAgrupar().setVisible(true);
                 
                 menuPrincipal.getBtnAgregar().setEnabled(false);
                 menuPrincipal.getBtnEliminar().setEnabled(false);
@@ -758,6 +764,16 @@ public class MenuPrincipalController {
                 } catch (InterruptedException ex) {
                     Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
+            else if(e.getSource() == menuPrincipal.getBtnAgrupar()) {
+                menuPrincipal.getBtnAgrupar().setEnabled(false);
+                menuPrincipal.getBtnVolver().setVisible(true);
+                
+            }
+            else if(e.getSource() == menuPrincipal.getBtnVolver()) {
+                menuPrincipal.getBtnAgrupar().setEnabled(true);
+                menuPrincipal.getBtnVolver().setVisible(false);
+                
             }
         }  
     }
