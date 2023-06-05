@@ -381,6 +381,48 @@ public class MenuPrincipalController {
         }
     }
     
+    public void actualizarPrestamosAgrupados() {
+        if(mapaPrestamos.size() > 0) {
+            Set<Map.Entry<Integer, Prestamo>> entrySetMapa = mapaPrestamos.entrySet();
+
+            listaTemporal.clear();
+            modeloTabla.setRowCount(0);
+
+//            listaMapPrestamos = new ArrayList<>(mapaPrestamos.entrySet());
+            
+//            establecerIdentificadoresColumnas(modeloTabla);
+            String[] atributosTablaRPrestamos = {"CODIGO", "USUARIO", "CONT. RECURSOS", "ESTADO", "FECHA REA.", "FECHA DEV."};
+            modeloTabla.setColumnIdentifiers(atributosTablaRPrestamos);
+
+
+            for (Map.Entry<Integer, Prestamo> entry : entrySetMapa){
+                int contadorRecursos = 0;
+                String estado = "";
+                int idUsuario = entry.getValue().getUsuario().getId();
+                listaTemporal.add(idUsuario + "");
+                listaTemporal.add(entry.getValue().getUsuario().getNombre());
+                String fechaReal = entry.getValue().getFechaRealizacion();
+                for (Map.Entry<Integer, Prestamo> entry2 : entrySetMapa){
+                    if(entry2.getValue().getUsuario().getId() == idUsuario && entry2.getValue().getFechaRealizacion().equals(fechaReal)) {
+                        contadorRecursos++;
+                        estado = entry2.getValue().getEstado();
+                    }
+                }
+                listaTemporal.add(contadorRecursos + "");
+                listaTemporal.add(estado);
+                listaTemporal.add(fechaReal);
+                listaTemporal.add(entry.getValue().getFechaDevolucion());
+                modeloTabla.addRow(listaTemporal.toArray());
+                listaTemporal.clear();
+            }
+            jTable.setModel(modeloTabla);
+        }
+        else {
+            modeloTabla.setRowCount(0);
+            jTable.setModel(modeloTabla);
+        }
+    }
+    
     public void mensajeTemporal(String mensaje, String titulo, int milisegundos) {
         JOptionPane msg = new JOptionPane(mensaje, JOptionPane.INFORMATION_MESSAGE);
         final JDialog dlg = msg.createDialog(titulo);
@@ -768,11 +810,13 @@ public class MenuPrincipalController {
             else if(e.getSource() == menuPrincipal.getBtnAgrupar()) {
                 menuPrincipal.getBtnAgrupar().setEnabled(false);
                 menuPrincipal.getBtnVolver().setVisible(true);
+                actualizarPrestamosAgrupados();
                 
             }
             else if(e.getSource() == menuPrincipal.getBtnVolver()) {
                 menuPrincipal.getBtnAgrupar().setEnabled(true);
                 menuPrincipal.getBtnVolver().setVisible(false);
+                actualizarJListaPrestamos();
                 
             }
         }  
