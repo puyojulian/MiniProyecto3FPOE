@@ -69,6 +69,7 @@ public class MenuPrincipalController {
     private DefaultListModel<String> modeloListaResultado;
     private List listaTemporal;
     private List listaParametros;
+    private List listaFechas;
     private int index;
     private Object[] rowData1;
     private Object[] rowData2;
@@ -96,6 +97,7 @@ public class MenuPrincipalController {
         };
         this.listaTemporal = new ArrayList();
         this.listaParametros = new ArrayList();
+        this.listaFechas = new ArrayList();
         this.keyList = new ArrayList();
         
         HandlerActions listener = new HandlerActions();
@@ -240,13 +242,38 @@ public class MenuPrincipalController {
     public void prestamosActuales() {
         Collection<Usuario> usuarios = mapaUsuarios.values();
         Set<Map.Entry<String, Recurso>> entrySetMapaR = mapaRecursos.entrySet();
+        
+        FileReader frFechas = null;
+        listaFechas.clear();
+        BufferedReader brFechas = null;
+        try {
+            File archivo = new File("fechas.txt");
+            frFechas = new FileReader(archivo);
+            brFechas = new BufferedReader(frFechas);
+            String linea;
+            while((linea = brFechas.readLine()) != null) {
+                listaFechas.add(linea.replaceAll("\\s", ""));
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (brFechas != null) {
+                    brFechas.close();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
         int count = 1;
 
         for (Map.Entry<String, Recurso> entryR : entrySetMapaR) {
             Recurso valueR = entryR.getValue();
 
-            if (count > usuarios.size()) {
+            if (count > 40) { // Número de usuarios con préstamo inicial. No debe sobrepasar la cantidad de fechas de préstamo iniciales.
                 break;
             }
 
@@ -254,7 +281,7 @@ public class MenuPrincipalController {
             if (valueR.isDisponible() == true){
                 valueR.setDisponible(false);
                 System.out.println(fechaHoyFormateada);
-                prestamoDAO.addPrestamo(new Prestamo(valueU, valueR, fechaHoyFormateada));
+                prestamoDAO.addPrestamo(new Prestamo(valueU, valueR, (String) listaFechas.get(count - 1)));
                 System.out.println(fechaHoyFormateada);
             }
 

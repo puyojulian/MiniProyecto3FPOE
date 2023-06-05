@@ -1,7 +1,7 @@
-Sebastian, Estudiante
-Carlos, Estudiante
-Julian, Docente
-Sebastian, Estudiante
+Sebastian Orrego, Estudiante
+Carlos Lucero, Estudiante
+Julian Puyo, Docente
+Sebastian Paz, Estudiante
 Maria Lopez, Estudiante
 Ana Martinez, Estudiante
 Luis Rodriguez, Docente
