@@ -8,8 +8,12 @@ import co.edu.univalle.miniproyecto3.model.Prestamo;
 import co.edu.univalle.miniproyecto3.model.Recurso;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 /**
  *
  * @author Sebastián
@@ -19,6 +23,7 @@ public class PrestamoDAO implements PrestamoDAOInterface {
     LocalDate fechaHoy = LocalDate.now();
     DateTimeFormatter formateador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private String fechaHoyFormateada = fechaHoy.format(formateador);
+    private List listaLlaves = new ArrayList();
     
     Map <Integer, Prestamo> mapaPrestamos = new HashMap();
 
@@ -54,11 +59,40 @@ public class PrestamoDAO implements PrestamoDAOInterface {
         recurso = prestamo.getRecurso();
         
         prestamo.setFechaDevolucion(fechaHoyFormateada);
-        prestamo.setEstado(prestamo.getEstados()[2]);
+        prestamo.setEstado(prestamo.getEstados()[1]);
         recurso.setDisponible(true);
+        
+        verificarCerrado(llave);
  
 //        mapaPrestamos.remove(llave);
         return true;
+    }
+    
+    public void verificarCerrado(Integer llave) {
+        listaLlaves.clear();
+        boolean verificarPCerrado = false;
+        
+        Set<Map.Entry<Integer, Prestamo>> entrySetMapa = mapaPrestamos.entrySet();
+        
+        for (Map.Entry<Integer, Prestamo> entry : entrySetMapa){
+            if(entry.getValue().getUsuario().getId() == mapaPrestamos.get(llave).getUsuario().getId() && entry.getValue().getFechaRealizacion().equals(mapaPrestamos.get(llave).getFechaRealizacion())) {
+                if(entry.getValue().getEstado().equals(entry.getValue().getEstados()[1])) {
+                    verificarPCerrado = true;
+                    listaLlaves.add(entry.getKey());
+                }
+                else {
+                    verificarPCerrado = false;
+                }
+            }
+        }
+        
+        Iterator iterador = listaLlaves.iterator();
+        if(verificarPCerrado) {
+            while(iterador.hasNext()) {
+                int key = (int) iterador.next();
+                mapaPrestamos.get(key).setEstado(mapaPrestamos.get(key).getEstados()[2]);
+            }
+        }
     }
     
 }

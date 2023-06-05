@@ -94,7 +94,7 @@ public class AdministrarPrestamosController {
         
         if(!prestamoDAO.getPrestamos().isEmpty()) {
             for (Map.Entry<Integer, Prestamo> entry : prestamoDAO.getPrestamos().entrySet()) {
-                if (entry.getValue().getUsuario().getId() == index) {
+                if (entry.getValue().getUsuario().getId() == index && !entry.getValue().getRecurso().isDisponible()) {
                     administrarPrestamos.getjComboDevolucionRecursos().addItem(entry.getValue().getRecurso().getNombre());
                     listaRecursos.add(entry.getValue().getRecurso().getCodigoRecurso());
                 }
