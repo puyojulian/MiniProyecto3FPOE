@@ -71,7 +71,7 @@ public class AdministrarPrestamosController {
         if(!prestamoDAO.getPrestamos().isEmpty()) {
             for (Map.Entry<Integer, Usuario> entryUsuario : usuarioDAO.getUsuarios().entrySet()) {
                 for (Map.Entry<Integer, Prestamo> entryPrestamo : prestamoDAO.getPrestamos().entrySet()) {
-                    if(entryUsuario.getValue().isEstadoActivo() && entryUsuario.getValue().getId() == entryPrestamo.getValue().getUsuario().getId()) {
+                    if(entryUsuario.getValue().isEstadoActivo() && entryPrestamo.getValue().getEstado().equals(entryPrestamo.getValue().getEstados()[0]) && entryUsuario.getValue().getId() == entryPrestamo.getValue().getUsuario().getId()) {
                         administrarPrestamos.getjComboDevolucionUsuarios().addItem(entryUsuario.getValue().getNombre());
                         listaUsuarios.add(entryUsuario.getValue().getId());
                         break;
@@ -170,7 +170,7 @@ public class AdministrarPrestamosController {
                         mostrarItemsDevolucion();
                         indexU = 0;
                         indexR = 0;
-                        mensajeTemporal("Prestamo eliminado satisfactoriamente", "Aviso",1150);
+                        mensajeTemporal("Prestamo cerrado satisfactoriamente", "Aviso",1150);
                     } else {
                         mensajeTemporal("No hay prestamos para eliminar", "Aviso",1150);
                     }
