@@ -521,7 +521,7 @@ public class MenuPrincipalController {
                     for (int i = 0; i < modeloTabla.getRowCount(); i++) {
                         for (int j = 0; j < modeloTabla.getColumnCount(); j++) {
                             String rawString = (String)modeloTabla.getValueAt(i,j);   
-                            if(strBusqueda1Clean.equalsIgnoreCase(rawString.replaceAll("\\s", ""))) {
+                            if(strBusqueda1Clean.equalsIgnoreCase(rawString.replaceAll("\\s", "").substring(0,Math.min(rawString.replaceAll("\\s", "").length(), strBusqueda1Clean.length())))) {
                                 Object[] rowData = new Object[modeloTabla.getColumnCount()];
                                 for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
                                     rowData[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
@@ -545,7 +545,7 @@ public class MenuPrincipalController {
                                 StringTokenizer elementoTemporal = new StringTokenizer((String)modeloTabla.getValueAt(i,j)," ");
                                 while (elementoTemporal.hasMoreTokens()) {
                                     String subToken = elementoTemporal.nextToken();
-                                    if(strBusqueda1Clean.equalsIgnoreCase(subToken)) {
+                                    if(strBusqueda1Clean.equalsIgnoreCase(subToken.substring(0,Math.min(subToken.length(), strBusqueda1Clean.length())))) {
                                         Object[] rowData = new Object[modeloTabla.getColumnCount()];
                                         for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
                                             rowData[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
@@ -587,7 +587,7 @@ public class MenuPrincipalController {
                     for (int i = 0; i < modeloTabla.getRowCount(); i++) {
                         for (int j = 0; j < modeloTabla.getColumnCount(); j++) {
                             String rawString = (String)modeloTabla.getValueAt(i,j);
-                            if(strBusqueda1Clean.equalsIgnoreCase(rawString.replaceAll("\\s", ""))) { // rawString.replaceAll("\\s", "") es string de solo caracteres.
+                            if(strBusqueda1Clean.equalsIgnoreCase(rawString.replaceAll("\\s", "").substring(0,Math.min(rawString.replaceAll("\\s", "").length(), strBusqueda1Clean.length())))) { // rawString.replaceAll("\\s", "") es string de solo caracteres.
                                 rowData1= new Object[modeloTabla.getColumnCount()];
                                 for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
                                     rowData1[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
@@ -598,7 +598,7 @@ public class MenuPrincipalController {
                                 StringTokenizer elementoTemporal = new StringTokenizer((String)modeloTabla.getValueAt(i,j)," ");
                                 while (elementoTemporal.hasMoreTokens()) {
                                     String subToken = elementoTemporal.nextToken();
-                                    if(strBusqueda1Clean.equalsIgnoreCase(subToken)) {
+                                    if(strBusqueda1Clean.equalsIgnoreCase(subToken.substring(0,Math.min(subToken.length(), strBusqueda1Clean.length())))) {
                                         rowData1 = new Object[modeloTabla.getColumnCount()];
                                         for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
                                             rowData1[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
@@ -610,7 +610,7 @@ public class MenuPrincipalController {
                         }
                         for (int j = 0; j < modeloTabla.getColumnCount(); j++) {
                             String rawString = (String)modeloTabla.getValueAt(i,j);
-                            if(strBusqueda2Clean.equalsIgnoreCase(rawString.replaceAll("\\s", ""))) { // rawString.replaceAll("\\s", "") es string de solo caracteres.
+                            if(strBusqueda2Clean.equalsIgnoreCase(rawString.replaceAll("\\s", "").substring(0,Math.min(rawString.replaceAll("\\s", "").length(), strBusqueda2Clean.length())))) { // rawString.replaceAll("\\s", "") es string de solo caracteres.
                                 rowData2 = new Object[modeloTabla.getColumnCount()];
                                 for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
                                     rowData2[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
@@ -636,7 +636,7 @@ public class MenuPrincipalController {
                                 StringTokenizer elementoTemporal = new StringTokenizer((String)modeloTabla.getValueAt(i,j)," ");
                                 while (elementoTemporal.hasMoreTokens()) {
                                     String subToken = elementoTemporal.nextToken();
-                                    if(strBusqueda2Clean.equalsIgnoreCase(subToken)) {
+                                    if(strBusqueda2Clean.equalsIgnoreCase(subToken.substring(0,Math.min(subToken.length(), strBusqueda2Clean.length())))) {
                                         rowData2 = new Object[modeloTabla.getColumnCount()];
                                         for (int columnIndex = 0; columnIndex < modeloTabla.getColumnCount(); columnIndex++) {
                                             rowData2[columnIndex] = modeloTabla.getValueAt(i, columnIndex);
