@@ -23,6 +23,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -71,6 +73,7 @@ public class MenuPrincipalController {
     private Object[] rowData1;
     private Object[] rowData2;
     private List keyList;
+    private String fechaHoyFormateada;
     
     public MenuPrincipalController(MenuPrincipal menuPrincipal) throws IOException {
         this.usuarioDAO = new UsuarioDAO();
@@ -130,6 +133,11 @@ public class MenuPrincipalController {
         menuPrincipal.addBtnEliminar(listener);
         menuPrincipal.addBtnPopConfirmar(listener);
         menuPrincipal.addBtnPopCerrar(listener);
+        
+        LocalDate fechaHoy = LocalDate.now();
+        DateTimeFormatter formateador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        fechaHoyFormateada = fechaHoy.format(formateador);
+        System.out.println(fechaHoyFormateada);
         
         usuariosActuales();
         recursosActuales();
@@ -229,7 +237,7 @@ public class MenuPrincipalController {
 //        recursoDAO.addRecurso(new Recurso("9780060935467", "Freakonomics: A Rogue Economist Explores the Hidden Side of Everything", "Steven D. Levitt and Stephen J. Dubner", "Non-Fiction", "Economics"));
     }
     
-    private void prestamosActuales() {
+    public void prestamosActuales() {
         Collection<Usuario> usuarios = mapaUsuarios.values();
         Set<Map.Entry<String, Recurso>> entrySetMapaR = mapaRecursos.entrySet();
 
@@ -245,7 +253,9 @@ public class MenuPrincipalController {
             Usuario valueU = usuarios.toArray(new Usuario[0])[count - 1];
             if (valueR.isDisponible() == true){
                 valueR.setDisponible(false);
-                prestamoDAO.addPrestamo(new Prestamo(valueU, valueR));
+                System.out.println(fechaHoyFormateada);
+                prestamoDAO.addPrestamo(new Prestamo(valueU, valueR, fechaHoyFormateada));
+                System.out.println(fechaHoyFormateada);
             }
 
             count++;
@@ -373,7 +383,7 @@ public class MenuPrincipalController {
             modelo.setColumnIdentifiers(atributosTablaRecursos);
         }
         else if(menuPrincipal.getBtnPrestamos().isSelected()){
-            String[] atributosTablaRPrestamos = {"CÓDIGO", "USUARIO", "ROL", "ISBN", "TÍTULO", "AUTOR"};
+            String[] atributosTablaRPrestamos = {"CÓDIGO", "USUARIO", "ROL", "TÍTULO", "ESTADO", "FECHA REA.", "FECHA DEV."};
             modelo.setColumnIdentifiers(atributosTablaRPrestamos);
         }
     }

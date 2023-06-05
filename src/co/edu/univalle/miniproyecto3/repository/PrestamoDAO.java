@@ -6,6 +6,8 @@ package co.edu.univalle.miniproyecto3.repository;
 
 import co.edu.univalle.miniproyecto3.model.Prestamo;
 import co.edu.univalle.miniproyecto3.model.Recurso;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 /**
@@ -13,6 +15,10 @@ import java.util.Map;
  * @author Sebastián
  */
 public class PrestamoDAO implements PrestamoDAOInterface {
+    
+    LocalDate fechaHoy = LocalDate.now();
+    DateTimeFormatter formateador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private String fechaHoyFormateada = fechaHoy.format(formateador);
     
     Map <Integer, Prestamo> mapaPrestamos = new HashMap();
 
@@ -47,9 +53,11 @@ public class PrestamoDAO implements PrestamoDAOInterface {
         prestamo = mapaPrestamos.get(llave);
         recurso = prestamo.getRecurso();
         
+        prestamo.setFechaDevolucion(fechaHoyFormateada);
+        prestamo.setEstado(prestamo.getEstados()[2]);
         recurso.setDisponible(true);
  
-        mapaPrestamos.remove(llave);
+//        mapaPrestamos.remove(llave);
         return true;
     }
     

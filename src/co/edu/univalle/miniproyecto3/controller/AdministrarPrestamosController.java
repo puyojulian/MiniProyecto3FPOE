@@ -8,6 +8,8 @@ import co.edu.univalle.miniproyecto3.repository.UsuarioDAO;
 import co.edu.univalle.miniproyecto3.vista.AdministrarPrestamos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +29,7 @@ public class AdministrarPrestamosController {
     private List listaRecursos;
     private List listaUsuarios;
     private int recursosDisponibles;
+    private String fechaHoyFormateada;
 
     public AdministrarPrestamosController(AdministrarPrestamos vista, PrestamoDAO prestamoDao, RecursoDAO recursoDao, UsuarioDAO usuarioDao) {
         this.administrarPrestamos = vista;
@@ -45,6 +48,12 @@ public class AdministrarPrestamosController {
         administrarPrestamos.addjComboPrestamoRecursos(listener);
         administrarPrestamos.addjComboPrestamoUsuarios(listener);
         administrarPrestamos.addjTabbedPanePrestamo(listener);
+        
+        LocalDate fechaHoy = LocalDate.now();
+        DateTimeFormatter formateador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        fechaHoyFormateada = fechaHoy.format(formateador);
+        System.out.println(fechaHoyFormateada);
+        
     }
     
     public void abrirVista() {
@@ -168,7 +177,8 @@ public class AdministrarPrestamosController {
                 }
                 else if(tabbedIndex == 1){
                     if(recursosDisponibles > 0) {
-                        prestamoDAO.addPrestamo(new Prestamo(usuarioDAO.getUsuario((int)listaUsuarios.get(indexU)), recursoDAO.getRecurso((String)listaRecursos.get(indexR))));
+                        System.out.println(fechaHoyFormateada);
+                        prestamoDAO.addPrestamo(new Prestamo(usuarioDAO.getUsuario((int)listaUsuarios.get(indexU)), recursoDAO.getRecurso((String)listaRecursos.get(indexR)), fechaHoyFormateada));
                         mostrarItemsPrestamo();
                         indexU = 0;
                         indexR = 0;
