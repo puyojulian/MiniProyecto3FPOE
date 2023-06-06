@@ -8,6 +8,8 @@ import co.edu.univalle.miniproyecto3.repository.UsuarioDAO;
 import co.edu.univalle.miniproyecto3.vista.AdministrarPrestamos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +29,7 @@ public class AdministrarPrestamosController {
     private List listaRecursos;
     private List listaUsuarios;
     private int recursosDisponibles;
+    private String fechaHoyFormateada;
 
     public AdministrarPrestamosController(AdministrarPrestamos vista, PrestamoDAO prestamoDao, RecursoDAO recursoDao, UsuarioDAO usuarioDao) {
         this.administrarPrestamos = vista;
@@ -45,6 +48,12 @@ public class AdministrarPrestamosController {
         administrarPrestamos.addjComboPrestamoRecursos(listener);
         administrarPrestamos.addjComboPrestamoUsuarios(listener);
         administrarPrestamos.addjTabbedPanePrestamo(listener);
+        
+        LocalDate fechaHoy = LocalDate.now();
+        DateTimeFormatter formateador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        fechaHoyFormateada = fechaHoy.format(formateador);
+        System.out.println(fechaHoyFormateada);
+        
     }
     
     public void abrirVista() {
@@ -62,7 +71,7 @@ public class AdministrarPrestamosController {
         if(!prestamoDAO.getPrestamos().isEmpty()) {
             for (Map.Entry<Integer, Usuario> entryUsuario : usuarioDAO.getUsuarios().entrySet()) {
                 for (Map.Entry<Integer, Prestamo> entryPrestamo : prestamoDAO.getPrestamos().entrySet()) {
-                    if(entryUsuario.getValue().isEstadoActivo() && entryUsuario.getValue().getId() == entryPrestamo.getValue().getUsuario().getId()) {
+                    if(entryUsuario.getValue().isEstadoActivo() && entryPrestamo.getValue().getEstado().equals(entryPrestamo.getValue().getEstados()[0]) && entryUsuario.getValue().getId() == entryPrestamo.getValue().getUsuario().getId()) {
                         administrarPrestamos.getjComboDevolucionUsuarios().addItem(entryUsuario.getValue().getNombre());
                         listaUsuarios.add(entryUsuario.getValue().getId());
                         break;
@@ -85,7 +94,7 @@ public class AdministrarPrestamosController {
         
         if(!prestamoDAO.getPrestamos().isEmpty()) {
             for (Map.Entry<Integer, Prestamo> entry : prestamoDAO.getPrestamos().entrySet()) {
-                if (entry.getValue().getUsuario().getId() == index) {
+                if (entry.getValue().getUsuario().getId() == index && !entry.getValue().getRecurso().isDisponible() && entry.getValue().getEstado().equals(entry.getValue().getEstados()[0])) {
                     administrarPrestamos.getjComboDevolucionRecursos().addItem(entry.getValue().getRecurso().getNombre());
                     listaRecursos.add(entry.getValue().getRecurso().getCodigoRecurso());
                 }
@@ -125,7 +134,7 @@ public class AdministrarPrestamosController {
     
     public Integer verificarLlaveDevolucion() {
         for (Map.Entry<Integer, Prestamo> entry : prestamoDAO.getPrestamos().entrySet()) {
-            if (entry.getValue().getUsuario().getId() == (int) listaUsuarios.get(indexU) && entry.getValue().getRecurso().getCodigoRecurso() == (int) listaRecursos.get(indexR)) {
+            if (entry.getValue().getUsuario().getId() == (int) listaUsuarios.get(indexU) && entry.getValue().getRecurso().getCodigoRecurso() == (int) listaRecursos.get(indexR) && entry.getValue().getEstado().equals(entry.getValue().getEstados()[0])) {
                 return entry.getKey();
             }
         }    
@@ -158,17 +167,19 @@ public class AdministrarPrestamosController {
                 if(tabbedIndex == 0){
                     if(!listaUsuarios.isEmpty()) {
                         prestamoDAO.deletePrestamo(verificarLlaveDevolucion());
+                        System.out.println(verificarLlaveDevolucion()+"");
                         mostrarItemsDevolucion();
                         indexU = 0;
                         indexR = 0;
-                        mensajeTemporal("Prestamo eliminado satisfactoriamente", "Aviso",1150);
+                        mensajeTemporal("Prestamo cerrado satisfactoriamente", "Aviso",1150);
                     } else {
                         mensajeTemporal("No hay prestamos para eliminar", "Aviso",1150);
                     }
                 }
                 else if(tabbedIndex == 1){
                     if(recursosDisponibles > 0) {
-                        prestamoDAO.addPrestamo(new Prestamo(usuarioDAO.getUsuario((int)listaUsuarios.get(indexU)), recursoDAO.getRecurso((String)listaRecursos.get(indexR))));
+                        System.out.println(fechaHoyFormateada);
+                        prestamoDAO.addPrestamo(new Prestamo(usuarioDAO.getUsuario((int)listaUsuarios.get(indexU)), recursoDAO.getRecurso((String)listaRecursos.get(indexR)), fechaHoyFormateada));
                         mostrarItemsPrestamo();
                         indexU = 0;
                         indexR = 0;

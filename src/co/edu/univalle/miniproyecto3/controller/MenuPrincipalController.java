@@ -23,9 +23,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -36,6 +39,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 public class MenuPrincipalController {
     
@@ -67,10 +71,12 @@ public class MenuPrincipalController {
     private DefaultListModel<String> modeloListaResultado;
     private List listaTemporal;
     private List listaParametros;
+    private List listaFechas;
     private int index;
     private Object[] rowData1;
     private Object[] rowData2;
     private List keyList;
+    private String fechaHoyFormateada;
     
     public MenuPrincipalController(MenuPrincipal menuPrincipal) throws IOException {
         this.usuarioDAO = new UsuarioDAO();
@@ -93,6 +99,7 @@ public class MenuPrincipalController {
         };
         this.listaTemporal = new ArrayList();
         this.listaParametros = new ArrayList();
+        this.listaFechas = new ArrayList();
         this.keyList = new ArrayList();
         
         HandlerActions listener = new HandlerActions();
@@ -130,6 +137,12 @@ public class MenuPrincipalController {
         menuPrincipal.addBtnEliminar(listener);
         menuPrincipal.addBtnPopConfirmar(listener);
         menuPrincipal.addBtnPopCerrar(listener);
+        menuPrincipal.addBtnAgrupar(listener);
+        menuPrincipal.addBtnVolver(listener);
+        
+        LocalDate fechaHoy = LocalDate.now();
+        DateTimeFormatter formateador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        fechaHoyFormateada = fechaHoy.format(formateador);
         
         usuariosActuales();
         recursosActuales();
@@ -229,23 +242,48 @@ public class MenuPrincipalController {
 //        recursoDAO.addRecurso(new Recurso("9780060935467", "Freakonomics: A Rogue Economist Explores the Hidden Side of Everything", "Steven D. Levitt and Stephen J. Dubner", "Non-Fiction", "Economics"));
     }
     
-    private void prestamosActuales() {
+    public void prestamosActuales() {
         Collection<Usuario> usuarios = mapaUsuarios.values();
         Set<Map.Entry<String, Recurso>> entrySetMapaR = mapaRecursos.entrySet();
+        
+        FileReader frFechas = null;
+        listaFechas.clear();
+        BufferedReader brFechas = null;
+        try {
+            File archivo = new File("fechas.txt");
+            frFechas = new FileReader(archivo);
+            brFechas = new BufferedReader(frFechas);
+            String linea;
+            while((linea = brFechas.readLine()) != null) {
+                listaFechas.add(linea.replaceAll("\\s", ""));
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (brFechas != null) {
+                    brFechas.close();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
         int count = 1;
 
         for (Map.Entry<String, Recurso> entryR : entrySetMapaR) {
             Recurso valueR = entryR.getValue();
 
-            if (count > usuarios.size()) {
+            if (count > 40) { // Número de usuarios con préstamo inicial. No debe sobrepasar la cantidad de fechas de préstamo iniciales.
                 break;
             }
 
             Usuario valueU = usuarios.toArray(new Usuario[0])[count - 1];
             if (valueR.isDisponible() == true){
                 valueR.setDisponible(false);
-                prestamoDAO.addPrestamo(new Prestamo(valueU, valueR));
+                prestamoDAO.addPrestamo(new Prestamo(valueU, valueR, (String) listaFechas.get(count - 1)));
             }
 
             count++;
@@ -253,6 +291,8 @@ public class MenuPrincipalController {
     }
     
     public void actualizarJListaUsuarios() {
+        habilitarBusqueda(true);
+        
         if(mapaUsuarios.size() > 0) {
             Set<Map.Entry<Integer, Usuario>> entrySetMapa = mapaUsuarios.entrySet();
 
@@ -284,6 +324,8 @@ public class MenuPrincipalController {
     }
     
     public void actualizarJListaRecursos() {
+        habilitarBusqueda(true);
+        
         if(mapaRecursos.size() > 0) {
             Set<Map.Entry<String, Recurso>> entrySetMapa = mapaRecursos.entrySet();
 
@@ -315,6 +357,8 @@ public class MenuPrincipalController {
     }
     
     public void actualizarJListaPrestamos() {
+        habilitarBusqueda(true);
+        
         if(mapaPrestamos.size() > 0) {
             Set<Map.Entry<Integer, Prestamo>> entrySetMapa = mapaPrestamos.entrySet();
 
@@ -345,6 +389,92 @@ public class MenuPrincipalController {
         }
     }
     
+    public void actualizarPrestamosAgrupados() {
+        habilitarBusqueda(false);
+        
+        if(mapaPrestamos.size() > 0) {
+            Set<Map.Entry<Integer, Prestamo>> entrySetMapa = mapaPrestamos.entrySet();
+
+            listaTemporal.clear();
+            modeloTabla.setRowCount(0);
+
+//            listaMapPrestamos = new ArrayList<>(mapaPrestamos.entrySet());
+            
+//            establecerIdentificadoresColumnas(modeloTabla);
+            String[] atributosTablaRPrestamos = {"USUARIO", "CONT. RECURSOS", "ESTADO", "FECHA REA.", "FECHA DEV."};
+            modeloTabla.setColumnIdentifiers(atributosTablaRPrestamos);
+
+
+            for (Map.Entry<Integer, Prestamo> entry : entrySetMapa){
+                int contadorRecursos = 0;
+                String estado = "";
+                int idUsuario = entry.getValue().getUsuario().getId();
+//                listaTemporal.add(idUsuario + "");
+                listaTemporal.add(entry.getValue().getUsuario().getNombre());
+                String fechaReal = entry.getValue().getFechaRealizacion();
+                String fechaDev = entry.getValue().getFechaDevolucion();
+                for (Map.Entry<Integer, Prestamo> entry2 : entrySetMapa){
+                    if(entry2.getValue().getUsuario().getId() == idUsuario && entry2.getValue().getFechaRealizacion().equals(fechaReal) && entry2.getValue().getFechaDevolucion().equals(fechaDev)) {
+                        contadorRecursos++;
+                        estado = entry2.getValue().getEstado();
+                    }
+                }
+                listaTemporal.add(contadorRecursos + "");
+                listaTemporal.add(estado);
+                listaTemporal.add(fechaReal);
+                listaTemporal.add(fechaDev);
+                modeloTabla.addRow(listaTemporal.toArray());
+                listaTemporal.clear();
+            }
+            jTable.setModel(modeloTabla);
+            removeDuplicateRows(jTable);
+        }
+        else {
+            modeloTabla.setRowCount(0);
+            jTable.setModel(modeloTabla);
+        }
+    }
+    
+    public void removeDuplicateRows(JTable table) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        int rowCount = model.getRowCount();
+        int columnCount = model.getColumnCount();
+        Set<String> uniqueRows = new HashSet<>();
+
+        for (int i = 0; i < rowCount; i++) {
+            StringBuilder rowString = new StringBuilder();
+            for (int j = 0; j < columnCount; j++) {
+                rowString.append(model.getValueAt(i, j));
+                rowString.append("|"); // Separating values with a delimiter
+            }
+
+            if (!uniqueRows.contains(rowString.toString())) {
+                uniqueRows.add(rowString.toString());
+            } else {
+                model.removeRow(i);
+                rowCount--;
+                i--;
+            }
+        }
+
+        model.setRowCount(0); // Clear the JTable
+
+        for (String rowString : uniqueRows) {
+            String[] rowValues = rowString.split("\\|"); // Splitting the values using the delimiter
+            model.addRow(rowValues);
+        }
+    }
+    
+    public void habilitarBusqueda(boolean bool) {
+        menuPrincipal.getBtnBuscar().setEnabled(bool);
+        menuPrincipal.getBtnBusqueda().setEnabled(bool);
+        menuPrincipal.getTxtBuscar().setEnabled(bool);
+        menuPrincipal.getTxtBusqueda1().setEnabled(bool);
+        menuPrincipal.getTxtBusqueda2().setEnabled(bool);
+        menuPrincipal.getBtnPopConfirmar().setEnabled(bool);
+    }
+
+    
     public void mensajeTemporal(String mensaje, String titulo, int milisegundos) {
         JOptionPane msg = new JOptionPane(mensaje, JOptionPane.INFORMATION_MESSAGE);
         final JDialog dlg = msg.createDialog(titulo);
@@ -373,7 +503,7 @@ public class MenuPrincipalController {
             modelo.setColumnIdentifiers(atributosTablaRecursos);
         }
         else if(menuPrincipal.getBtnPrestamos().isSelected()){
-            String[] atributosTablaRPrestamos = {"CÓDIGO", "USUARIO", "ROL", "ISBN", "TÍTULO", "AUTOR"};
+            String[] atributosTablaRPrestamos = {"USUARIO", "ROL", "TÍTULO", "ESTADO", "FECHA REA.", "FECHA DEV."};
             modelo.setColumnIdentifiers(atributosTablaRPrestamos);
         }
     }
@@ -390,6 +520,8 @@ public class MenuPrincipalController {
                 
                 menuPrincipal.getBtnActualizar().setText("EDITAR");
                 
+                menuPrincipal.getBtnAgrupar().setVisible(false);
+                
                 menuPrincipal.getBtnAgregar().setEnabled(true);
                 menuPrincipal.getBtnEliminar().setEnabled(true);
                 
@@ -404,6 +536,8 @@ public class MenuPrincipalController {
                 
                 menuPrincipal.getBtnActualizar().setText("EDITAR");
                 
+                menuPrincipal.getBtnAgrupar().setVisible(false);
+                
                 actualizarJListaRecursos();
                 
                 menuPrincipal.getBtnAgregar().setEnabled(true);
@@ -417,6 +551,9 @@ public class MenuPrincipalController {
                 menuPrincipal.getBtnPrestamos().setEnabled(false);
                 
                 menuPrincipal.getBtnActualizar().setText("ADMINISTRAR");
+                
+                menuPrincipal.getBtnAgrupar().setEnabled(true);
+                menuPrincipal.getBtnAgrupar().setVisible(true);
                 
                 menuPrincipal.getBtnAgregar().setEnabled(false);
                 menuPrincipal.getBtnEliminar().setEnabled(false);
@@ -718,9 +855,23 @@ public class MenuPrincipalController {
                     Thread.sleep(200);
                     mapaPrestamos = prestamoDAO.getPrestamos();
                     actualizarJListaPrestamos();
+                    menuPrincipal.getBtnAgrupar().setEnabled(true);
+                    menuPrincipal.getBtnVolver().setVisible(false);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
+            else if(e.getSource() == menuPrincipal.getBtnAgrupar()) {
+                menuPrincipal.getBtnAgrupar().setEnabled(false);
+                menuPrincipal.getBtnVolver().setVisible(true);
+                actualizarPrestamosAgrupados();
+                
+            }
+            else if(e.getSource() == menuPrincipal.getBtnVolver()) {
+                menuPrincipal.getBtnAgrupar().setEnabled(true);
+                menuPrincipal.getBtnVolver().setVisible(false);
+                actualizarJListaPrestamos();
+                
             }
         }  
     }

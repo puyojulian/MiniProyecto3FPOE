@@ -46,6 +46,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnBusqueda = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
+        btnAgrupar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         jpBusquedaAvanzada = new javax.swing.JPanel();
         btnPopConfirmar = new javax.swing.JButton();
         txtBusqueda1 = new javax.swing.JTextField();
@@ -126,6 +128,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(jTable);
 
+        btnAgrupar.setText("AGRUPAR POR PRÉSTAMO");
+        btnAgrupar.setVisible(false);
+
+        btnVolver.setText("VOLVER");
+        btnVolver.setVisible(false);
+
         javax.swing.GroupLayout jpContenidoLayout = new javax.swing.GroupLayout(jpContenido);
         jpContenido.setLayout(jpContenidoLayout);
         jpContenidoLayout.setHorizontalGroup(
@@ -136,7 +144,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpContenidoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAgrupar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnVolver)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAgregar)
                         .addGap(18, 18, 18)
                         .addComponent(btnActualizar)
@@ -170,7 +181,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGroup(jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAgregar)
                             .addComponent(btnActualizar)
-                            .addComponent(btnEliminar))))
+                            .addComponent(btnEliminar)
+                            .addComponent(btnAgrupar)
+                            .addComponent(btnVolver))))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
@@ -376,6 +389,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public JTextField getTxtBusqueda2() {
         return txtBusqueda2;
     }
+
+    public JButton getBtnAgrupar() {
+        return btnAgrupar;
+    }
+
+    public JButton getBtnVolver() {
+        return btnVolver;
+    }
         
     public void addBtnRecursos(ActionListener listener){
         btnRecursos.addActionListener(listener);
@@ -417,11 +438,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnPopCerrar.addActionListener(listener);
     }
     
+    public void addBtnAgrupar(ActionListener listener){
+        btnAgrupar.addActionListener(listener);
+    }
+    
+    public void addBtnVolver(ActionListener listener){
+        btnVolver.addActionListener(listener);
+    }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAgrupar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnBusqueda;
     private javax.swing.JButton btnEliminar;
@@ -431,6 +461,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnPrestamos;
     private javax.swing.JToggleButton btnRecursos;
     private javax.swing.JToggleButton btnUsuarios;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
