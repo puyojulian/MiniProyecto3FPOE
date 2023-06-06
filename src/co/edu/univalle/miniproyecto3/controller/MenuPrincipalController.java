@@ -562,16 +562,19 @@ public class MenuPrincipalController {
             }
             else if (e.getSource() == menuPrincipal.getBtnEliminar()) { // ELIMINAR
                 if (menuPrincipal.getBtnUsuarios().isSelected()) {
-                    index = jTable.getSelectedRow();
-                    System.out.println(index);
-                    
+                    index = jTable.getSelectedRow();                    
                     if(index != -1) {
-                        Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
-
-                        usuarioDAO.deleteUsuario((entry.getKey()));
-                        listaMapUsuarios.remove(index);
-                        modeloTabla.removeRow(index);
-
+                        if(jTable.getRowCount() < listaMapUsuarios.size()) {
+                            usuarioDAO.deleteUsuario((int) keyList.get(index));
+                            mensajeTemporal("Usuario eliminado satisfactoriamente.", "Aviso", 1150);
+                            actualizarJListaUsuarios();
+                        } else {
+                            Map.Entry<Integer, Usuario> entry = listaMapUsuarios.get(index);
+                            usuarioDAO.deleteUsuario((entry.getKey()));
+                            mensajeTemporal("Usuario eliminado satisfactoriamente.", "Aviso", 1150);
+                            listaMapUsuarios.remove(index);
+                            modeloTabla.removeRow(index);
+                        }
                         jTable.setModel(modeloTabla);    
                     } else {
                         mensajeTemporal("Elija el usuario que desea eliminar", "Error", 1150);
@@ -579,13 +582,18 @@ public class MenuPrincipalController {
                 }
                 else if(menuPrincipal.getBtnRecursos().isSelected()) {
                     index = jTable.getSelectedRow();
-                    System.out.println(index);
                     if(index != -1) {
-                        Map.Entry<String, Recurso> entry = listaMapRecursos.get(index);
-
-                        recursoDAO.deleteRecurso((entry.getKey()));
-                        listaMapRecursos.remove(index);
-                        modeloTabla.removeRow(index);
+                        if(jTable.getRowCount() < listaMapRecursos.size()) {
+                            recursoDAO.deleteRecurso((String) keyList.get(index));
+                            mensajeTemporal("Recurso eliminado satisfactoriamente.", "Aviso", 1150);
+                            actualizarJListaRecursos();
+                        } else {
+                            Map.Entry<String, Recurso> entry = listaMapRecursos.get(index);
+                            recursoDAO.deleteRecurso((entry.getKey()));
+                            mensajeTemporal("Recurso eliminado satisfactoriamente.", "Aviso", 1150);
+                            listaMapRecursos.remove(index);
+                            modeloTabla.removeRow(index);
+                        }
 
                         jTable.setModel(modeloTabla);
                     } else {
