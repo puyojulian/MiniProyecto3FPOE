@@ -134,7 +134,7 @@ public class AdministrarPrestamosController {
     
     public Integer verificarLlaveDevolucion() {
         for (Map.Entry<Integer, Prestamo> entry : prestamoDAO.getPrestamos().entrySet()) {
-            if (entry.getValue().getUsuario().getId() == (int) listaUsuarios.get(indexU) && entry.getValue().getRecurso().getCodigoRecurso() == (int) listaRecursos.get(indexR)) {
+            if (entry.getValue().getUsuario().getId() == (int) listaUsuarios.get(indexU) && entry.getValue().getRecurso().getCodigoRecurso() == (int) listaRecursos.get(indexR) && entry.getValue().getEstado().equals(entry.getValue().getEstados()[0])) {
                 return entry.getKey();
             }
         }    
@@ -167,6 +167,7 @@ public class AdministrarPrestamosController {
                 if(tabbedIndex == 0){
                     if(!listaUsuarios.isEmpty()) {
                         prestamoDAO.deletePrestamo(verificarLlaveDevolucion());
+                        System.out.println(verificarLlaveDevolucion()+"");
                         mostrarItemsDevolucion();
                         indexU = 0;
                         indexR = 0;

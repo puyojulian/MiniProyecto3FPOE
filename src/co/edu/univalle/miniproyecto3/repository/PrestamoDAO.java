@@ -56,13 +56,13 @@ public class PrestamoDAO implements PrestamoDAOInterface {
         Recurso recurso;
         
         prestamo = mapaPrestamos.get(llave);
+        System.out.println(llave);
         recurso = prestamo.getRecurso();
         
         prestamo.setFechaDevolucion(fechaHoyFormateada);
         prestamo.setEstado(prestamo.getEstados()[1]);
-        recurso.setDisponible(true);
-        
         verificarCerrado(llave);
+        recurso.setDisponible(true);
  
 //        mapaPrestamos.remove(llave);
         return true;
