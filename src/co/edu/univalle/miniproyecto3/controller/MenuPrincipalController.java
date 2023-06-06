@@ -77,6 +77,8 @@ public class MenuPrincipalController {
     private Object[] rowData2;
     private List keyList;
     private String fechaHoyFormateada;
+    private List recursosPrestamo;
+    private List recursosPrestamoClean;
     
     public MenuPrincipalController(MenuPrincipal menuPrincipal) throws IOException {
         this.usuarioDAO = new UsuarioDAO();
@@ -101,6 +103,8 @@ public class MenuPrincipalController {
         this.listaParametros = new ArrayList();
         this.listaFechas = new ArrayList();
         this.keyList = new ArrayList();
+        this.recursosPrestamo = new ArrayList();
+        this.recursosPrestamoClean = new ArrayList();
         
         HandlerActions listener = new HandlerActions();
         KeyEventHandler keyListener = new KeyEventHandler();
@@ -398,9 +402,6 @@ public class MenuPrincipalController {
             listaTemporal.clear();
             modeloTabla.setRowCount(0);
 
-//            listaMapPrestamos = new ArrayList<>(mapaPrestamos.entrySet());
-            
-//            establecerIdentificadoresColumnas(modeloTabla);
             String[] atributosTablaRPrestamos = {"USUARIO", "CANT. RECURSOS", "ESTADO", "FECHA REA.", "FECHA DEV."};
             modeloTabla.setColumnIdentifiers(atributosTablaRPrestamos);
 
@@ -409,16 +410,19 @@ public class MenuPrincipalController {
                 int contadorRecursos = 0;
                 String estado = "";
                 int idUsuario = entry.getValue().getUsuario().getId();
-//                listaTemporal.add(idUsuario + "");
                 listaTemporal.add(entry.getValue().getUsuario().getNombre());
                 String fechaReal = entry.getValue().getFechaRealizacion();
                 String fechaDev = entry.getValue().getFechaDevolucion();
+                StringBuilder strRecursos = new StringBuilder();
                 for (Map.Entry<Integer, Prestamo> entry2 : entrySetMapa){
                     if(entry2.getValue().getUsuario().getId() == idUsuario && entry2.getValue().getFechaRealizacion().equals(fechaReal) && entry2.getValue().getFechaDevolucion().equals(fechaDev)) {
+                        strRecursos.append(entry2.getValue().getRecurso().getNombre());
+                        strRecursos.append(",");
                         contadorRecursos++;
                         estado = entry2.getValue().getEstado();
                     }
                 }
+                recursosPrestamo.add(strRecursos.toString());
                 listaTemporal.add(contadorRecursos + "");
                 listaTemporal.add(estado);
                 listaTemporal.add(fechaReal);
@@ -448,8 +452,11 @@ public class MenuPrincipalController {
                 rowString.append("|"); // Separating values with a delimiter
             }
 
+            recursosPrestamoClean.clear();
+            
             if (!uniqueRows.contains(rowString.toString())) {
                 uniqueRows.add(rowString.toString());
+                recursosPrestamoClean.add(recursosPrestamo.get(i));
             } else {
                 model.removeRow(i);
                 rowCount--;
