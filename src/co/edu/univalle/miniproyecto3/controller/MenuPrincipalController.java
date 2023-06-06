@@ -28,6 +28,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -38,6 +39,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 public class MenuPrincipalController {
     
@@ -289,6 +291,8 @@ public class MenuPrincipalController {
     }
     
     public void actualizarJListaUsuarios() {
+        habilitarBusqueda(true);
+        
         if(mapaUsuarios.size() > 0) {
             Set<Map.Entry<Integer, Usuario>> entrySetMapa = mapaUsuarios.entrySet();
 
@@ -320,6 +324,8 @@ public class MenuPrincipalController {
     }
     
     public void actualizarJListaRecursos() {
+        habilitarBusqueda(true);
+        
         if(mapaRecursos.size() > 0) {
             Set<Map.Entry<String, Recurso>> entrySetMapa = mapaRecursos.entrySet();
 
@@ -351,6 +357,8 @@ public class MenuPrincipalController {
     }
     
     public void actualizarJListaPrestamos() {
+        habilitarBusqueda(true);
+        
         if(mapaPrestamos.size() > 0) {
             Set<Map.Entry<Integer, Prestamo>> entrySetMapa = mapaPrestamos.entrySet();
 
@@ -382,6 +390,8 @@ public class MenuPrincipalController {
     }
     
     public void actualizarPrestamosAgrupados() {
+        habilitarBusqueda(false);
+        
         if(mapaPrestamos.size() > 0) {
             Set<Map.Entry<Integer, Prestamo>> entrySetMapa = mapaPrestamos.entrySet();
 
@@ -391,7 +401,7 @@ public class MenuPrincipalController {
 //            listaMapPrestamos = new ArrayList<>(mapaPrestamos.entrySet());
             
 //            establecerIdentificadoresColumnas(modeloTabla);
-            String[] atributosTablaRPrestamos = {"CODIGO", "USUARIO", "CONT. RECURSOS", "ESTADO", "FECHA REA.", "FECHA DEV."};
+            String[] atributosTablaRPrestamos = {"USUARIO", "CONT. RECURSOS", "ESTADO", "FECHA REA.", "FECHA DEV."};
             modeloTabla.setColumnIdentifiers(atributosTablaRPrestamos);
 
 
@@ -399,11 +409,12 @@ public class MenuPrincipalController {
                 int contadorRecursos = 0;
                 String estado = "";
                 int idUsuario = entry.getValue().getUsuario().getId();
-                listaTemporal.add(idUsuario + "");
+//                listaTemporal.add(idUsuario + "");
                 listaTemporal.add(entry.getValue().getUsuario().getNombre());
                 String fechaReal = entry.getValue().getFechaRealizacion();
+                String fechaDev = entry.getValue().getFechaDevolucion();
                 for (Map.Entry<Integer, Prestamo> entry2 : entrySetMapa){
-                    if(entry2.getValue().getUsuario().getId() == idUsuario && entry2.getValue().getFechaRealizacion().equals(fechaReal)) {
+                    if(entry2.getValue().getUsuario().getId() == idUsuario && entry2.getValue().getFechaRealizacion().equals(fechaReal) && entry2.getValue().getFechaDevolucion().equals(fechaDev)) {
                         contadorRecursos++;
                         estado = entry2.getValue().getEstado();
                     }
@@ -411,17 +422,58 @@ public class MenuPrincipalController {
                 listaTemporal.add(contadorRecursos + "");
                 listaTemporal.add(estado);
                 listaTemporal.add(fechaReal);
-                listaTemporal.add(entry.getValue().getFechaDevolucion());
+                listaTemporal.add(fechaDev);
                 modeloTabla.addRow(listaTemporal.toArray());
                 listaTemporal.clear();
             }
             jTable.setModel(modeloTabla);
+            removeDuplicateRows(jTable);
         }
         else {
             modeloTabla.setRowCount(0);
             jTable.setModel(modeloTabla);
         }
     }
+    
+    public void removeDuplicateRows(JTable table) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        int rowCount = model.getRowCount();
+        int columnCount = model.getColumnCount();
+        Set<String> uniqueRows = new HashSet<>();
+
+        for (int i = 0; i < rowCount; i++) {
+            StringBuilder rowString = new StringBuilder();
+            for (int j = 0; j < columnCount; j++) {
+                rowString.append(model.getValueAt(i, j));
+                rowString.append("|"); // Separating values with a delimiter
+            }
+
+            if (!uniqueRows.contains(rowString.toString())) {
+                uniqueRows.add(rowString.toString());
+            } else {
+                model.removeRow(i);
+                rowCount--;
+                i--;
+            }
+        }
+
+        model.setRowCount(0); // Clear the JTable
+
+        for (String rowString : uniqueRows) {
+            String[] rowValues = rowString.split("\\|"); // Splitting the values using the delimiter
+            model.addRow(rowValues);
+        }
+    }
+    
+    public void habilitarBusqueda(boolean bool) {
+        menuPrincipal.getBtnBuscar().setEnabled(bool);
+        menuPrincipal.getBtnBusqueda().setEnabled(bool);
+        menuPrincipal.getTxtBuscar().setEnabled(bool);
+        menuPrincipal.getTxtBusqueda1().setEnabled(bool);
+        menuPrincipal.getTxtBusqueda2().setEnabled(bool);
+        menuPrincipal.getBtnPopConfirmar().setEnabled(bool);
+    }
+
     
     public void mensajeTemporal(String mensaje, String titulo, int milisegundos) {
         JOptionPane msg = new JOptionPane(mensaje, JOptionPane.INFORMATION_MESSAGE);
@@ -803,6 +855,8 @@ public class MenuPrincipalController {
                     Thread.sleep(200);
                     mapaPrestamos = prestamoDAO.getPrestamos();
                     actualizarJListaPrestamos();
+                    menuPrincipal.getBtnAgrupar().setEnabled(true);
+                    menuPrincipal.getBtnVolver().setVisible(false);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
                 }
