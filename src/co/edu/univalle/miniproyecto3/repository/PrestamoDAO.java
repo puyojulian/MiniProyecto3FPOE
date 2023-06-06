@@ -60,15 +60,28 @@ public class PrestamoDAO implements PrestamoDAOInterface {
         recurso = prestamo.getRecurso();
         
         prestamo.setFechaDevolucion(fechaHoyFormateada);
-        prestamo.setEstado(prestamo.getEstados()[1]);
-        verificarCerrado(llave);
+        
+        int cantidadRecursos = verificarCantidadRecursos(llave);
+        if(cantidadRecursos > 1) {
+            prestamo.setEstado(prestamo.getEstados()[1]);
+        }
+        else {
+            prestamo.setEstado(prestamo.getEstados()[2]);
+        }
+        
+        boolean todosPCerrado = verificarPCerrado(llave);
+        int cantidadRecursosPCerrados = listaLlaves.size();
+        if(cantidadRecursosPCerrados == cantidadRecursos) {
+            marcarCerrado(todosPCerrado);
+        }
+        
         recurso.setDisponible(true);
  
 //        mapaPrestamos.remove(llave);
         return true;
     }
     
-    public void verificarCerrado(Integer llave) {
+    public boolean verificarPCerrado(Integer llave) {
         listaLlaves.clear();
         boolean verificarPCerrado = false;
         
@@ -85,9 +98,27 @@ public class PrestamoDAO implements PrestamoDAOInterface {
                 }
             }
         }
+        return verificarPCerrado;
+    }
+    
+    public int verificarCantidadRecursos(Integer llave) {
+        int cantidadRecursosPrestamo = 0;
         
+        Set<Map.Entry<Integer, Prestamo>> entrySetMapa = mapaPrestamos.entrySet();
+        
+        for (Map.Entry<Integer, Prestamo> entry : entrySetMapa){
+            if(entry.getValue().getUsuario().getId() == mapaPrestamos.get(llave).getUsuario().getId() && entry.getValue().getFechaRealizacion().equals(mapaPrestamos.get(llave).getFechaRealizacion())) {
+                if(entry.getValue().getEstado().equals(entry.getValue().getEstados()[0]) || entry.getValue().getEstado().equals(entry.getValue().getEstados()[1])) {
+                    cantidadRecursosPrestamo++;
+                }
+            }
+        }
+        return cantidadRecursosPrestamo;
+    }
+    
+    public void marcarCerrado(boolean bool) {
         Iterator iterador = listaLlaves.iterator();
-        if(verificarPCerrado) {
+        if(bool) {
             while(iterador.hasNext()) {
                 int key = (int) iterador.next();
                 mapaPrestamos.get(key).setEstado(mapaPrestamos.get(key).getEstados()[2]);
