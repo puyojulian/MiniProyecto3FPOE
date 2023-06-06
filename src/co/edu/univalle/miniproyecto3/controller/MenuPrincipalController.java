@@ -401,7 +401,7 @@ public class MenuPrincipalController {
 //            listaMapPrestamos = new ArrayList<>(mapaPrestamos.entrySet());
             
 //            establecerIdentificadoresColumnas(modeloTabla);
-            String[] atributosTablaRPrestamos = {"USUARIO", "CONT. RECURSOS", "ESTADO", "FECHA REA.", "FECHA DEV."};
+            String[] atributosTablaRPrestamos = {"USUARIO", "CANT. RECURSOS", "ESTADO", "FECHA REA.", "FECHA DEV."};
             modeloTabla.setColumnIdentifiers(atributosTablaRPrestamos);
 
 
